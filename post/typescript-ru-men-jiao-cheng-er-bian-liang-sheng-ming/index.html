@@ -1,0 +1,278 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TypeScript入门教程(二) - 变量声明 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              TypeScript入门教程(二) - 变量声明
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>在es5中js声明变量是通过<code>var</code>关键字进行变量声明，在es6中我们可以通过<code>let</code>,<code>const</code>两个关键字来进行声明，typescript中支持<code>let</code>,<code>const</code>进行声明变量</p>
+<!--more-->
+<h3 id="var">Var</h3>
+<p>在过去的js中(es5之前包括es5)我们声明变量是通过<code>var</code>来声明一个变量，但是var声明变量也有它不足的地方，我们接下来会详细介绍它</p>
+<pre><code class="language-javascript">var a = 'mickey'
+</code></pre>
+<p>通过上面的方式我们就声明了一个变量<code>a</code>类型是字符串值为<code>'mickey'</code><br>
+我们也可以在函数中声明变量</p>
+<pre><code class="language-javascript">function fn1() {
+    var age = 26
+}
+</code></pre>
+<p>如果你是像<code>Java</code>,<code>C</code>等其他语言开发人员会对js中的var声明的变量作用域看起来很奇怪</p>
+<pre><code class="language-typescript">function fn1(flag: boolean): void | number {
+    if(flag) {
+        var num = 26
+    }
+    return num
+}
+fn1(false) // return undefined
+fn1(true) // 26
+</code></pre>
+<p>上面的例子中，变量<code>num</code>声明在<code>if</code>语句中，但是我们在语句的外面还是可以访问它，这是因为<code>var</code>声明可以包含在函数，模块，命名空间和全局作用域内部任何位置被访问，js通过var声明的变量是没有块级作用域</p>
+<p>我们在看一个例子</p>
+<pre><code class="language-typescript">var a = document.getElementsByTagName(&quot;a&quot;);
+for(var i = 0; i &lt; 7; i++){ 
+   a[i].onclick = function(){
+    console.log(i)
+   }
+}
+// 这里我们点击a标签会输入 7
+// 因为循环创建了i变量后面会直接覆盖前面的变量值
+</code></pre>
+<p>为了解决上面的问题我们可以通过闭包来解决</p>
+<pre><code class="language-javascript">var a = document.getElementsByTagName(&quot;a&quot;);
+for(var i =0; i&lt;a.length; i++){ 
+   a[i].onclick = (function(i){
+        return function(){alert(i);}
+   })(i);
+}
+</code></pre>
+<p>还有一种方式通过es6中的<code>let</code>来解决,接下来我们详细介绍<code>let</code></p>
+<h3 id="let">Let</h3>
+<p>使用<code>let</code>和之前<code>var</code>声明变量一样</p>
+<pre><code class="language-typescript">let a = 'mickey'
+let b: number = 26
+</code></pre>
+<p>我们通过<code>let</code>声明的方式解决上面的问题</p>
+<pre><code class="language-typescript">var a = document.getElementsByTagName(&quot;a&quot;);
+for(let i = 0; i &lt; 7; i++){ 
+   a[i].onclick = function(){
+    console.log(i)
+   }
+}
+// 这里我们点击a标签会输入 0,1,2,3,4,5,6,7
+</code></pre>
+<p>如果你想了解比较详细<code>let</code>如果使用和新的特性你可以参考<a href="http://es6.ruanyifeng.com/#docs/let">ECMAScript 6 入门-阮一峰</a></p>
+<h3 id="const">Const</h3>
+<p>使用<code>Const</code>和之前<code>var</code>声明变量一样</p>
+<pre><code class="language-typescript">const a = 'mickey'
+const b: number = 26
+</code></pre>
+<p>如果你想了解比较详细<code>Const</code>如果使用和新的特性你可以参考<a href="http://es6.ruanyifeng.com/#docs/let">ECMAScript 6 入门-阮一峰</a></p>
+<h3 id="解构">解构</h3>
+<ul>
+<li>数组解构</li>
+</ul>
+<pre><code class="language-typescript">let input = [1, 2];
+let [first, second] = input;
+console.log(first); // outputs 1
+console.log(second); // outputs 2
+</code></pre>
+<pre><code class="language-typescript">function f([first, second]: [number, number]) {
+    console.log(first);
+    console.log(second);
+}
+f(input);
+</code></pre>
+<pre><code class="language-typescript">let [first, ...rest] = [1, 2, 3, 4];
+console.log(first); // outputs 1
+console.log(rest); // outputs [ 2, 3, 4 ]
+</code></pre>
+<ul>
+<li>对象解构</li>
+</ul>
+<pre><code class="language-typescript">let o = {
+    a: &quot;foo&quot;,
+    b: 12,
+    c: &quot;bar&quot;
+};
+let { a, b } = o;
+</code></pre>
+<pre><code class="language-typescript">({ a, b } = { a: &quot;baz&quot;, b: 101 });
+</code></pre>
+<p>上面简单的介绍了数组解构和对象解构，如果你想详情了解还是推荐你去<a href="http://es6.ruanyifeng.com/#docs/let">ECMAScript 6 入门-阮一峰</a>这个对ES6进行非常详细的介绍，相信你会学到很多ES6中所有新特性</p>
+<p>上面我们介绍了<code>TypeScript</code>的变量声明，第三节我们将介绍接口</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/variable-declarations.html">TypeScript中文网</a></p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#var">Var</a></li>
+<li><a href="#let">Let</a></li>
+<li><a href="#const">Const</a></li>
+<li><a href="#%E8%A7%A3%E6%9E%84">解构</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-yi-ji-chu-lei-xing">
+              <h3 class="post-title">
+                TypeScript入门教程(一) - 基础类型
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

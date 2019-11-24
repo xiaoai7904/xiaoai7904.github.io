@@ -1,0 +1,441 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TypeScript入门教程(九) - 高级类型 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              TypeScript入门教程(九) - 高级类型
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>高级类型(交叉类型,联合类型,类型保护与区分类型,类型别名,字符串字面量类型,数字字面量类型,枚举成员类型,多态的this类型,索引类型,映射类型)我们会对10种进行详情介绍</p>
+<!--more-->
+<h3 id="交叉类型intersection-types">交叉类型(Intersection Types)</h3>
+<p>交叉类型是将多个类型合并到一个类型,比如:<code>Fn1 &amp; Fn2 &amp; Fn3</code>同时是<code>Fn1</code>和<code>Fn2</code>和<code>Fn3</code>,这个类型的对象同时拥有这三种类型的成员。</p>
+<p>来看一个混入(<code>mixins</code>)的例子:</p>
+<pre><code class="language-typescript">function extend&lt;T, U&gt;(first: T, second: U): T &amp; U {
+    let result = &lt;T &amp; U&gt;{};
+    for (let id in first) {
+        (&lt;any&gt;result)[id] = (&lt;any&gt;first)[id];
+    }
+    for (let id in second) {
+        if (!result.hasOwnProperty(id)) {
+            (&lt;any&gt;result)[id] = (&lt;any&gt;second)[id];
+        }
+    }
+    return result;
+}
+
+interface FnInterface {
+    getName(): string;
+}
+
+class Fn1 {
+    constructor(public name: string) { }
+}
+
+class Fn2 implements FnInterface {
+    getName() {
+        console.log('getName')
+    }
+}
+
+let f = extend(new Fn1(&quot;mickey&quot;), new Fn2());
+
+let n = f.name; // mickey
+
+f.getName(); // getName
+
+</code></pre>
+<h3 id="联合类型union-types">联合类型(Union Types)</h3>
+<p>联合类型表示一个值可以是几种类型之,用竖线 <code>|</code> 分隔每个类型</p>
+<pre><code class="language-typescript">function setWidth(dom: any, width: string | number): void {
+    dom.style.width = width
+}
+</code></pre>
+<h3 id="类型保护与区分类型type-guards-and-differentiating-type">类型保护与区分类型(Type Guards and Differentiating Type)</h3>
+<pre><code class="language-typescript">let pet = getSmallPet();
+
+// 每一个成员访问都会报错
+if (pet.swim) {
+    pet.swim();
+}
+else if (pet.fly) {
+    pet.fly();
+}
+</code></pre>
+<p>修改上面的代码</p>
+<pre><code class="language-typescript">let pet = getSmallPet();
+
+if ((&lt;Fish&gt;pet).swim) {
+    (&lt;Fish&gt;pet).swim();
+}
+else {
+    (&lt;Bird&gt;pet).fly();
+}
+</code></pre>
+<ul>
+<li>用户自定义的类型保护</li>
+</ul>
+<p>TypeScript里的 类型保护机制让它成为了现实。 类型保护就是一些表达式，它们会在运行时检查以确保在某个作用域里的类型。 要定义一个类型保护，我们只要简单地定义一个函数，它的返回值是一个 类型谓词</p>
+<pre><code class="language-typescript">function isFish(pet: Fish | Bird): pet is Fish {
+    return (&lt;Fish&gt;pet).swim !== undefined;
+}
+</code></pre>
+<ul>
+<li>typeof类型保护</li>
+</ul>
+<p>这些<strong>typeof类型保护</strong>只有两种形式能被识别：typeof v === &quot;typename&quot;和 typeof v !== &quot;typename&quot;， &quot;typename&quot;必须是 &quot;number&quot;， &quot;string&quot;， &quot;boolean&quot;或 &quot;symbol&quot;。 但是TypeScript并不会阻止你与其它字符串比较，语言不会把那些表达式识别为类型保护</p>
+<ul>
+<li>instanceof类型保护</li>
+</ul>
+<p>instanceof类型保护是通过构造函数来细化类型的一种方式<br>
+instanceof的右侧要求是一个构造函数，TypeScript将细化为:</p>
+<ul>
+<li>此构造函数的 prototype属性的类型，如果它的类型不为 any的话</li>
+<li>构造签名所返回的类型的联合</li>
+</ul>
+<h3 id="类型别名">类型别名</h3>
+<p>类型别名就是给类型起一个新的名字,起别名不会新建一个类型，只是用新的名字来引用那个类型</p>
+<pre><code class="language-typescript">type Name = string;
+type NameResolver = () =&gt; string;
+type NameOrResolver = Name | NameResolver;
+
+function getName(n: NameOrResolver): Name {
+    if (typeof n === 'string') {
+        return n;
+    }
+    else {
+        return n();
+    }
+}
+</code></pre>
+<p>类型别名也可以是泛型</p>
+<pre><code class="language-typescript">type Container&lt;T&gt; = { value: T };
+
+type Tree&lt;T&gt; = {
+    value: T;
+    left: Tree&lt;T&gt;;
+    right: Tree&lt;T&gt;;
+}
+
+</code></pre>
+<p>类型别名不能出现在声明右侧的任何地方</p>
+<pre><code class="language-typescript">type Yikes = Array&lt;Yikes&gt;; // error
+</code></pre>
+<h3 id="字符串字面量类型">字符串字面量类型</h3>
+<p>字符串字面量类型允许你指定字符串必须的固定值。 在实际应用中，字符串字面量类型可以与联合类型，类型保护和类型别名很好的配合。 通过结合使用这些特性，你可以实现类似枚举类型的字符串</p>
+<pre><code class="language-typescript">type Easing = &quot;ease-in&quot; | &quot;ease-out&quot; | &quot;ease-in-out&quot;;
+class UIElement {
+    animate(dx: number, dy: number, easing: Easing) {
+        if (easing === &quot;ease-in&quot;) {
+            // ...
+        }
+        else if (easing === &quot;ease-out&quot;) {
+        }
+        else if (easing === &quot;ease-in-out&quot;) {
+        }
+        else {
+
+        }
+    }
+}
+
+let button = new UIElement();
+button.animate(0, 0, &quot;ease-in&quot;);
+button.animate(0, 0, &quot;uneasy&quot;); // error: &quot;uneasy&quot; is not allowed here
+</code></pre>
+<p>字符串字面量类型还可以用于区分函数重载</p>
+<pre><code class="language-typescript">function createElement(tagName: &quot;img&quot;): HTMLImageElement;
+function createElement(tagName: &quot;input&quot;): HTMLInputElement;
+// ... more overloads ...
+function createElement(tagName: string): Element {
+    // ... code goes here ...
+}
+</code></pre>
+<h3 id="数字字面量类型">数字字面量类型</h3>
+<pre><code class="language-typescript">function rollDie(): 1 | 2 | 3 | 4 | 5 | 6 {
+    // ...
+}
+</code></pre>
+<h3 id="多态的this类型">多态的<code>this</code>类型</h3>
+<p>多态的 this类型表示的是某个包含类或接口的 子类型。 这被称做 F-bounded多态性。 它能很容易的表现连贯接口间的继承，比如。 在计算器的例子里，在每个操作之后都返回 this类型:</p>
+<pre><code class="language-typescript">class BasicCalculator {
+    public constructor(protected value: number = 0) { }
+    public currentValue(): number {
+        return this.value;
+    }
+    public add(operand: number): this {
+        this.value += operand;
+        return this;
+    }
+    public multiply(operand: number): this {
+        this.value *= operand;
+        return this;
+    }
+    // ... other operations go here ...
+}
+
+let v = new BasicCalculator(2)
+            .multiply(5)
+            .add(1)
+            .currentValue();
+</code></pre>
+<p>由于这个类使用了 this类型，你可以继承它，新的类可以直接使用之前的方法，不需要做任何的改变</p>
+<pre><code class="language-typescript">class ScientificCalculator extends BasicCalculator {
+    public constructor(value = 0) {
+        super(value);
+    }
+    public sin() {
+        this.value = Math.sin(this.value);
+        return this;
+    }
+}
+
+let v = new ScientificCalculator(2)
+        .multiply(5)
+        .sin()
+        .add(1)
+        .currentValue();
+</code></pre>
+<h3 id="索引类型index-types">索引类型(Index types)</h3>
+<p>使用索引类型，编译器就能够检查使用了动态属性名的代码</p>
+<pre><code class="language-javascript">function pluck(o, names) {
+    return names.map(n =&gt; o[n]);
+}
+</code></pre>
+<pre><code class="language-typescript">function pluck&lt;T, K extends keyof T&gt;(o: T, names: K[]): T[K][] {
+  return names.map(n =&gt; o[n]);
+}
+
+interface Person {
+    name: string;
+    age: number;
+}
+let person: Person = {
+    name: 'Jarid',
+    age: 35
+};
+let strings: string[] = pluck(person, ['name']); // ok, string[]
+</code></pre>
+<p>上面代码引入了新的类型操作符<code>keyof T</code>,<code>索引类型查询操作符</code>和<code>T[K]</code>,<code>索引访问操作符</code></p>
+<pre><code class="language-typescript">let personProps: keyof Person; // 'name' | 'age'
+</code></pre>
+<p>上面代码可以同通过<code>let personProps: 'name' | 'age'</code>替换,但是如果添加了新的属性到<code>Person</code>里面<code>keyof Person</code>会自动添加新增的属性,因此在使用前不清楚出现的属性名,就可以这样使用</p>
+<pre><code class="language-typescript">function getProperty&lt;T, K extends keyof T&gt;(o: T, name: K): T[K] {
+    return o[name]; // o[name] is of type T[K]
+}
+</code></pre>
+<p><code>getProperty</code>里的<code>o: T</code>和<code>name: K</code>，意味着<code>o[name]: T[K]</code>。 当你返回<code>T[K]</code>的结果，编译器会实例化键的真实类型，因此 <code>getProperty</code>的返回值类型会随着你需要的属性改变</p>
+<p><code>keyof</code>和<code>T[K]</code>与字符串索引签名进行交互。 如果你有一个带有字符串索引签名的类型，那么<code>keyof T</code>会是<code>string</code>。 并且<code>T[string]</code>为索引签名的类型</p>
+<pre><code class="language-typescript">interface Map&lt;T&gt; {
+    [key: string]: T;
+}
+let keys: keyof Map&lt;number&gt;; // string
+let value: Map&lt;number&gt;['foo']; // number
+</code></pre>
+<h3 id="映射类型">映射类型</h3>
+<p>TypeScript提供了从旧类型中创建新类型的一种方式 — <strong>映射类型</strong></p>
+<pre><code class="language-typescript">type Readonly&lt;T&gt; = {
+    readonly [P in keyof T]: T[P];
+}
+type Partial&lt;T&gt; = {
+    [P in keyof T]?: T[P];
+}
+</code></pre>
+<p>使用如下:</p>
+<pre><code class="language-typescript">type PersonPartial = Partial&lt;Person&gt;;
+type ReadonlyPerson = Readonly&lt;Person&gt;;
+</code></pre>
+<p>它的语法与索引签名的语法类型，内部使用了 for .. in。 具有三个部分</p>
+<ul>
+<li>类型变量 K，它会依次绑定到每个属性</li>
+<li>字符串字面量联合的 Keys，它包含了要迭代的属性名的集合</li>
+<li>属性的结果类型</li>
+</ul>
+<pre><code class="language-typescript">type NullablePerson = { [P in keyof Person]: Person[P] | null }
+type PartialPerson = { [P in keyof Person]?: Person[P] }
+
+type Nullable&lt;T&gt; = { [P in keyof T]: T[P] | null }
+type Partial&lt;T&gt; = { [P in keyof T]?: T[P] }
+</code></pre>
+<p>上面代码是真正应用中使用到的</p>
+<p>上面介绍了高级类型种的10种类型,这也是日常我们会用到的</p>
+<p>上面我们介绍了<code>TypeScript</code>的高级类型，第十节我们将介绍Symbols</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/variable-declarations.html">TypeScript中文网</a></p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8Bintersection-types">交叉类型(Intersection Types)</a></li>
+<li><a href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8Bunion-types">联合类型(Union Types)</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E4%BF%9D%E6%8A%A4%E4%B8%8E%E5%8C%BA%E5%88%86%E7%B1%BB%E5%9E%8Btype-guards-and-differentiating-type">类型保护与区分类型(Type Guards and Differentiating Type)</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D">类型别名</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F%E7%B1%BB%E5%9E%8B">字符串字面量类型</a></li>
+<li><a href="#%E6%95%B0%E5%AD%97%E5%AD%97%E9%9D%A2%E9%87%8F%E7%B1%BB%E5%9E%8B">数字字面量类型</a></li>
+<li><a href="#%E5%A4%9A%E6%80%81%E7%9A%84this%E7%B1%BB%E5%9E%8B">多态的<code>this</code>类型</a></li>
+<li><a href="#%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8Bindex-types">索引类型(Index types)</a></li>
+<li><a href="#%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B">映射类型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-ba-lei-xing-tui-duan">
+              <h3 class="post-title">
+                TypeScript入门教程(八) - 类型推断
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

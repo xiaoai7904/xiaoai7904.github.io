@@ -1,0 +1,438 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JavaScript Promis | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              JavaScript Promis
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                10 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://jstobigdata.com/wp-content/uploads/2019/10/promise-in-javascript.min_-800x419.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>JavaScript 是单线程工作，这意味着两段脚本不能同时运行，而是必须一个接一个地运行。 在浏览器中，JavaScript 与因浏览器而异的其他 N 种任务共享一个线程。 但是通常情况下 JavaScript 与绘制、更新样式和处理用户操作（例如，高亮显示文本以及与格式控件交互）处于同一队列。 操作其中一项任务会延迟其他任务。</p>
+<!--more-->
+<h3 id="介绍">介绍</h3>
+<p>我们人类是多线程工作。 您可以使用多个手指打字，可以一边开车一边与人交谈。 唯一一个会妨碍我们的是打喷嚏，因为当我们打喷嚏的时候，所有当前进行的活动都必须暂停。 这真是非常讨厌，尤其是当您在开车并想与人交谈时。 您可不想编写像打喷嚏似的代码。</p>
+<p>您可能已使用事件和回调来解决该问题。 以下是一些事件：</p>
+<pre><code class="language-javascript">var img1 = document.querySelector('.img-1');
+
+img1.addEventListener('load', function() {
+  // woo yey image loaded
+});
+
+img1.addEventListener('error', function() {
+  // argh everything's broken
+});
+</code></pre>
+<p>这可不会像打喷嚏那样打断您。 我们获得图像、添加几个侦听器，之后 JavaScript 可停止执行，直至其中一个侦听器被调用。</p>
+<p>遗憾的是，在上例中，事件有可能在我们开始侦听之前就发生了，因此我们需要使用图像的“complete”属性来解决该问题：</p>
+<pre><code class="language-javascript">var img1 = document.querySelector('.img-1');
+
+function loaded() {
+  // woo yey image loaded
+}
+
+if (img1.complete) {
+  loaded();
+}
+else {
+  img1.addEventListener('load', loaded);
+}
+
+img1.addEventListener('error', function() {
+  // argh everything's broken
+});
+</code></pre>
+<p>这不会捕获出错的图像，因为在此之前我们没有机会侦听到错误。遗憾的是，DOM 也没有给出解决之道。 而且，这还只是加载一个图像，如果加载一组图像，情况会更复杂。</p>
+<h3 id="事件不一定是最佳方法">事件不一定是最佳方法</h3>
+<p>事件对于同一对象上发生多次的事情（如 keyup、touchstart 等）非常有用。 对于这些事件，实际您并不关注在添加侦听器之前所发生的事情。 但是，如果关系到异步成功/失败，理想的情况是您希望：</p>
+<pre><code class="language-javascript">img1.callThisIfLoadedOrWhenLoaded(function() {
+  // loaded
+}).orIfFailedCallThis(function() {
+  // failed
+});
+
+// and…
+whenAllTheseHaveLoaded([img1, img2]).callThis(function() {
+  // all loaded
+}).orIfSomeFailedCallThis(function() {
+  // one or more failed
+});
+</code></pre>
+<p>这是 promise 所执行的任务，但以更好的方式命名。 如果 HTML 图像元素有一个返回 promise 的“ready”方法，我们可以执行：</p>
+<pre><code class="language-javascript">img1.ready().then(function() {
+  // loaded
+}, function() {
+  // failed
+});
+
+// and…
+Promise.all([img1.ready(), img2.ready()]).then(function() {
+  // all loaded
+}, function() {
+  // one or more failed
+});
+</code></pre>
+<p>最基本的情况是，promise 有点类似于事件侦听器，但有以下两点区别：</p>
+<ul>
+<li>promise 只能成功或失败一次， 而不能成功或失败两次，也不能从成功转为失败或从失败转为成功。</li>
+<li>如果 promise 已成功或失败，且您之后添加了成功/失败回调，则将会调用正确的回调，即使事件发生在先也是如此。</li>
+</ul>
+<p>这对于异步成功/失败尤为有用，因为您可能对某些功能可用的准确时间不是那么关注，更多地是关注对结果作出的反应。</p>
+<h3 id="promise-术语">Promise 术语</h3>
+<ul>
+<li>已执行 - 与 promise 相关的操作成功</li>
+<li>已拒绝 - 与 promise 相关的操作失败</li>
+<li>待定 - 尚未执行或拒绝</li>
+<li>已解决 - 已执行或拒绝</li>
+</ul>
+<h3 id="promise-在-javascript-中受支持">Promise 在 JavaScript 中受支持！</h3>
+<p>Promise 有一段时间以库的形式出现，例如：</p>
+<ul>
+<li><a href="https://github.com/kriskowal/q">Q</a></li>
+<li><a href="https://github.com/cujojs/when">when</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS</a></li>
+<li><a href="https://github.com/tildeio/rsvp.js">RSVP.js</a></li>
+</ul>
+<p>以上这些与 JavaScript promise 都有一个名为 <a href="https://github.com/promises-aplus/promises-spec">Promise/A+</a> 的常见标准化行为。 如果您是 jQuery 用户，他们还有一个名为 Deferred 的相似行为。 但是，Deferred 与 Promise/A+ 不兼容，这就使得其存在细微差异且没那么有用，因此需注意。 此外，jQuery 还有 Promise 类型，但它只是 Deferred 的子集，因此仍存在相同的问题。</p>
+<p>尽管 promise 实现遵照标准化行为，但其整体 API 有所不同。 JavaScript promise 在 API 中类似于 RSVP.js。 下面是创建 promise 的步骤：</p>
+<pre><code class="language-javascript">var promise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+
+  if (/* everything turned out fine */) {
+    resolve(&quot;Stuff worked!&quot;);
+  }
+  else {
+    reject(Error(&quot;It broke&quot;));
+  }
+});
+</code></pre>
+<p>Promise 构造函数包含一个参数和一个带有 resolve（解析）和 reject（拒绝）两个参数的回调。 在回调中执行一些操作（例如异步），如果一切都正常，则调用 resolve，否则调用 reject。</p>
+<p>与普通旧版 JavaScript 中的 throw 一样，通常拒绝时会给出 Error 对象，但并不是必须的。 Error 对象的优点在于其能够捕捉堆叠追踪，因而使得调试工具非常有用。</p>
+<p>以下是有关 promise 的使用示例：</p>
+<pre><code class="language-javascript">promise.then(function(result) {
+  console.log(result); // &quot;Stuff worked!&quot;
+}, function(err) {
+  console.log(err); // Error:&quot;It broke&quot;
+});
+</code></pre>
+<p>then() 包含两个参数：一个用于成功情形的回调和一个用于失败情形的回调。 这两个皆可选，因此您可以只添加一个用于成功情形或失败情形的回调。</p>
+<p>JavaScript promise 最初是在 DOM 中出现并称为“Futures”，之后重命名为“Promises”，最后又移入 JavaScript。 在 JavaScript 中使用比在 DOM 中更好，因为它们将在如 Node.js 等非浏览器 JS 环境中可用（而它们是否会在核心 API 中使用 Promise 则是另外一个问题）。</p>
+<p>尽管它们是 JavaScript 的一项功能，但 DOM 也能使用。 实际上，采用异步成功/失败方法的所有新 DOM API 均使用 promise。</p>
+<h3 id="浏览器支持和-polyfill">浏览器支持和 polyfill</h3>
+<p>现在，promise 已在各浏览器中实现。</p>
+<p>自 Chrome 32、Opera 19、Firefox 29、Safari 8 和 Microsoft Edge 起，promise 默认启用。</p>
+<p>如要使没有完全实现 promise 的浏览器符合规范，或向其他浏览器和 Node.js 中添加 promise，请查看 <a href="https://github.com/jakearchibald/ES6-Promises#readme">polyfill</a> （gzip 压缩大小为 2k）。</p>
+<h3 id="与其他库的兼容性">与其他库的兼容性</h3>
+<p>JavaScript promise API 将任何使用 then() 方法的结构都当作 promise 一样（或按 promise 的说法为 thenable）来处理，因此，如果您使用返回 Q promise 的库也没问题，因为它能与新 JavaScript promise 很好地兼容。</p>
+<p>如我之前所提到的，jQuery 的 Deferred 不那么有用。 幸运的是，您可以将其转为标准 promise，而且越早越好：</p>
+<pre><code class="language-javascript">var jsPromise = Promise.resolve($.ajax('/whatever.json'))
+</code></pre>
+<p>这里，jQuery 的 $.ajax 返回一个 Deferred。 由于它使用 then() 方法，因此 Promise.resolve() 可将其转为 JavaScript promise。 但是，有时 deferred 会将多个参数传递给其回调，例如：</p>
+<pre><code class="language-javascript">var jqDeferred = $.ajax('/whatever.json');
+
+jqDeferred.then(function(response, statusText, xhrObj) {
+  // ...
+}, function(xhrObj, textStatus, err) {
+  // ...
+})
+</code></pre>
+<p>而 JS promise 会忽略除第一个之外的所有参数：</p>
+<pre><code class="language-javascript">jsPromise.then(function(response) {
+  // ...
+}, function(xhrObj) {
+  // ...
+})
+</code></pre>
+<p>幸好，通常这就是您想要的，或者至少为您提供了方法让您获得所想要的。 另请注意，jQuery 不遵循将 Error 对象传递到 reject 这一惯例。</p>
+<h3 id="错误处理">错误处理</h3>
+<p>正如我们之前所看到的，then() 包含两个参数：一个用于成功，一个用于失败（按照 promise 中的说法，即执行和拒绝）：</p>
+<pre><code class="language-javascript">get('story.json').then(function(response) {
+  console.log(&quot;Success!&quot;, response);
+}, function(error) {
+  console.log(&quot;Failed!&quot;, error);
+})
+</code></pre>
+<p>您还可以使用 catch()：</p>
+<pre><code class="language-javascript">get('story.json').then(function(response) {
+  console.log(&quot;Success!&quot;, response);
+}).catch(function(error) {
+  console.log(&quot;Failed!&quot;, error);
+})
+</code></pre>
+<p>catch() 没有任何特殊之处，它只是对 then(undefined, func) 锦上添花，但可读性更强。 注意，以上两个代码示例行为并不相同，后者相当于：</p>
+<pre><code class="language-javascript">get('story.json').then(function(response) {
+  console.log(&quot;Success!&quot;, response);
+}).then(undefined, function(error) {
+  console.log(&quot;Failed!&quot;, error);
+})
+</code></pre>
+<p>两者之间的差异虽然很微小，但非常有用。 Promise 拒绝后，将跳至带有拒绝回调的下一个 then()（或具有相同功能的 catch()）。 如果是 then(func1, func2)，则 func1 或 func2 中的一个将被调用，而不会二者均被调用。 但如果是 then(func1).catch(func2)，则在 func1 拒绝时两者均被调用，因为它们在该链中是单独的步骤。 看看下面的代码：</p>
+<pre><code class="language-javascript">asyncThing1().then(function() {
+  return asyncThing2();
+}).then(function() {
+  return asyncThing3();
+}).catch(function(err) {
+  return asyncRecovery1();
+}).then(function() {
+  return asyncThing4();
+}, function(err) {
+  return asyncRecovery2();
+}).catch(function(err) {
+  console.log(&quot;Don't worry about it&quot;);
+}).then(function() {
+  console.log(&quot;All done!&quot;);
+})
+</code></pre>
+<h3 id="promise-api-参考">Promise API 参考</h3>
+<p>除非另有说明，所有方法在 Chrome、Opera、Firefox、Microsoft Edge 和 Safari 中均可使用。 <a href="https://github.com/jakearchibald/ES6-Promises#readme">polyfill</a> 为所有浏览器提供以下方法。</p>
+<h5 id="静态方法">静态方法</h5>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Promise.resolve(promise)</td>
+<td>返回 promise（仅当 promise.constructor == Promise 时）</td>
+</tr>
+<tr>
+<td>Promise.resolve(thenable)</td>
+<td>从 thenable 中生成一个新 promise。 thenable 是具有 <code>then()</code> 方法的类似于 promise 的对象。</td>
+</tr>
+<tr>
+<td>Promise.resolve(obj)</td>
+<td>在此情况下，生成一个 promise 并在执行时返回 obj</td>
+</tr>
+<tr>
+<td>Promise.reject(obj)</td>
+<td>生成一个 promise 并在拒绝时返回 obj。 为保持一致和调试（例如 堆叠追踪），obj 应为 instanceof Error。</td>
+</tr>
+<tr>
+<td>Promise.all(array)</td>
+<td>生成一个 promise，该 promise 在数组中各项执行时执行，在任意一项拒绝时拒绝。 每个数组项均传递给 Promise.resolve，因此数组可能混合了类似于 promise 的对象和其他对象。 执行值是一组有序的执行值。 拒绝值是第一个拒绝值。</td>
+</tr>
+<tr>
+<td>Promise.race(array)</td>
+<td>生成一个 Promise，该 Promise 在任意项执行时执行，或在任意项拒绝时拒绝，以最先发生的为准</td>
+</tr>
+</tbody>
+</table>
+<h5 id="构造函数">构造函数</h5>
+<table>
+<thead>
+<tr>
+<th>构造函数</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>new Promise(function(resolve, reject) {});</td>
+<td>resolve(thenable): Promise 依据 thenable 的结果而执行/拒绝 <br/><br/>resolve(obj): promise 执行并返回 <br/><br/>obj reject(obj): promise 拒绝并返回 obj。 为保持一致和调试（例如堆叠追踪），obj 应为 instanceof Error。 在构造函数回调中引发的任何错误将隐式传递给 reject()。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="实例方法">实例方法</h5>
+<table>
+<thead>
+<tr>
+<th>实例方法</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>promise.then(onFulfilled, onRejected)</td>
+<td>当/如果“promise”解析，则调用 onFulfilled。 当/如果“promise”拒绝，则调用 onRejected。 两者均可选，如果任意一个或两者都被忽略，则调用链中的下一个 onFulfilled/onRejected。 两个回调都只有一个参数：执行值或拒绝原因。 then() 将返回一个新 promise，它相当于从 onFulfilled/onRejected 返回的值 （通过 Promise.resolve 传递之后）。 如果在回调中引发了错误，返回的 promise 将拒绝并返回该错误。</td>
+</tr>
+<tr>
+<td>promise.catch(onRejected)</td>
+<td>对 promise.then(undefined, onRejected)</td>
+</tr>
+</tbody>
+</table>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%9C%80%E4%BD%B3%E6%96%B9%E6%B3%95">事件不一定是最佳方法</a></li>
+<li><a href="#promise-%E6%9C%AF%E8%AF%AD">Promise 术语</a></li>
+<li><a href="#promise-%E5%9C%A8-javascript-%E4%B8%AD%E5%8F%97%E6%94%AF%E6%8C%81">Promise 在 JavaScript 中受支持！</a></li>
+<li><a href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81%E5%92%8C-polyfill">浏览器支持和 polyfill</a></li>
+<li><a href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%BA%93%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7">与其他库的兼容性</a></li>
+<li><a href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86">错误处理</a></li>
+<li><a href="#promise-api-%E5%8F%82%E8%80%83">Promise API 参考</a><br>
+*
+<ul>
+<li><a href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">静态方法</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
+<li><a href="#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95">实例方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/async-function">
+              <h3 class="post-title">
+                Async Function
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

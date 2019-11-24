@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello Gridea | xiaoai</title>
+<title>TypeScript入门教程(六) - 泛型 | xiaoai</title>
 <meta name="description" content="记录美好生活" />
 <link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,54 +73,105 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello Gridea
+              TypeScript入门教程(六) - 泛型
             </h2>
             <div class="post-info">
               <span>
-                2018-12-11
+                2019-11-24
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
-                <a href="https://xiaoai7904.github.io//tag/-f85WCzna" class="post-tag">
-                  # Gridea
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://xiaoai7904.github.io//post-images/hello-gridea.png" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                <blockquote>
+<p><strong>维基百科</strong>  泛型是程序设计语言的一种风格或范式。泛型允许程序员在强类型程序设计语言中编写代码时使用一些以后才指定的类型，在实例化时作为参数指明这些类型</p>
+</blockquote>
+<!--more-->
+<h3 id="入门">入门</h3>
+<p>下面通过两个例子来介绍<code>泛型</code>的基础用法</p>
+<pre><code class="language-typescript">// 不适用泛型的情况
+function fn1(arg: number): number {
+    return arg
+}
+function fn2(arg: any): any {
+    return arg
+}
+</code></pre>
+<p>上面例子是没有使用泛型的情况，我们使用泛型修改代码</p>
+<pre><code class="language-typescript">function fn1&lt;T&gt;(arg: T): T {
+    return arg
+}
+</code></pre>
+<p>我们通过添加类型变量<code>T</code>，<code>T</code>帮助我们捕获用户传入的类型，之后我们就可以使用这个类型，函数在返回<code>T</code>,这样我们可以知道参数类型和返回类型是相同并且可以跟踪函数使用的类型信息</p>
+<p>上面一个简单的例子就是最简单的<code>泛型</code>的写法，<code>&lt;&gt;</code>里面的<code>T</code>可以随意修改，不一定是<code>T</code></p>
+<h3 id="泛型变量">泛型变量</h3>
+<p>使用泛型函数时，编译器要求你在函数体必须正确的使用这个通用的类型，也就是说你必须把这些参数当做是任意或所有类型</p>
+<pre><code class="language-typescript">function fn1&lt;T&gt;(arg:[]): T[] {
+    console.log(Array.isArray(arg))
+    return arg
+}
+
+function fn2&lt;T&gt;(arg: Array&lt;T&gt;): Array&lt;T&gt; {
+    return arg
+}
+</code></pre>
+<p><strong>上面代码是一样的效果</strong></p>
+<h3 id="泛型类型">泛型类型</h3>
+<p>泛型函数的类型与非泛型函数的类型没什么不同，只是有一个类型参数在最前面，像函数声明一样</p>
+<pre><code class="language-typescript">function fn1&lt;T&gt;(arg: T):T {
+    return arg
+}
+let f1: &lt;T&gt;(arg: T) =&gt; T = fn1
+</code></pre>
+<p>我们可能想把泛型参数当作整个接口的一个参数。 这样我们就能清楚的知道使用的具体是哪个泛型类型</p>
+<pre><code class="language-typescript">interface fn1Face&lt;T&gt; {
+    (arg: T): T;
+}
+
+function fn1&lt;T&gt;(arg: T): T {
+    return arg
+}
+
+let f1: fn1Face&lt;number&gt; = fn1
+</code></pre>
+<h3 id="泛型类">泛型类</h3>
+<p>泛型类看上去与泛型接口差不多。 泛型类使用（ &lt;&gt;）括起泛型类型，跟在类名后面</p>
+<pre><code class="language-typescript">class Styles&lt;T&gt; {
+    width: T;
+    height: T;
+    setStyle: (width: T, height: T) =&gt; object
+}
+let fn1 = new Styles&lt;number&gt;()
+fn1.width = 100
+fn1.height = 100
+fn1.setStyle = function(width, height) {return {width,height}}
+</code></pre>
+<p>上面我们介绍了<code>TypeScript</code>的泛型，第七节我们将介绍枚举</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/variable-declarations.html">TypeScript中文网</a></p>
+</blockquote>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li>
+<ul>
+<li><a href="#%E5%85%A5%E9%97%A8">入门</a></li>
+<li><a href="#%E6%B3%9B%E5%9E%8B%E5%8F%98%E9%87%8F">泛型变量</a></li>
+<li><a href="#%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B">泛型类型</a></li>
+<li><a href="#%E6%B3%9B%E5%9E%8B%E7%B1%BB">泛型类</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -133,9 +184,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoai7904.github.io//post/javascript-han-shu">
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-wu-han">
               <h3 class="post-title">
-                JavaScript函数
+                TypeScript入门教程(五) - 函
               </h3>
             </a>
           </div>

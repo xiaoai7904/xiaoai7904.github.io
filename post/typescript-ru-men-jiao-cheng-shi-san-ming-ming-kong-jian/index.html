@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello Gridea | xiaoai</title>
+<title>TypeScript入门教程(十三) - 命名空间 | xiaoai</title>
 <meta name="description" content="记录美好生活" />
 <link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,54 +73,115 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello Gridea
+              TypeScript入门教程(十三) - 命名空间
             </h2>
             <div class="post-info">
               <span>
-                2018-12-11
+                2019-11-24
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
-                <a href="https://xiaoai7904.github.io//tag/-f85WCzna" class="post-tag">
-                  # Gridea
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://xiaoai7904.github.io//post-images/hello-gridea.png" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                <p>描述了如何在TypeScript里使用命名空间（之前叫做“内部模块”）来组织你的代码。任何使用<code>module</code>关键字来声明一个内部模块的地方都应该使用<code>namespace</code>关键字来替换</p>
+<!--more-->
+<h3 id="命名空间">命名空间</h3>
+<p>使用命名空间不用担心与其它对象产生命名冲突</p>
+<pre><code class="language-typescript">namespace Validation {
+    export interface StringValidator {
+        isAcceptable(s: string): boolean;
+    }
+
+    const lettersRegexp = /^[A-Za-z]+$/;
+    const numberRegexp = /^[0-9]+$/;
+
+    export class LettersOnlyValidator implements StringValidator {
+        isAcceptable(s: string) {
+            return lettersRegexp.test(s);
+        }
+    }
+
+    export class ZipCodeValidator implements StringValidator {
+        isAcceptable(s: string) {
+            return s.length === 5 &amp;&amp; numberRegexp.test(s);
+        }
+    }
+}
+
+// Some samples to try
+let strings = [&quot;Hello&quot;, &quot;98052&quot;, &quot;101&quot;];
+
+// Validators to use
+let validators: { [s: string]: Validation.StringValidator; } = {};
+validators[&quot;ZIP code&quot;] = new Validation.ZipCodeValidator();
+validators[&quot;Letters only&quot;] = new Validation.LettersOnlyValidator();
+
+// Show whether each string passed each validator
+for (let s of strings) {
+    for (let name in validators) {
+        console.log(`&quot;${ s }&quot; - ${ validators[name].isAcceptable(s) ? &quot;matches&quot; : &quot;does not match&quot; } ${ name }`);
+    }
+}
+</code></pre>
+<h3 id="别名">别名</h3>
+<p>另一种简化命名空间操作的方法是使用import q = x.y.z给常用的对象起一个短的名字。 不要与用来加载模块的 import x = require('name')语法弄混了，这里的语法是为指定的符号创建一个别名。 你可以用这种方法为任意标识符创建别名，也包括导入的模块中的对象</p>
+<pre><code class="language-typescript">namespace Shapes {
+    export namespace Polygons {
+        export class Triangle { }
+        export class Square { }
+    }
+}
+
+import polygons = Shapes.Polygons;
+let sq = new polygons.Square(); // Same as &quot;new Shapes.Polygons.Square()&quot;
+</code></pre>
+<h3 id="外部命名空间">外部命名空间</h3>
+<p>流行的程序库D3在全局对象d3里定义它的功能。 因为这个库通过一个 <script>标签加载（不是通过模块加载器），它的声明文件使用内部模块来定义它的类型。 为了让TypeScript编译器识别它的类型，我们使用外部命名空间声明。 比如，我们可以像下面这样写</p>
+<pre><code class="language-typescript">declare namespace D3 {
+    export interface Selectors {
+        select: {
+            (selector: string): Selection;
+            (element: EventTarget): Selection;
+        };
+    }
+
+    export interface Event {
+        x: number;
+        y: number;
+    }
+
+    export interface Base extends Selectors {
+        event: Event;
+    }
+}
+
+declare var d3: D3.Base;
+</code></pre>
+<p>上面我们介绍了<code>TypeScript</code>的命名空间，第十四节我们将介绍装饰器</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/variable-declarations.html">TypeScript中文网</a></p>
+</blockquote>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li>
+<ul>
+<li><a href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">命名空间</a></li>
+<li><a href="#%E5%88%AB%E5%90%8D">别名</a></li>
+<li><a href="#%E5%A4%96%E9%83%A8%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">外部命名空间</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -133,9 +194,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoai7904.github.io//post/javascript-han-shu">
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-er-mo-kuai">
               <h3 class="post-title">
-                JavaScript函数
+                TypeScript入门教程(十二) - 模块
               </h3>
             </a>
           </div>

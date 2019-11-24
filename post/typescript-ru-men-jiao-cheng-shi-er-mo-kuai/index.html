@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello Gridea | xiaoai</title>
+<title>TypeScript入门教程(十二) - 模块 | xiaoai</title>
 <meta name="description" content="记录美好生活" />
 <link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,54 +73,85 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello Gridea
+              TypeScript入门教程(十二) - 模块
             </h2>
             <div class="post-info">
               <span>
-                2018-12-11
+                2019-11-24
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
-                <a href="https://xiaoai7904.github.io//tag/-f85WCzna" class="post-tag">
-                  # Gridea
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://xiaoai7904.github.io//post-images/hello-gridea.png" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                <p>模块是在自身的作用域执行,也就是说在一个模块里面声明的变量,类,函数都是在模块中可见,模块外面是不可见的，除非使用<code>export</code>导出,其他模块使用<code>import</code>引入就可以使用其他模块导出的变量,类,函数等</p>
+<!--more-->
+<h3 id="导出">导出</h3>
+<p>任何声明(变量,函数,类,类别别名或接口)都能够通过添加<code>export</code>关键字来导出</p>
+<pre><code class="language-typescript">export const a = '112'
+export interface Styles {
+    width: string
+    height: string
+}
+export function fn1() {}
+export class Fn {}
+export {Fn as fn} // 导出的部分重命名
+export * from '文件路径'
+export default class Styles {} // 默认导出
+</code></pre>
+<h3 id="导入">导入</h3>
+<p>模块的导入操作与导出一样简单。 可以使用以下 import形式之一来导入其它模块中的导出内容</p>
+<pre><code class="language-typescript">import { Fn } from '引入的文件路径'
+import {Fn as fn } from '引入的文件路径' // 导入内容重命名
+import * as styles from '引入的文件路径' // 将整个模块导入到一个变量
+import '引入的文件路径' // 引入文件
+import style from '引入的文件路径' // 引入默认导出文件
+</code></pre>
+<h3 id="export-和-import-require">export = 和 import = require()</h3>
+<p><code>CommonJS</code>和<code>AMD</code>的环境里都有一个<code>exports</code>变量，这个变量包含了一个模块的所有导出内容。</p>
+<p><code>CommonJS</code>和<code>AMD</code>的<code>exports</code>都可以被赋值为一个对象, 这种情况下其作用就类似于<code>es6</code>语法里的默认导出，即<code>export default</code>语法了。虽然作用相似，但是<code>export default</code>语法并不能兼容<code>CommonJS</code>和<code>AMD</code>的exports。</p>
+<p>为了支持<code>CommonJS</code>和<code>AMD</code>的<code>exports</code>, <code>TypeScript</code>提供了<code>export =</code>语法。</p>
+<p><code>export =</code>语法定义一个模块的导出对象。 这里的对象一词指的是类，接口，命名空间，函数或枚举。</p>
+<p>若使用<code>export =</code>导出一个模块，则必须使用<code>TypeScript</code>的特定语法<code>import module = require(&quot;module&quot;)</code>来导入此模块</p>
+<pre><code class="language-typescript">class Styles {
+    constructor(public styles: object)
+    getStyle(key: string): number | string {
+        return this.styles[key]
+    }
+}
+
+export = Styles
+// 使用方式如下
+
+import Styles = require('文件路径')
+
+let s = new Styles({ width : 200 })
+s.getStyle('width') // 200
+</code></pre>
+<p>上面我们介绍了<code>TypeScript</code>的模块，第十三节我们将介绍命名空间</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/variable-declarations.html">TypeScript中文网</a></p>
+</blockquote>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li>
+<ul>
+<li><a href="#%E5%AF%BC%E5%87%BA">导出</a></li>
+<li><a href="#%E5%AF%BC%E5%85%A5">导入</a></li>
+<li><a href="#export-%E5%92%8C-import-require">export = 和 import = require()</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -133,9 +164,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoai7904.github.io//post/javascript-han-shu">
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-yi-die-dai-qi-he-sheng-cheng-qi">
               <h3 class="post-title">
-                JavaScript函数
+                TypeScript入门教程(十一) - 迭代器和生成器
               </h3>
             </a>
           </div>

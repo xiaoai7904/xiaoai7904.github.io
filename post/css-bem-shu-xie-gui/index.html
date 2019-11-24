@@ -1,0 +1,279 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CSS BEM书写规 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              CSS BEM书写规
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/WZ4v4lDEn" class="post-tag">
+                  # Css
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://snipcart.com/media/203926/bem-css-methodology.png?width=800&amp;format=webp&amp;quality=80&amp;upscale=false" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><code>BEM</code>的意思就是块（<code>block</code>）、元素（<code>element</code>）、修饰符（<code>modifier</code>）,是由<a href="https://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。这种巧妙的命名方法让你的CSS类对其他开发者来说更加透明而且更有意义。BEM命名约定更加严格，而且包含更多的信息，它们用于一个团队开发一个耗时的大项目</p>
+<!--more-->
+<h3 id="介绍">介绍</h3>
+<p>如果你是一个<code>Vue</code>爱好者，并且你是一个喜欢接受新鲜事物和追求技术高度,那么你一定使用或者知道<a href="http://element.eleme.io/#/zh-CN">Element-Ui</a>(或者其他UI库),在<code>element-ui</code>中你去观察它的源码你会发现它的组件<code>css</code>的定义方式</p>
+<pre><code class="language-css">@include b(tree-node) {
+  white-space: nowrap;
+  outline: none;
+  &amp;:focus { /* focus */
+    &gt; .el-tree-node__content {
+      background-color: $--tree-node-hover-color;
+    }
+  }
+
+  @include when(drop-inner) {
+    &gt; .el-tree-node__content .el-tree-node__label {
+      background-color: $--color-primary;
+      color: #fff;
+    }
+  }
+}
+</code></pre>
+<p>上面代码是<code>element-ui</code>中组件<code>tree</code>组件的部分样式</p>
+<p>不难从上面代码中可以看到<code>element-ui</code>是怎么来命名<code>class</code>类名和<code>sass</code>变量都使用了<code>-</code>,<code>__</code>,'--'这个连字符,下面我们介绍为什么要这样写,这样写的好处是什么</p>
+<h3 id="bem">BEM</h3>
+<p><code>BEM</code>代表“<code>块（block</code>）,<code>元素（element</code>）,<code>修饰符（modifier</code>”,我们常用这三个实体开发组件。</p>
+<p>在选择器中，由以下三种符合来表示扩展的关系:</p>
+<pre><code class="language-text">-  中划线 ：仅作为连字符使用，表示某个块或者某个子元素的多单词之间的连接记号
+__  双下划线：双下划线用来连接块和块的子元素
+_   单下划线：单下划线用来描述一个块或者块的子元素的一种状态
+
+type-block__element_modifier
+</code></pre>
+<h4 id="块block">块（block）</h4>
+<p>一个块是设计或布局的一部分，它有具体且唯一地意义 ，要么是语义上的要么是视觉上的</p>
+<p>例如我们有一个菜单列表</p>
+<pre><code class="language-html">&lt;ul class=&quot;menu&quot;&gt;
+    &lt;li&gt;1&lt;/li&gt;
+    &lt;li&gt;2&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>类名<code>menu</code>就是代表菜单这个<code>块</code>或者<code>区域</code></p>
+<h4 id="元素element">元素（element）</h4>
+<p>块中的子元素是块的子元素，并且子元素的子元素在 bem 里也被认为是块的直接子元素。一个块中元素的类名必须用父级块的名称作为前缀</p>
+<pre><code class="language-html">&lt;ul class=&quot;menu&quot;&gt;
+    &lt;li class=&quot;menu__item&quot;&gt;1&lt;/li&gt;
+    &lt;li class=&quot;menu__item&quot;&gt;2&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>类名<code>menu__item</code>中的<code>__item</code>就是代表元素项</p>
+<h4 id="修饰符modifier">修饰符（modifier）</h4>
+<p>一个“修饰符”可以理解为一个块的特定状态，标识着它持有一个特定的属性</p>
+<pre><code class="language-html">&lt;ul class=&quot;menu&quot;&gt;
+    &lt;li class=&quot;menu__item menu__item-actived&quot;&gt;1&lt;/li&gt;
+    &lt;li class=&quot;menu__item&quot;&gt;2&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>类名<code>menu__item-actived</code>中的<code>-actived</code>代表修饰符</p>
+<h3 id="可供选择的命名方案">可供选择的命名方案</h3>
+<p><code>BEM</code>只是一种命名约定方案不一定要按照固定写法来执行,主要是在项目中要保持一致的命名约定即可</p>
+<p>下面有几种方案提供参考</p>
+<h4 id="two-dashes-style双连字符风格">Two Dashes style（双连字符风格）</h4>
+<p><code>block-name__elem-name--mod-name</code></p>
+<ul>
+<li>名字全部使用小写</li>
+<li>BEM 实体的名称中的每一个单词使用一个连字符分隔</li>
+<li>使用双下划线（__）将元素的名称和模块的名称分离开</li>
+<li>使用双连字符（--）分隔 Boolean 类型的修饰符</li>
+<li>不使用 key-value 类型的修饰符</li>
+</ul>
+<h4 id="camelcase-style驼峰命名风格">CamelCase style（驼峰命名风格）</h4>
+<p><code>MyBlock__SomeElem_modName_modVla</code></p>
+<p>这种风格的命名方案的不同点在于，在<code>BEM</code>实体中分隔单词时使用驼峰命名法代替了一个连字符（<code>-</code>）</p>
+<h4 id="sans-underscore-style无下划线风格">&quot;Sans underscore&quot; style（无下划线风格）</h4>
+<p><code>blockName-elemName--modName--modVal</code></p>
+<ul>
+<li>名称使用驼峰命名法书写</li>
+<li>元素名称与模块名称使用一个连字符（-）分隔</li>
+<li>修饰符使用双连字符（--）与模块或元素分隔</li>
+<li>修饰符的名称和值使用双连字符（--）分隔</li>
+</ul>
+<p><code>BEM</code>方法论为<code>BEM</code>实体的命名提供了基本的原则。选择哪一种命名方式取决于你项目的需求和你的个人喜好。使用方法论中提到的命名约定的一大优势在于具有现成的面向“经典命名”的开发工具</p>
+<blockquote>
+<p>文章参考<br>
+<a href="https://www.jianshu.com/p/410a71771d78">【译】BEM CSS命名规范三 Naming convention</a><br>
+<a href="https://www.w3cschool.cn/weflow/weflow-bem.html">W3cschool</a><br>
+<a href="https://docs.emmet.io/filters/bem/">Yandex BEM/OOCSS</a></p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#bem">BEM</a>
+<ul>
+<li><a href="#%E5%9D%97block">块（block）</a></li>
+<li><a href="#%E5%85%83%E7%B4%A0element">元素（element）</a></li>
+<li><a href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6modifier">修饰符（modifier）</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E5%91%BD%E5%90%8D%E6%96%B9%E6%A1%88">可供选择的命名方案</a>
+<ul>
+<li><a href="#two-dashes-style%E5%8F%8C%E8%BF%9E%E5%AD%97%E7%AC%A6%E9%A3%8E%E6%A0%BC">Two Dashes style（双连字符风格）</a></li>
+<li><a href="#camelcase-style%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC">CamelCase style（驼峰命名风格）</a></li>
+<li><a href="#sans-underscore-style%E6%97%A0%E4%B8%8B%E5%88%92%E7%BA%BF%E9%A3%8E%E6%A0%BC">&quot;Sans underscore&quot; style（无下划线风格）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/qian-duan-da-za-hui">
+              <h3 class="post-title">
+                前端大杂烩
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

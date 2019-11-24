@@ -1,0 +1,253 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TypeScript入门教程(五) - 函 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              TypeScript入门教程(五) - 函
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块</p>
+<!--more-->
+<h3 id="函数">函数</h3>
+<p>TypeScript中的函数和JavaScript中的函数一样，可以创建匿名函数和有名字的函数</p>
+<pre><code class="language-typescript">// 命名函数
+function fn1() {}
+// 匿名函数
+let fn2 = function(){}
+</code></pre>
+<h3 id="函数定义类型">函数定义类型</h3>
+<p>我们可以给每个参数添加类型,而且可以给函数本身添加返回值类型。 TypeScript能够根据返回语句自动推断出返回值类型，因此我们一般会省略它，但是为了提升代码可以读性，一般我喜欢加上返回类型</p>
+<pre><code class="language-typescript">function fn1(x: number, y: number): number {
+    return x + y
+}
+
+let fn2: (x: number, y:number) =&gt; number = function(x: number, y:number):number{ return x + y}
+
+// 可以定义参数为可选参数
+function fn3(x:number, y?:number): number {
+    if(y) {
+        return x + y 
+    }
+    return x
+}
+</code></pre>
+<h3 id="this">this</h3>
+<p>通俗解释:<strong>this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象</strong></p>
+<pre><code class="language-javascript">function fn1() {
+    console.log(this)
+}
+fn1() // window
+
+var fn = {
+    fn1: function() {
+        console.log(this)
+    }
+}
+fn.fn1() // fn
+</code></pre>
+<h3 id="重载">重载</h3>
+<p>JavaScript是个动态语言，JavaScript里函数根据传入不同的参数而返回不同类型的数据是很常见的</p>
+<pre><code class="language-typescript">function fn1(data: object | string | any): any{
+    if(typeof data === 'object') {
+        return {}
+    }else if(typeof data === 'string') {
+        return ''
+    }
+    return false
+}
+</code></pre>
+<p>上面代码函数<code>fn1</code>接受一个参数,这个参数类型可以是对象，字符串或者其他类型，函数体内会根据接受的参数返回不同值</p>
+<p>方法是为同一个函数提供多个函数类型定义来进行函数重载。 编译器会根据这个列表去处理函数的调用</p>
+<pre><code class="language-typescript">function fn1(data: object): object;
+function fn1(data: number): boolean
+function fn1(data: any): any {
+    if(typeof data === 'object') {
+        return {}
+    }else if(typeof data === 'string') {
+        return ''
+    }
+    return false
+}
+fn1({})
+fn1(1)
+fn1('')
+</code></pre>
+<p>这样改变后，重载的<code>fn1</code>函数在调用的时候会进行正确的类型检查</p>
+<p>为了让编译器能够选择正确的检查类型，它与JavaScript里的处理流程相似。 它查找重载列表，尝试使用第一个重载定义。 如果匹配的话就使用这个。 因此，在定义重载的时候，一定要把最精确的定义放在最前面</p>
+<p>上面我们介绍了<code>TypeScript</code>的函数，第六节我们将介绍泛型</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/variable-declarations.html">TypeScript中文网</a><br>
+<a href="https://www.cnblogs.com/pssp/p/5216085.html">彻底理解this</a><br>
+<a href="http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html">JavaScript中的this-阮一峰</a></p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B">函数定义类型</a></li>
+<li><a href="#this">this</a></li>
+<li><a href="#%E9%87%8D%E8%BD%BD">重载</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-si-lei">
+              <h3 class="post-title">
+                TypeScript入门教程(四) - 类
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

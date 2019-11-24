@@ -1,0 +1,320 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TypeScript入门教程(三) - 接口 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              TypeScript入门教程(三) - 接口
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>TypeScript的核心原则之一是对值所具有的结构进行类型检查。 它有时被称做“鸭式辨型法”或“结构性子类型化”。 在TypeScript里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约</p>
+<!--more-->
+<h3 id="初次见面接口">初次见面接口</h3>
+<p>先看一段实例代码</p>
+<pre><code class="language-typescript">function fn1(styles: {wdith: number}): void {
+    console.log(styles.wdith)
+}
+fn1({width: 100, height: 200})
+</code></pre>
+<p>上面的代码函数接受一个参数名<code>styles</code>里面有属性<code>width</code>类型是<code>number</code>,但是我们传了其他属性，编译器只会检查那些必需的属性是否存在，然而，有些时候TypeScript却并不会这么宽松</p>
+<p>我们修改一下上面的例子，通过接口在实现</p>
+<pre><code class="language-typescript">interface Styles {
+    width: number
+}
+
+function fn1(styles: Styles): void {
+    console.log(styles.wdith)
+}
+fn1({width: 100, height: 200}) // 这里会报错说height没有定义在接口中
+</code></pre>
+<p><code>Styles</code>接口就是名字，用来描述上面例子里面的需求，它表示有一个<code>width</code>属性类型为<code>number</code>， 需要注意的是，我们在这里并不能像在其它语言里一样，说传给<code>fn1</code>的对象实现了这个接口。我们只会去关注值的外形。 只要传入的对象满足上面提到的必要条件，那么它就是被允许的</p>
+<p><strong>类型检查器不会去检查属性的顺序，只要相应的属性存在并且类型也是对的就可以</strong></p>
+<h3 id="可选属性">可选属性</h3>
+<p>接口里面的属性不全部是必须的，我们可以不传一些参数</p>
+<pre><code class="language-typescript">interface Styles {
+    width: number,
+    height?: number
+}
+
+function fn1(styles: Styles): void {
+    console.log(style)
+}
+fn1({width: 100}) // ok
+</code></pre>
+<p>带有可选属性的接口与普通的接口定义差不多，只是在可选属性名字定义的后面加一个<code>?</code>符号</p>
+<h3 id="只读属性">只读属性</h3>
+<p>一些对象属性只是只读，你不能修改它的值</p>
+<pre><code class="language-typescript">interface Styles {
+    readonly width: number,
+    readonly height: number
+}
+let styles: Styles = {width: 100, height: 200}
+styles.width = 200 // error widht是只读属性不能修改
+</code></pre>
+<p>数组也可以创建只读，TypeScript具有ReadonlyArray<T>类型，可以确保数组创建后再也不能被修改：</p>
+<pre><code class="language-typescript">let list1: number[] = [1, 2, 3, 4];
+let ro: ReadonlyArray&lt;number&gt; = a;
+ro[0] = 12; // error!
+ro.push(5); // error!
+ro.length = 100; // error!
+list1 = ro; // error!
+</code></pre>
+<p>上面代码的最后一行，可以看到就算把整个ReadonlyArray赋值到一个普通数组也是不可以的。 但是你可以用类型断言重写</p>
+<pre><code class="language-typescript">list1 = ro as number[];
+</code></pre>
+<h3 id="函数类型">函数类型</h3>
+<p>接口可以描述对象也可以描述函数类型</p>
+<pre><code class="language-typescript">interface fn1 {
+    (width: number, height: number): object&lt;{width: number, height: number}&gt;
+}
+</code></pre>
+<p>上面我们定义了一个函数类型的接口，下例展示了如何创建一个函数类型的变量，并将一个同类型的函数赋值给这个变量</p>
+<pre><code class="language-typescript">let stylesFn: fn1
+stylesFn =  function(width: number, height: number){
+    return { width,height }
+}
+</code></pre>
+<h3 id="可索引的类型">可索引的类型</h3>
+<p>与使用接口描述函数类型差不多，我们也可以描述那些能够“通过索引得到”的类型，比如styles[0]或styles[&quot;width&quot;],可索引类型具有一个 索引签名，它描述了对象索引的类型，还有相应的索引返回值类型</p>
+<pre><code class="language-typescript">interface Styles {
+    [index: number]: number
+}
+let styles: Styles
+styles = [100, 200]
+let width: number = styles[0]
+</code></pre>
+<h3 id="类类型">类类型</h3>
+<p>与C#或Java里接口的基本作用一样，TypeScript也能够用它来明确的强制一个类去符合某种契约</p>
+<pre><code class="language-typescript">interface Styles {
+    width: number,
+    setStyle(s: object)
+}
+class CreateStyles implements Styles {
+    width: number
+    constructor() {}
+    setStyle(s: object): void {}
+}
+</code></pre>
+<h3 id="继承接口">继承接口</h3>
+<p>和类一样，接口也可以相互继承，我们可以从一个接口复制成员到另一个接口</p>
+<pre><code class="language-typescript">interface Styles {
+    width: number
+    height: number
+}
+interface Styles1 extends Styles {
+    color: string
+}
+let s = &lt;Styles1&gt;{}
+s.color = 'red'
+s.width = 100
+s.height = 200
+</code></pre>
+<p>接口可以继承多个接口</p>
+<pre><code class="language-typescript">interface Styles {
+    width: number
+    height: number
+}
+interface Styles1 {
+    border: string
+}
+interface Styles2 extends Styles, Styles1{
+    color: string
+}
+let s = &lt;Styles2&gt;{}
+s.color = 'red'
+s.width = 100
+s.height = 200
+s.border = '1px solid red'
+</code></pre>
+<h3 id="混合类型">混合类型</h3>
+<p>接口可以同时用于对象和函数使用</p>
+<pre><code class="language-typescript">interface Styles {
+    width: number
+    reset(): void
+    (style: object): void
+}
+function createStyles(): Styles {
+    let initStyle = &lt;Styles&gt;function(style: object){}
+    initStyle.width = 200
+    initStyle.reset = function() {}
+}
+</code></pre>
+<p>在使用<code>JavaScript</code>第三方库的时候，你可能需要像上面那样去完整地定义类型</p>
+<p>上面我们介绍了<code>TypeScript</code>的接口，第四节我们将介绍类</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/interfaces.html">TypeScript中文网</a></p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%88%9D%E6%AC%A1%E8%A7%81%E9%9D%A2%E6%8E%A5%E5%8F%A3">初次见面接口</a></li>
+<li><a href="#%E5%8F%AF%E9%80%89%E5%B1%9E%E6%80%A7">可选属性</a></li>
+<li><a href="#%E5%8F%AA%E8%AF%BB%E5%B1%9E%E6%80%A7">只读属性</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B">函数类型</a></li>
+<li><a href="#%E5%8F%AF%E7%B4%A2%E5%BC%95%E7%9A%84%E7%B1%BB%E5%9E%8B">可索引的类型</a></li>
+<li><a href="#%E7%B1%BB%E7%B1%BB%E5%9E%8B">类类型</a></li>
+<li><a href="#%E7%BB%A7%E6%89%BF%E6%8E%A5%E5%8F%A3">继承接口</a></li>
+<li><a href="#%E6%B7%B7%E5%90%88%E7%B1%BB%E5%9E%8B">混合类型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-er-bian-liang-sheng-ming">
+              <h3 class="post-title">
+                TypeScript入门教程(二) - 变量声明
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

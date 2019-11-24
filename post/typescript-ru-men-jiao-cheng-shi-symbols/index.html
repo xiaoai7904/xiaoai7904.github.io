@@ -1,8 +1,8 @@
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>xiaoai</title>
+<title>TypeScript入门教程(十) - Symbols | xiaoai</title>
 <meta name="description" content="记录美好生活" />
 <link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -70,20 +70,94 @@
   </div>
 </div>
 
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              TypeScript入门教程(十) - Symbols
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>自ECMAScript 2015(ES6)起，symbol成为了一种新的原生类型，就像number和string一样</p>
+<!--more-->
+<h3 id="介绍">介绍</h3>
+<p><code>symbol</code>类型的值是通过<code>Symbol</code>构造函数创建的</p>
+<pre><code class="language-typescript">let sym1 = Symbol();
 
-        <div class="tags-container">
-          
-            <a class="tag" href="https://xiaoai7904.github.io//tag/4kuYU9V7d">JavaScript</a>
-          
-            <a class="tag" href="https://xiaoai7904.github.io//tag/WZ4v4lDEn">Css</a>
-          
-            <a class="tag" href="https://xiaoai7904.github.io//tag/7_4dzSMd8">Vue</a>
-          
-            <a class="tag" href="https://xiaoai7904.github.io//tag/ULKIh4Wcv">H5</a>
-          
-            <a class="tag" href="https://xiaoai7904.github.io//tag/-f85WCzna">Gridea</a>
-          
+let sym2 = Symbol(&quot;key&quot;); // 可选的字符串key
+</code></pre>
+<p>需要注意的是<code>symbol</code>是唯一的<br>
+像字符串一样，symbols也可以被用做对象属性的键,也可以计算出的属性名声明相结合来声明对象的属性和类成员</p>
+<pre><code class="language-typescript">let sym = Symbol();
+
+let obj = {
+    [sym]: &quot;value&quot;
+};
+
+console.log(obj[sym]); // &quot;value&quot;
+
+
+const getClassNameSymbol = Symbol();
+
+class C {
+    [getClassNameSymbol](){
+       return &quot;C&quot;;
+    }
+}
+
+let c = new C();
+let className = c[getClassNameSymbol](); // &quot;C&quot;
+</code></pre>
+<p>更多<code>Symbols</code>用法建议查看<a href="http://es6.ruanyifeng.com/#docs/symbol">阮一峰ES6</a>里面写的很详细</p>
+<p>上面我们介绍了<code>TypeScript</code>的Symbols，第十一节我们将介绍迭代器和生成器</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/variable-declarations.html">TypeScript中文网</a></p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
         </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-jiu-gao-ji-lei-xing">
+              <h3 class="post-title">
+                TypeScript入门教程(九) - 高级类型
+              </h3>
+            </a>
+          </div>
+        
+
+        
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 

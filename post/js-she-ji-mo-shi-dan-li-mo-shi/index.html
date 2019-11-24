@@ -1,0 +1,368 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>js设计模式-单例模式 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              js设计模式-单例模式
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>单例模式是一种常见的模式，有一些对象我们往往只需要一个，比如线程池、全局缓存、浏览器中的window对象等。在js开发中，单例模式的用途同样非常广泛......</p>
+<!--more-->
+<h3 id="单例模式的定义">单例模式的定义</h3>
+<ul>
+<li>定义：<code>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</code></li>
+</ul>
+<h3 id="实现单例模式">实现单例模式</h3>
+<ul>
+<li>原理：<code>用一个变量来保存当前是否已经为某个类创建对象，如果创建了就直接返回该对象，反之就重新实例化</code></li>
+</ul>
+<pre><code class="language-javascript">    var Fn = function(name){
+        this.name = name;
+    }
+    Fn.prototype.getName = function(){
+        console.log(this.name);
+    }
+    Fn.getInstance = (function(){
+        var instance = null;
+        return function(name){
+            if(!instance){
+                instance = new Fn(name);
+            }
+            return instance;
+        }
+    })();
+    var a = Fn.getInstance('xxx');
+    var b = Fn.getInstance('ooo');
+    
+    console.log(a === b);//true
+</code></pre>
+<h3 id="透明的单例模式">透明的单例模式</h3>
+<p>我们创建一个CreateDiv单例类来负责在页面中创建唯一的div节点，实现一个**‘透明’**的单例类，用户从这个类中创建对象的时候，可以像使用任何普通类一样。</p>
+<pre><code class="language-javascript">    var CreateDiv = (function(){
+        var instance;
+        var CreateDiv = function(html){
+            if(instance){
+                return instance;
+            }
+            this.html= html;
+            this.init();
+            return instance = this;
+        };
+        CreateDiv.prototype.init = function(){
+            var div = $('&lt;div&gt;&lt;/div&gt;');
+            div.html(this.html);
+            $(body).append(div);
+        }
+        return CreateDiv;
+    })()
+        
+    var a = new CreateDiv('one');
+    var b = new CreateDiv('two');
+    
+    console.log(a === b); //true
+</code></pre>
+<pre><code>上面的代码实现了**透明**单例，但是也有它的缺点，上面我们使用了自执行函数和闭包，并且让这个匿名函数返回真正的构造函数，这样增加了一些程序的复杂度。
+如果某天我们需要利用这个类，在页面上创建很多个div，既要让这个单例类变成一个普通的可以产生多个实例，那我们就需要修改CreateDiv构造函数，把控制创建唯一对象的那段代码删除掉，这样就会刚给我带来一些不必要的麻烦，所有我们利用另外一种方式去实现，这种方式叫着**代理模式**,后面的笔记中我会详细介绍**代理模式**的具体实习方式
+</code></pre>
+<h3 id="利用代理模式实现单例模式">利用代理模式实现单例模式</h3>
+<p>我们把上面的透明单例代码中间创建div部分代码移除出去，使他成为一个普通的创建DIV类</p>
+<pre><code class="language-javascript">    //创建div类
+    var CreateDiv = function(html){
+        this.html = html;
+        this.init();
+    }
+    
+    CreateDiv.prototype = function(){
+        var div = $('&lt;div&gt;&lt;/div&gt;');
+        div.html(this.html);
+        $('body').append(div);
+    }
+    
+    //代理类
+    var ProxySingleton = (function(){
+        var instance;
+        return function(){
+            if(!instance){
+                instance = new CreateDiv(html);
+            }
+            return instance;
+        }
+    })()
+    
+    //测试
+    var a = new ProxySingleton('one');
+    var b = new ProxySingleton('two');
+    
+    console.log(a === b );//true
+</code></pre>
+<pre><code>通过引入代理类的方式，我们也实现了单例模式，我们把负责管理单例的逻辑移到代理类**ProxySingleton**中，**CreateDiv**就变成一个普通类，它更**ProxySingleton**组合起来就可以实现单例模式的效果，这样的代码会更叫好维护。
+</code></pre>
+<h3 id="javascript中的单例模式">JavaScript中的单例模式</h3>
+<ul>
+<li>上面提到的创建单例模式，更多的是接近面向对象语言中的实现，单例对象从**‘类’**创建而来，在类为中心得语言中，这是很自然的做法。</li>
+<li>在JavaScript中，其实是一门无类语言，没有类这个概念，在JS中创建单例模式方法很简单，我们只需要创建一个唯一的类。</li>
+<li>全局变量不是单例模式，但是在js开发中，我们经常把全局变量当成单例模式来使用</li>
+</ul>
+<h5 id="我们在js开发中有必要减少全局变量的使用如果使用了也要把它的污染降到最低以下两种方式就是降低全局变量带来的命名污染">我们在js开发中有必要减少全局变量的使用，如果使用了也要把它的污染降到最低，以下两种方式就是降低全局变量带来的命名污染</h5>
+<ol>
+<li>
+<p>使用命名空间</p>
+<h6 id="使用对象字面量的方式来创建">使用对象字面量的方式来创建：</h6>
+<pre><code class="language-javascript">    var name = {
+        a:function(){
+            console.log('1');
+        },
+        b:function(){
+            console.log('2');
+        }
+    };
+</code></pre>
+<h6 id="使用动态创建命名空间">使用动态创建命名空间</h6>
+<pre><code class="language-javascript">    var My = {};
+    My.name = function(name){
+        var parts = name.split('.');
+        var current = My;
+        for(var i in parts){
+            if(!current[parts[i]]){
+                current[parts[i]] = {};
+            }
+            current = current[parts[i]];
+        }
+    }
+    My.name = ('init');
+    My.name = ('dom.style');
+    //上面创建结果等价于：
+    var My = {
+        init:{},
+        dom:{
+            style:{}
+        }
+    };
+</code></pre>
+</li>
+<li>
+<p>使用闭包封装私有变量</p>
+</li>
+</ol>
+<pre><code class="language-javascript">var user = (function(){
+    var __name = 'anjie',
+        __age = 25,
+        
+    return {
+        getUserInfo:function(){
+            return __name + '-' + __age;
+        }
+    }    
+})();
+</code></pre>
+<p><strong>我们使用下划线来约定私有变量__name和__age,他们被封装在闭包产生的作用域中，外部是访问不到这两个变量的，这样就避免了对全局的命令污染。</strong></p>
+<h3 id="通用单例模式">通用单例模式</h3>
+<pre><code class="language-javascript">var getSingle = function(fn){
+    var result;
+    return function(){
+        return result || (result = fn.apply(this,arguments));
+    }
+}
+
+//实例
+var createDiv = function(){
+    var div = $('&lt;div&gt;&lt;/div&gt;');
+    div.html('这个是测试div');
+    div.css('display','none');
+    $('body').append(div);
+    return div;
+}
+
+var createSingleLoginLayer = getSingle(createDiv);
+
+$('loginBtn').on('click',function(){
+    var loginLayer = createSingleLoginLayer();
+    loginLayer.css('display','block');
+})
+</code></pre>
+<p><strong>上面代码是一个通用的单例模式，我们在日常开发中可以直接利用这段代码来实现单例模式。</strong></p>
+<hr>
+<p><strong>以上代码借鉴于《JavaScript设计模式与开发实践》 -- 曾探,这本书对设计模式进行的详细的介绍，推荐大家学习</strong></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89">单例模式的定义</a></li>
+<li><a href="#%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">实现单例模式</a></li>
+<li><a href="#%E9%80%8F%E6%98%8E%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">透明的单例模式</a></li>
+<li><a href="#%E5%88%A9%E7%94%A8%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">利用代理模式实现单例模式</a></li>
+<li><a href="#javascript%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">JavaScript中的单例模式</a><br>
+*
+<ul>
+<li><a href="#%E6%88%91%E4%BB%AC%E5%9C%A8js%E5%BC%80%E5%8F%91%E4%B8%AD%E6%9C%89%E5%BF%85%E8%A6%81%E5%87%8F%E5%B0%91%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A6%82%E6%9E%9C%E4%BD%BF%E7%94%A8%E4%BA%86%E4%B9%9F%E8%A6%81%E6%8A%8A%E5%AE%83%E7%9A%84%E6%B1%A1%E6%9F%93%E9%99%8D%E5%88%B0%E6%9C%80%E4%BD%8E%E4%BB%A5%E4%B8%8B%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%B0%B1%E6%98%AF%E9%99%8D%E4%BD%8E%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%91%BD%E5%90%8D%E6%B1%A1%E6%9F%93">我们在js开发中有必要减少全局变量的使用，如果使用了也要把它的污染降到最低，以下两种方式就是降低全局变量带来的命名污染</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%88%9B%E5%BB%BA">使用对象字面量的方式来创建：</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">使用动态创建命名空间</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%80%9A%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">通用单例模式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/yi-dong-duan-kai-zhong-yu-dao-de-wen-ti-zheng-li">
+              <h3 class="post-title">
+                移动端开中遇到的问题整理
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

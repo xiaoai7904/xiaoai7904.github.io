@@ -1,45 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
-    <title>Gridea</title>
-    <updated>2019-11-24T04:06:14.187Z</updated>
+    <title>xiaoai</title>
+    <updated>2019-11-24T04:54:13.248Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io//atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>记录美好生活</subtitle>
     <logo>https://xiaoai7904.github.io//images/avatar.png</logo>
     <icon>https://xiaoai7904.github.io//favicon.ico</icon>
-    <rights>All rights reserved 2019, Gridea</rights>
+    <rights>All rights reserved 2019, xiaoai</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://xiaoai7904.github.io//post/hello-gridea</id>
-        <link href="https://xiaoai7904.github.io//post/hello-gridea">
+        <title type="html"><![CDATA[Service Worker]]></title>
+        <id>https://xiaoai7904.github.io//post/service-worker</id>
+        <link href="https://xiaoai7904.github.io//post/service-worker">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <updated>2019-11-24T02:29:07.000Z</updated>
+        <summary type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <content type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JavaScript Promis]]></title>
+        <id>https://xiaoai7904.github.io//post/javascript-promis</id>
+        <link href="https://xiaoai7904.github.io//post/javascript-promis">
+        </link>
+        <updated>2019-11-24T02:28:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>JavaScript 是单线程工作，这意味着两段脚本不能同时运行，而是必须一个接一个地运行。 在浏览器中，JavaScript 与因浏览器而异的其他 N 种任务共享一个线程。 但是通常情况下 JavaScript 与绘制、更新样式和处理用户操作（例如，高亮显示文本以及与格式控件交互）处于同一队列。 操作其中一项任务会延迟其他任务。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>JavaScript 是单线程工作，这意味着两段脚本不能同时运行，而是必须一个接一个地运行。 在浏览器中，JavaScript 与因浏览器而异的其他 N 种任务共享一个线程。 但是通常情况下 JavaScript 与绘制、更新样式和处理用户操作（例如，高亮显示文本以及与格式控件交互）处于同一队列。 操作其中一项任务会延迟其他任务。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Async Function]]></title>
+        <id>https://xiaoai7904.github.io//post/async-function</id>
+        <link href="https://xiaoai7904.github.io//post/async-function">
+        </link>
+        <updated>2019-11-24T02:28:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
+<p>异步函数的工作方式是这样的：</p>
+<pre><code class="language-javascript">async function myFirstAsyncFunction() {
+  try {
+    const fulfilledValue = await promise;
+  }
+  catch (rejectedValue) {
+    // …
+  }
+}
+</code></pre>
+<p>如果在函数定义之前使用了 async 关键字，就可以在函数内使用 await。 当您 await 某个 Promise 时，函数暂停执行，直至该 Promise 产生结果，并且暂停并不会阻塞主线程。 如果 Promise 执行，则会返回值。 如果 Promise 拒绝，则会抛出拒绝的值。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
+<p>异步函数的工作方式是这样的：</p>
+<pre><code class="language-javascript">async function myFirstAsyncFunction() {
+  try {
+    const fulfilledValue = await promise;
+  }
+  catch (rejectedValue) {
+    // …
+  }
+}
+</code></pre>
+<p>如果在函数定义之前使用了 async 关键字，就可以在函数内使用 await。 当您 await 某个 Promise 时，函数暂停执行，直至该 Promise 产生结果，并且暂停并不会阻塞主线程。 如果 Promise 执行，则会返回值。 如果 Promise 拒绝，则会抛出拒绝的值。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FromData Blob ArrayBuffe]]></title>
+        <id>https://xiaoai7904.github.io//post/fromdata-blob-arraybuffe</id>
+        <link href="https://xiaoai7904.github.io//post/fromdata-blob-arraybuffe">
+        </link>
+        <updated>2019-11-24T02:28:07.000Z</updated>
+        <summary type="html"><![CDATA[<p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS BEM书写规]]></title>
+        <id>https://xiaoai7904.github.io//post/css-bem-shu-xie-gui</id>
+        <link href="https://xiaoai7904.github.io//post/css-bem-shu-xie-gui">
+        </link>
+        <updated>2019-11-24T02:27:51.000Z</updated>
+        <summary type="html"><![CDATA[<p><code>BEM</code>的意思就是块（<code>block</code>）、元素（<code>element</code>）、修饰符（<code>modifier</code>）,是由<a href="https://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。这种巧妙的命名方法让你的CSS类对其他开发者来说更加透明而且更有意义。BEM命名约定更加严格，而且包含更多的信息，它们用于一个团队开发一个耗时的大项目</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><code>BEM</code>的意思就是块（<code>block</code>）、元素（<code>element</code>）、修饰符（<code>modifier</code>）,是由<a href="https://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。这种巧妙的命名方法让你的CSS类对其他开发者来说更加透明而且更有意义。BEM命名约定更加严格，而且包含更多的信息，它们用于一个团队开发一个耗时的大项目</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[前端大杂烩]]></title>
+        <id>https://xiaoai7904.github.io//post/qian-duan-da-za-hui</id>
+        <link href="https://xiaoai7904.github.io//post/qian-duan-da-za-hui">
+        </link>
+        <updated>2019-11-24T02:27:01.000Z</updated>
+        <summary type="html"><![CDATA[<p>整理目前github上面比较优秀和热门的项目,文章，方便查看和学习</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>整理目前github上面比较优秀和热门的项目,文章，方便查看和学习</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vue源码解析,自己动手实现miniVue]]></title>
+        <id>https://xiaoai7904.github.io//post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue</id>
+        <link href="https://xiaoai7904.github.io//post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue">
+        </link>
+        <updated>2019-11-24T02:18:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[TypeScript入门教程(十四) - 装饰器]]></title>
+        <id>https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi</id>
+        <link href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi">
+        </link>
+        <updated>2019-11-24T02:18:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>随着<code>TypeScript</code>和<code>ES6</code>里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（<code>Decorators</code>）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 <code>Javascript</code>里的装饰器目前处在<code>建议征集的第二阶段</code>，但在<code>TypeScript</code>里已做为一项实验性特性予以支持</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>随着<code>TypeScript</code>和<code>ES6</code>里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（<code>Decorators</code>）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 <code>Javascript</code>里的装饰器目前处在<code>建议征集的第二阶段</code>，但在<code>TypeScript</code>里已做为一项实验性特性予以支持</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[TypeScript入门教程(十三) - 命名空间]]></title>
+        <id>https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-san-ming-ming-kong-jian</id>
+        <link href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-san-ming-ming-kong-jian">
+        </link>
+        <updated>2019-11-24T02:17:56.000Z</updated>
+        <summary type="html"><![CDATA[<p>描述了如何在TypeScript里使用命名空间（之前叫做“内部模块”）来组织你的代码。任何使用<code>module</code>关键字来声明一个内部模块的地方都应该使用<code>namespace</code>关键字来替换</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>描述了如何在TypeScript里使用命名空间（之前叫做“内部模块”）来组织你的代码。任何使用<code>module</code>关键字来声明一个内部模块的地方都应该使用<code>namespace</code>关键字来替换</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[TypeScript入门教程(十二) - 模块]]></title>
+        <id>https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-er-mo-kuai</id>
+        <link href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-er-mo-kuai">
+        </link>
+        <updated>2019-11-24T02:17:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>模块是在自身的作用域执行,也就是说在一个模块里面声明的变量,类,函数都是在模块中可见,模块外面是不可见的，除非使用<code>export</code>导出,其他模块使用<code>import</code>引入就可以使用其他模块导出的变量,类,函数等</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>模块是在自身的作用域执行,也就是说在一个模块里面声明的变量,类,函数都是在模块中可见,模块外面是不可见的，除非使用<code>export</code>导出,其他模块使用<code>import</code>引入就可以使用其他模块导出的变量,类,函数等</p>
 ]]></content>
     </entry>
 </feed>

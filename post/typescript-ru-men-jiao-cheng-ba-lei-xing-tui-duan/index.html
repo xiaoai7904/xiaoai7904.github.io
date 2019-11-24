@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello Gridea | xiaoai</title>
+<title>TypeScript入门教程(八) - 类型推断 | xiaoai</title>
 <meta name="description" content="记录美好生活" />
 <link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,54 +73,72 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello Gridea
+              TypeScript入门教程(八) - 类型推断
             </h2>
             <div class="post-info">
               <span>
-                2018-12-11
+                2019-11-24
               </span>
               <span>
                 2 min read
               </span>
               
-                <a href="https://xiaoai7904.github.io//tag/-f85WCzna" class="post-tag">
-                  # Gridea
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://xiaoai7904.github.io//post-images/hello-gridea.png" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                <p><code>typescript</code>类型是在那里如何被推断的？</p>
+<!--more-->
+<h3 id="介绍">介绍</h3>
+<p>我们声明变量时不指定变量类型，<code>TypeScript</code>会进行类型推断来帮助我们提供类型</p>
+<pre><code class="language-typescript">let a = 1 
+let b = 'string'
+</code></pre>
+<p>上面代码中变量<code>a</code>,<code>b</code>分别会被类型推断推断为<code>number</code>和<code>string</code></p>
+<p>但是有的情况类型推断无法自动推断出类型,下面小节会介绍</p>
+<h3 id="最佳通用类型">最佳通用类型</h3>
+<p>当需要从几个表达式中推断类型的时候，会使用这些表达式的类型来推断一个最适合的通用类型</p>
+<pre><code class="language-typescript">let a = [0, 1, null]
+</code></pre>
+<p>为了推断变量<code>a</code>的类型，我们必须考虑所有元素的类型。 这里有两种选择： <code>number</code>和<code>null</code>。 计算通用类型算法会考虑所有的候选类型，并给出一个兼容所有候选类型的类型</p>
+<p>有时候候选类型共享相同的通用类型,但是却没有一个类型能做为所有候选类型的类型</p>
+<pre><code class="language-typescript">let style = [new Width(), new Height(), new Color()]
+</code></pre>
+<p>上面代码我们想<code>style</code>被推断为<code>Style[]</code>类型,但是数组没有对象时<code>Style</code>类型,因此不能推断出结果，修改一下代码如下:</p>
+<pre><code class="language-typescript">let style: Style[] = [new Width(), new Height(), new Color()]
+</code></pre>
+<p><strong>如果没有找到最佳通用类型的话，类型推断的结果为联合数组类型<code>(Width | Height| color)[]</code></strong></p>
+<h3 id="上下文类型">上下文类型</h3>
+<pre><code class="language-typescript">window.onmousedown = function(mouseEvent) {
+    console.log(mouseEvent.button);  //&lt;- Error
+}
+</code></pre>
+<p><code>TypeScript</code>类型检查器使用<code>Window.onmousedown</code>函数的类型来推断右边函数表达式的类型,如果函数表达式不是在上下文类型的位置， mouseEvent参数的类型需要指定为any，这样也不会报错了</p>
+<pre><code class="language-typescript">window.onmousedown = function(mouseEvent: any) {
+    console.log(mouseEvent.button);  //ok
+}
+</code></pre>
+<p>上面我们介绍了<code>TypeScript</code>的类型推断，第九节我们将介绍高级类型</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/variable-declarations.html">TypeScript中文网</a></p>
+</blockquote>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E6%9C%80%E4%BD%B3%E9%80%9A%E7%94%A8%E7%B1%BB%E5%9E%8B">最佳通用类型</a></li>
+<li><a href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%B1%BB%E5%9E%8B">上下文类型</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -133,9 +151,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoai7904.github.io//post/javascript-han-shu">
+            <a href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-qi-mei">
               <h3 class="post-title">
-                JavaScript函数
+                TypeScript入门教程(七) - 枚
               </h3>
             </a>
           </div>

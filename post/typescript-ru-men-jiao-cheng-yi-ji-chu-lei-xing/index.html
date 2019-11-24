@@ -1,0 +1,295 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TypeScript入门教程(一) - 基础类型 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              TypeScript入门教程(一) - 基础类型
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-11-24
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<p><code>Typescript</code>中的基础类型和<code>JavaScript</code>中定义的五种基本类型(<code>Number</code>,<code>String</code>,<code>Boolean</code>,<code>Undefined</code>,<code>Null</code>)几乎相同,还新增了枚举类型,接下来我们详细介绍<code>TypeScript</code>中的基础类型</p>
+<!--more-->
+<h3 id="布尔值boolean">布尔值(Boolean)</h3>
+<ul>
+<li>布尔值类型就是简单的<code>true</code> or <code>false</code></li>
+</ul>
+<pre><code class="language-typescript">let isShow: boolean = true 
+// :后面是指定变量isShow的类型，如果修改了isShow的变量类型为非boolean值就会报错
+</code></pre>
+<h3 id="数字number">数字(Number)</h3>
+<ul>
+<li><code>Typescript</code>中的数字类型和<code>Javascript</code>中的数字类型一样都是浮点数</li>
+</ul>
+<pre><code class="language-typescript">let age: number = 26
+let money: number = 6000.04
+let hex: number = 0xf00d
+let binary: number = 0b1010
+let octal: number = 0o744
+</code></pre>
+<h3 id="字符串string">字符串(String)</h3>
+<ul>
+<li><code>Typescript</code>中的字符串和<code>JavaScript</code>字符串写法一样都是通过双引号(<code>&quot;&quot;</code>)或者单引号(<code>''</code>)表示字符串</li>
+</ul>
+<pre><code class="language-typescript">let str1: string = 'hi'
+let str2: string = &quot;hi&quot;
+</code></pre>
+<h3 id="null和undefined">Null和Undefined</h3>
+<ul>
+<li><code>Typescript</code>中<code>null</code>和<code>undefined</code>两个各自有自己的类型分别是<code>null</code>和<code>undefined</code></li>
+</ul>
+<pre><code class="language-typescript">let u: undefined = undefined
+let n: null = null
+// undefined和null是所有类型的子集，就是你可以把所有类型赋值成undefined和null
+</code></pre>
+<h3 id="数组array">数组(Array)</h3>
+<ul>
+<li><code>Typescript</code>里面的数组和JavaScript中一样都可以操作数组元素,在<code>Typescript</code>中有两种定义数组的方式</li>
+</ul>
+<pre><code class="language-typescript">// 方法一:
+let list1: string[] = ['name1', 'name2', 'name3']
+let list2: number[] = [1,2,3]
+// 方法二:
+let list3: Array&lt;string&gt; = ['name1', 'name2', 'name3']
+let list4: Array&lt;number&gt; = [1,2,3]
+</code></pre>
+<h3 id="元组tuple">元组(Tuple)</h3>
+<ul>
+<li>元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。 比如，你可以定义一对值分别为 string和number类型的元组</li>
+</ul>
+<pre><code class="language-typescript">let t: [string, number]
+t = ['mickey', 26] // ok
+t = [26, 'mickey'] // error
+</code></pre>
+<h3 id="枚举enum">枚举(Enum)</h3>
+<ul>
+<li><code>enum</code>类型是在<code>JavaScript</code>类型中新增的类型, 像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字</li>
+</ul>
+<pre><code class="language-typescript">enum Style {width, height, color}
+let warp: Style = Style.width
+</code></pre>
+<p>默认情况下，枚举里面的值是从<code>0</code>开始为元素编号，也可以手动的指定成员的数值</p>
+<pre><code class="language-typescript">enum Style {width = 1, height = 2, color = 4}
+let wrap: Style = Style.width
+// 也可以通过枚举的值得到它的名字
+let wrap: Style = Style[2] // height
+</code></pre>
+<h3 id="any">Any</h3>
+<ul>
+<li>我们不希望类型检查器对这些值进行检查而是直接让它们通过编译阶段的检查就可以使用<code>any</code>类型来标记这些变量</li>
+</ul>
+<pre><code class="language-typescript">let a: any = 'mickey'
+a = 26
+a = function(){}
+
+let list1: Array&lt;any&gt; = [1,'name1', true]
+</code></pre>
+<p><em><strong>通过any定义的变量在后面可以随意赋值成其他类型的变量,这个就和js使用一样，js是弱类型语言定义变量可以不指定类型而且可以随意修改变量类型</strong></em></p>
+<h3 id="void">Void</h3>
+<ul>
+<li>某种程度上来说，void类型像是与any类型相反，它表示没有任何类型。 当一个函数没有返回值时，你通常会见到其返回值类型是 void</li>
+</ul>
+<pre><code class="language-typescript">function fn(): void { console.log('test...') }
+
+// 声明变量为void 你只能为它赋值为 undefined和null
+let a: void = undefined
+let b: void = null
+</code></pre>
+<h3 id="never">Never</h3>
+<ul>
+<li>never类型表示的是那些永不存在的值的类型。 例如， never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型； 变量也可能是 never类型，当它们被永不为真的类型保护所约束时</li>
+<li>never类型是任何类型的子类型，也可以赋值给任何类型；然而，没有类型是never的子类型或可以赋值给never类型（除了never本身之外）。 即使 any也不可以赋值给never</li>
+</ul>
+<pre><code class="language-typescript">// 返回never的函数必须存在无法达到的终点
+function fn1(): never {
+    throw new Error('error')
+}
+// 推断的返回值类型为never
+function fn2(): never {
+    return error('error')
+}
+// 返回never的函数必须存在无法达到的终点
+function fn3(): never {
+    while(true) {}
+}
+</code></pre>
+<p>上面我们介绍了<code>TypeScript</code>的基础类型，第二节我们将介绍变量声明</p>
+<blockquote>
+<p>文章参考<a href="https://www.tslang.cn/docs/handbook/basic-types.html">TypeScript中文网</a></p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%B8%83%E5%B0%94%E5%80%BCboolean">布尔值(Boolean)</a></li>
+<li><a href="#%E6%95%B0%E5%AD%97number">数字(Number)</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2string">字符串(String)</a></li>
+<li><a href="#null%E5%92%8Cundefined">Null和Undefined</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84array">数组(Array)</a></li>
+<li><a href="#%E5%85%83%E7%BB%84tuple">元组(Tuple)</a></li>
+<li><a href="#%E6%9E%9A%E4%B8%BEenum">枚举(Enum)</a></li>
+<li><a href="#any">Any</a></li>
+<li><a href="#void">Void</a></li>
+<li><a href="#never">Never</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan">
+              <h3 class="post-title">
+                js原型继承五条基本原
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
