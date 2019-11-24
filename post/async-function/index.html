@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Async Function | xiaoai</title>
 <meta name="description" content="记录美好生活" />
-<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574571249979">
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1574595335540">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://xiaoai7904.github.io/">
-  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574571249979" alt="">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1574595335540" alt="">
   </a>
   <h1 class="site-title">
     xiaoai
@@ -94,6 +94,7 @@
             <div class="post-content-wrapper">
               <div class="post-content">
                 <p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
+<!--more-->
 <p>异步函数的工作方式是这样的：</p>
 <pre><code class="language-javascript">async function myFirstAsyncFunction() {
   try {
@@ -105,7 +106,6 @@
 }
 </code></pre>
 <p>如果在函数定义之前使用了 async 关键字，就可以在函数内使用 await。 当您 await 某个 Promise 时，函数暂停执行，直至该 Promise 产生结果，并且暂停并不会阻塞主线程。 如果 Promise 执行，则会返回值。 如果 Promise 拒绝，则会抛出拒绝的值。</p>
-<!--more-->
 <h4 id="示例">示例</h4>
 <p>假设我们想获取某个网址并以文本形式记录响应日志。以下是利用 Promise 编写的代码：</p>
 <pre><code class="language-javascript">function logFetch(url) {
@@ -217,9 +217,9 @@ storage.getAvatar('jaffathecake').then(…);
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoai7904.github.io//post/fromdata-blob-arraybuffe">
+            <a href="https://xiaoai7904.github.io//post/yi-dong-duan-kai-zhong-yu-dao-de-wen-ti-zheng-li">
               <h3 class="post-title">
-                FromData Blob ArrayBuffe
+                移动端开中遇到的问题整理
               </h3>
             </a>
           </div>
