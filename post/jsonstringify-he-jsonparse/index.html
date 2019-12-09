@@ -1,0 +1,319 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JSON.stringify和JSON.parse | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1575862739093">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1575862739093" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              JSON.stringify和JSON.parse
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-12-09
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://www.jiangweishan.com/zb_users/upload/2019/05/201905071557215190103671.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>在日常开发中，我们会使用到<code>JSON.stringify</code>和<code>JSON.parse</code>对json数据进行转换,也可以通过这两个方法进行数据深度拷贝</p>
+<!--more-->
+<h2 id="jsonstringify">JSON.stringify</h2>
+<p>JSON.stringify() 方法将一个 JavaScript 值（对象或者数组）转换为一个 JSON 字符串</p>
+<h4 id="语法">语法</h4>
+<p><code>JSON.stringify(value[, replacer [, space]])</code></p>
+<h4 id="参数介绍">参数介绍</h4>
+<h5 id="value">value</h5>
+<p>将要序列化成 一个 JSON 字符串的值</p>
+<h5 id="replacer可选">replacer(可选)</h5>
+<p>如果该参数是一个函数，则在序列化过程中，被序列化的值的每个属性都会经过该函数的转换和处理；如果该参数是一个数组，则只有包含在这个数组中的属性名才会被序列化到最终的 JSON 字符串中；如果该参数为 null 或者未提供，则对象所有的属性都会被序列化</p>
+<h5 id="space可选">space(可选)</h5>
+<p>指定缩进用的空白字符串，用于美化输出，如果参数是个数字，它代表有多少的空格；上限为10。该值若小于1，则意味着没有空格；如果该参数为字符串（当字符串长度超过10个字母，取其前10个字母），该字符串将被作为空格；如果该参数没有提供（或者为 null），将没有空格</p>
+<h4 id="转换注意事项">转换注意事项</h4>
+<ul>
+<li>转换值如果有 toJSON() 方法，该方法定义什么值将被序列化。</li>
+<li>非数组对象的属性不能保证以特定的顺序出现在序列化后的字符串中。</li>
+<li>布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值。</li>
+<li><code>undefined</code>、任意的函数以及 <code>symbol</code> 值，在序列化过程中会被忽略（出现在非数组对象的属性值中时）或者被转换成<code>null</code>（出现在数组中时）。函数、<code>undefined</code> 被单独转换时，会返回 <code>undefined</code>，如<code>JSON.stringify(function(){}) or JSON.stringify(undefined)</code></li>
+<li>对包含循环引用的对象（对象之间相互引用，形成无限循环）执行此方法，会抛出错误</li>
+<li>所有以 symbol 为属性键的属性都会被完全忽略掉，即便 replacer 参数中强制指定包含了它们。</li>
+<li><code>Date</code>日期调用了 <code>toJSON()</code> 将其转换为了 <code>string</code> 字符串（同<code>Date.toISOString()</code>），因此会被当做字符串处理。</li>
+<li><code>NaN</code> 和 <code>Infinity</code> 格式的数值及 <code>ull</code> 都会被当做 <code>null</code></li>
+<li>其他类型的对象，包括 <code>Map/Set/WeakMap/WeakSet</code>，仅会序列化可枚举的属性</li>
+</ul>
+<h4 id="tojson-方法">toJSON 方法</h4>
+<p>如果一个被序列化的对象拥有 toJSON 方法，那么该 toJSON 方法就会覆盖该对象默认的序列化行为：不是该对象被序列化，而是调用 toJSON 方法后的返回值会被序列化，示例如下:</p>
+<pre><code class="language-javascript">let obj = {
+  a: 'a',
+  toJSON: function () {
+    return 'a';
+  }
+};
+JSON.stringify(obj);      // '&quot;a&quot;'
+JSON.stringify({x: obj}); // '{&quot;x&quot;:&quot;a&quot;}'
+</code></pre>
+<h4 id="示例代码">示例代码:</h4>
+<pre><code class="language-javascript">let obj = {
+    a: '1',
+    b: 1,
+    c: function() { return 1 }
+}
+// 通过JSON.stringify方法进行字符串序列化
+
+let str = JSON.stringify(obj)
+// 函数会被忽略,详情见上面 转换注意事项
+console.log(str) // &quot;{&quot;a&quot;:&quot;1&quot;,&quot;b&quot;:1}&quot;
+
+// 可以通过JSON.stringify第一个参数进行特殊处理
+let str = JSON.stringify(obj, function(key, value) {
+    if(typeof value === 'function') {
+        return value.toString()
+    }
+    return value
+})
+console.log(str) // &quot;{&quot;a&quot;:&quot;1&quot;,&quot;b&quot;:1,&quot;c&quot;:&quot;function() { return 1 }&quot;}&quot;
+</code></pre>
+<h2 id="jsonparse">JSON.parse</h2>
+<h4 id="语法-2">语法</h4>
+<p><code>JSON.parse(text[, reviver])</code></p>
+<h4 id="参数介绍-2">参数介绍</h4>
+<h5 id="text">text</h5>
+<p>要被解析成 JavaScript 值的字符串</p>
+<h5 id="reviver可选">reviver(可选)</h5>
+<p>转换器, 如果传入该参数(函数)，可以用来修改解析生成的原始值，调用时机在 parse 函数返回之前</p>
+<h4 id="注意事项">注意事项</h4>
+<p><code>JSON.parse()</code>不允许用逗号作为结尾</p>
+<h4 id="示例代码-2">示例代码</h4>
+<pre><code class="language-javascript">let str = &quot;{&quot;a&quot;:&quot;1&quot;,&quot;b&quot;:1,&quot;c&quot;:&quot;function() { return 1 }&quot;}&quot;
+let obj = JSON.parse(str)
+console.log(obj); // {a: '1', b: 1, c: 'function() {return 1}'}
+// 如果想函数转换成可执行函数
+let obj = JSON.parse(str, function(key, value) {
+    // 也可以判断value中是否有function字段
+    if(key === 'c') {
+        return eval(&quot;(function(){return &quot; + value + &quot; })()&quot;)
+    }
+    return value
+})
+console.log(obj); // {a: '1', b: 1, c: function() {return 1}}
+
+</code></pre>
+<h4 id="深度拷贝对象">深度拷贝对象</h4>
+<p>可以通过<code>JSON.stringify</code>和<code>JSON.parse</code>进行数据拷贝, 数据中不应该有<code>function</code>, <code>undefined</code>因为它们会被忽略</p>
+<pre><code class="language-javascript">let obj = {a: 1, b: { b1: 11 }}
+let copyObj = JSON.parse(JSON.stringify(obj))
+
+console.log(obj === copyObj); // false
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#jsonstringify">JSON.stringify</a><br>
+*
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D">参数介绍</a>
+<ul>
+<li><a href="#value">value</a></li>
+<li><a href="#replacer%E5%8F%AF%E9%80%89">replacer(可选)</a></li>
+<li><a href="#space%E5%8F%AF%E9%80%89">space(可选)</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BD%AC%E6%8D%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">转换注意事项</a></li>
+<li><a href="#tojson-%E6%96%B9%E6%B3%95">toJSON 方法</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81">示例代码:</a></li>
+</ul>
+</li>
+<li><a href="#jsonparse">JSON.parse</a><br>
+*
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-2">语法</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D-2">参数介绍</a>
+<ul>
+<li><a href="#text">text</a></li>
+<li><a href="#reviver%E5%8F%AF%E9%80%89">reviver(可选)</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81-2">示例代码</a></li>
+<li><a href="#%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D%E5%AF%B9%E8%B1%A1">深度拷贝对象</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io//post/javascript-promis">
+              <h3 class="post-title">
+                JavaScript Promis
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '542a046d9cd2c40810d6',
+    clientSecret: '3f40254747f30cec544eed0010a8671076c68908',
+    repo: 'xiaoai7904.github.io',
+    owner: 'xiaoai7904',
+    admin: ['xiaoai7904'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

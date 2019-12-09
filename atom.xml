@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2019-11-28T02:43:58.166Z</updated>
+    <updated>2019-12-09T03:39:03.678Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io//atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://xiaoai7904.github.io//images/avatar.png</logo>
     <icon>https://xiaoai7904.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, xiaoai</rights>
+    <entry>
+        <title type="html"><![CDATA[JSON.stringify和JSON.parse]]></title>
+        <id>https://xiaoai7904.github.io//post/jsonstringify-he-jsonparse</id>
+        <link href="https://xiaoai7904.github.io//post/jsonstringify-he-jsonparse">
+        </link>
+        <updated>2019-12-09T01:55:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>在日常开发中，我们会使用到<code>JSON.stringify</code>和<code>JSON.parse</code>对json数据进行转换,也可以通过这两个方法进行数据深度拷贝</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在日常开发中，我们会使用到<code>JSON.stringify</code>和<code>JSON.parse</code>对json数据进行转换,也可以通过这两个方法进行数据深度拷贝</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript Promis]]></title>
         <id>https://xiaoai7904.github.io//post/javascript-promis</id>
@@ -121,17 +132,6 @@
         <summary type="html"><![CDATA[<p>在日常开发中移动端遇到的问题进行一个整理，方便后面查看</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>在日常开发中移动端遇到的问题进行一个整理，方便后面查看</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[TypeScript入门教程(十四) - 装饰器]]></title>
-        <id>https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi</id>
-        <link href="https://xiaoai7904.github.io//post/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi">
-        </link>
-        <updated>2019-11-24T01:18:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>随着<code>TypeScript</code>和<code>ES6</code>里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（<code>Decorators</code>）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 <code>Javascript</code>里的装饰器目前处在<code>建议征集的第二阶段</code>，但在<code>TypeScript</code>里已做为一项实验性特性予以支持</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>随着<code>TypeScript</code>和<code>ES6</code>里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（<code>Decorators</code>）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 <code>Javascript</code>里的装饰器目前处在<code>建议征集的第二阶段</code>，但在<code>TypeScript</code>里已做为一项实验性特性予以支持</p>
 ]]></content>
     </entry>
 </feed>
