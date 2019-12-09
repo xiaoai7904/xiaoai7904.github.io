@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2019-12-09T03:39:03.678Z</updated>
+    <updated>2019-12-09T03:41:18.630Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io//atom.xml"/>
@@ -19,6 +19,17 @@
         <summary type="html"><![CDATA[<p>在日常开发中，我们会使用到<code>JSON.stringify</code>和<code>JSON.parse</code>对json数据进行转换,也可以通过这两个方法进行数据深度拷贝</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>在日常开发中，我们会使用到<code>JSON.stringify</code>和<code>JSON.parse</code>对json数据进行转换,也可以通过这两个方法进行数据深度拷贝</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Service Worker]]></title>
+        <id>https://xiaoai7904.github.io//post/service-worker</id>
+        <link href="https://xiaoai7904.github.io//post/service-worker">
+        </link>
+        <updated>2019-11-24T23:29:07.000Z</updated>
+        <summary type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
 ]]></content>
     </entry>
     <entry>
@@ -121,17 +132,6 @@
         <summary type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[移动端开中遇到的问题整理]]></title>
-        <id>https://xiaoai7904.github.io//post/yi-dong-duan-kai-zhong-yu-dao-de-wen-ti-zheng-li</id>
-        <link href="https://xiaoai7904.github.io//post/yi-dong-duan-kai-zhong-yu-dao-de-wen-ti-zheng-li">
-        </link>
-        <updated>2019-11-24T01:27:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>在日常开发中移动端遇到的问题进行一个整理，方便后面查看</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>在日常开发中移动端遇到的问题进行一个整理，方便后面查看</p>
 ]]></content>
     </entry>
 </feed>
