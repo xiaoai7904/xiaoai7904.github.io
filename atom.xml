@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2019-12-09T03:41:18.630Z</updated>
+    <updated>2019-12-11T04:09:25.195Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io//atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://xiaoai7904.github.io//images/avatar.png</logo>
     <icon>https://xiaoai7904.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, xiaoai</rights>
+    <entry>
+        <title type="html"><![CDATA[函数节流和防抖]]></title>
+        <id>https://xiaoai7904.github.io//post/han-shu-jie-liu-he-fang-dou</id>
+        <link href="https://xiaoai7904.github.io//post/han-shu-jie-liu-he-fang-dou">
+        </link>
+        <updated>2019-12-11T03:08:03.000Z</updated>
+        <summary type="html"><![CDATA[<p>日常开发中会遇到很多事件执行频率很大比如:<br>
+resize、scroll、mousedown、mousemove...<br>
+执行频率越多，对应函数执行次数增多，通过引入<code>节流</code>和<code>防抖</code>可以有效解决这一问题</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>日常开发中会遇到很多事件执行频率很大比如:<br>
+resize、scroll、mousedown、mousemove...<br>
+执行频率越多，对应函数执行次数增多，通过引入<code>节流</code>和<code>防抖</code>可以有效解决这一问题</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JSON.stringify和JSON.parse]]></title>
         <id>https://xiaoai7904.github.io//post/jsonstringify-he-jsonparse</id>
@@ -121,17 +136,6 @@
         <summary type="html"><![CDATA[<p>单例模式是一种常见的模式，有一些对象我们往往只需要一个，比如线程池、全局缓存、浏览器中的window对象等。在js开发中，单例模式的用途同样非常广泛......</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>单例模式是一种常见的模式，有一些对象我们往往只需要一个，比如线程池、全局缓存、浏览器中的window对象等。在js开发中，单例模式的用途同样非常广泛......</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Async Function]]></title>
-        <id>https://xiaoai7904.github.io//post/async-function</id>
-        <link href="https://xiaoai7904.github.io//post/async-function">
-        </link>
-        <updated>2019-11-24T01:28:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
 ]]></content>
     </entry>
 </feed>
