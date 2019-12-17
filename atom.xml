@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2019-12-11T04:09:25.195Z</updated>
+    <updated>2019-12-17T08:09:31.471Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io//atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://xiaoai7904.github.io//images/avatar.png</logo>
     <icon>https://xiaoai7904.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, xiaoai</rights>
+    <entry>
+        <title type="html"><![CDATA[浏览器缓存机制详解]]></title>
+        <id>https://xiaoai7904.github.io//post/liu-lan-qi-huan-cun-ji-zhi-xiang-jie</id>
+        <link href="https://xiaoai7904.github.io//post/liu-lan-qi-huan-cun-ji-zhi-xiang-jie">
+        </link>
+        <updated>2019-12-17T07:04:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>在前端开发中,一个比较重要环节性能优化,然而利用浏览器缓存是性能优化中简单高效的一种优化方式了,一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，并且由于缓存文件可以重复利用，还可以减少带宽，降低网络负荷</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在前端开发中,一个比较重要环节性能优化,然而利用浏览器缓存是性能优化中简单高效的一种优化方式了,一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，并且由于缓存文件可以重复利用，还可以减少带宽，降低网络负荷</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[函数节流和防抖]]></title>
         <id>https://xiaoai7904.github.io//post/han-shu-jie-liu-he-fang-dou</id>
@@ -125,17 +136,6 @@ resize、scroll、mousedown、mousemove...<br>
 <li>如果对象无法响应某个请求，它会把这个请求委托给它自己的原型</li>
 </ul>
 <p>接下来我们将详细讲解这个5个基本原则.....</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[js设计模式-单例模式]]></title>
-        <id>https://xiaoai7904.github.io//post/js-she-ji-mo-shi-dan-li-mo-shi</id>
-        <link href="https://xiaoai7904.github.io//post/js-she-ji-mo-shi-dan-li-mo-shi">
-        </link>
-        <updated>2019-11-24T02:12:11.000Z</updated>
-        <summary type="html"><![CDATA[<p>单例模式是一种常见的模式，有一些对象我们往往只需要一个，比如线程池、全局缓存、浏览器中的window对象等。在js开发中，单例模式的用途同样非常广泛......</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>单例模式是一种常见的模式，有一些对象我们往往只需要一个，比如线程池、全局缓存、浏览器中的window对象等。在js开发中，单例模式的用途同样非常广泛......</p>
 ]]></content>
     </entry>
 </feed>
