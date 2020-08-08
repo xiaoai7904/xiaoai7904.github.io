@@ -2,20 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2019-12-17T08:09:31.471Z</updated>
+    <updated>2020-08-08T08:10:25.070Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
-    <link rel="self" href="https://xiaoai7904.github.io//atom.xml"/>
+    <link rel="self" href="https://xiaoai7904.github.io/atom.xml"/>
     <subtitle>记录美好生活</subtitle>
-    <logo>https://xiaoai7904.github.io//images/avatar.png</logo>
-    <icon>https://xiaoai7904.github.io//favicon.ico</icon>
-    <rights>All rights reserved 2019, xiaoai</rights>
+    <logo>https://xiaoai7904.github.io/images/avatar.png</logo>
+    <icon>https://xiaoai7904.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, xiaoai</rights>
     <entry>
         <title type="html"><![CDATA[浏览器缓存机制详解]]></title>
-        <id>https://xiaoai7904.github.io//post/liu-lan-qi-huan-cun-ji-zhi-xiang-jie</id>
-        <link href="https://xiaoai7904.github.io//post/liu-lan-qi-huan-cun-ji-zhi-xiang-jie">
+        <id>https://xiaoai7904.github.io/post/liu-lan-qi-huan-cun-ji-zhi-xiang-jie/</id>
+        <link href="https://xiaoai7904.github.io/post/liu-lan-qi-huan-cun-ji-zhi-xiang-jie/">
         </link>
-        <updated>2019-12-17T07:04:34.000Z</updated>
+        <updated>2019-12-17T06:04:34.000Z</updated>
         <summary type="html"><![CDATA[<p>在前端开发中,一个比较重要环节性能优化,然而利用浏览器缓存是性能优化中简单高效的一种优化方式了,一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，并且由于缓存文件可以重复利用，还可以减少带宽，降低网络负荷</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>在前端开发中,一个比较重要环节性能优化,然而利用浏览器缓存是性能优化中简单高效的一种优化方式了,一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，并且由于缓存文件可以重复利用，还可以减少带宽，降低网络负荷</p>
@@ -23,8 +23,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[函数节流和防抖]]></title>
-        <id>https://xiaoai7904.github.io//post/han-shu-jie-liu-he-fang-dou</id>
-        <link href="https://xiaoai7904.github.io//post/han-shu-jie-liu-he-fang-dou">
+        <id>https://xiaoai7904.github.io/post/han-shu-jie-liu-he-fang-dou/</id>
+        <link href="https://xiaoai7904.github.io/post/han-shu-jie-liu-he-fang-dou/">
         </link>
         <updated>2019-12-11T03:08:03.000Z</updated>
         <summary type="html"><![CDATA[<p>日常开发中会遇到很多事件执行频率很大比如:<br>
@@ -38,8 +38,8 @@ resize、scroll、mousedown、mousemove...<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[JSON.stringify和JSON.parse]]></title>
-        <id>https://xiaoai7904.github.io//post/jsonstringify-he-jsonparse</id>
-        <link href="https://xiaoai7904.github.io//post/jsonstringify-he-jsonparse">
+        <id>https://xiaoai7904.github.io/post/jsonstringify-he-jsonparse/</id>
+        <link href="https://xiaoai7904.github.io/post/jsonstringify-he-jsonparse/">
         </link>
         <updated>2019-12-09T01:55:19.000Z</updated>
         <summary type="html"><![CDATA[<p>在日常开发中，我们会使用到<code>JSON.stringify</code>和<code>JSON.parse</code>对json数据进行转换,也可以通过这两个方法进行数据深度拷贝</p>
@@ -49,8 +49,8 @@ resize、scroll、mousedown、mousemove...<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[Service Worker]]></title>
-        <id>https://xiaoai7904.github.io//post/service-worker</id>
-        <link href="https://xiaoai7904.github.io//post/service-worker">
+        <id>https://xiaoai7904.github.io/post/service-worker/</id>
+        <link href="https://xiaoai7904.github.io/post/service-worker/">
         </link>
         <updated>2019-11-24T23:29:07.000Z</updated>
         <summary type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
@@ -60,8 +60,8 @@ resize、scroll、mousedown、mousemove...<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript Promis]]></title>
-        <id>https://xiaoai7904.github.io//post/javascript-promis</id>
-        <link href="https://xiaoai7904.github.io//post/javascript-promis">
+        <id>https://xiaoai7904.github.io/post/javascript-promis/</id>
+        <link href="https://xiaoai7904.github.io/post/javascript-promis/">
         </link>
         <updated>2019-11-24T02:28:49.000Z</updated>
         <summary type="html"><![CDATA[<p>JavaScript 是单线程工作，这意味着两段脚本不能同时运行，而是必须一个接一个地运行。 在浏览器中，JavaScript 与因浏览器而异的其他 N 种任务共享一个线程。 但是通常情况下 JavaScript 与绘制、更新样式和处理用户操作（例如，高亮显示文本以及与格式控件交互）处于同一队列。 操作其中一项任务会延迟其他任务。</p>
@@ -70,20 +70,9 @@ resize、scroll、mousedown、mousemove...<br>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[FromData Blob ArrayBuffe]]></title>
-        <id>https://xiaoai7904.github.io//post/fromdata-blob-arraybuffe</id>
-        <link href="https://xiaoai7904.github.io//post/fromdata-blob-arraybuffe">
-        </link>
-        <updated>2019-11-24T02:28:07.000Z</updated>
-        <summary type="html"><![CDATA[<p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[CSS BEM书写规]]></title>
-        <id>https://xiaoai7904.github.io//post/css-bem-shu-xie-gui</id>
-        <link href="https://xiaoai7904.github.io//post/css-bem-shu-xie-gui">
+        <id>https://xiaoai7904.github.io/post/css-bem-shu-xie-gui/</id>
+        <link href="https://xiaoai7904.github.io/post/css-bem-shu-xie-gui/">
         </link>
         <updated>2019-11-24T02:27:51.000Z</updated>
         <summary type="html"><![CDATA[<p><code>BEM</code>的意思就是块（<code>block</code>）、元素（<code>element</code>）、修饰符（<code>modifier</code>）,是由<a href="https://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。这种巧妙的命名方法让你的CSS类对其他开发者来说更加透明而且更有意义。BEM命名约定更加严格，而且包含更多的信息，它们用于一个团队开发一个耗时的大项目</p>
@@ -93,8 +82,8 @@ resize、scroll、mousedown、mousemove...<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[前端大杂烩]]></title>
-        <id>https://xiaoai7904.github.io//post/qian-duan-da-za-hui</id>
-        <link href="https://xiaoai7904.github.io//post/qian-duan-da-za-hui">
+        <id>https://xiaoai7904.github.io/post/qian-duan-da-za-hui/</id>
+        <link href="https://xiaoai7904.github.io/post/qian-duan-da-za-hui/">
         </link>
         <updated>2019-11-24T02:27:01.000Z</updated>
         <summary type="html"><![CDATA[<p>整理目前github上面比较优秀和热门的项目,文章，方便查看和学习</p>
@@ -104,8 +93,8 @@ resize、scroll、mousedown、mousemove...<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[vue源码解析,自己动手实现miniVue]]></title>
-        <id>https://xiaoai7904.github.io//post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue</id>
-        <link href="https://xiaoai7904.github.io//post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue">
+        <id>https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/</id>
+        <link href="https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/">
         </link>
         <updated>2019-11-24T02:18:35.000Z</updated>
         <summary type="html"><![CDATA[<p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
@@ -114,28 +103,25 @@ resize、scroll、mousedown、mousemove...<br>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[js原型继承五条基本原]]></title>
-        <id>https://xiaoai7904.github.io//post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan</id>
-        <link href="https://xiaoai7904.github.io//post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan">
+        <title type="html"><![CDATA[Async Function]]></title>
+        <id>https://xiaoai7904.github.io/post/async-function/</id>
+        <link href="https://xiaoai7904.github.io/post/async-function/">
         </link>
-        <updated>2019-11-24T02:13:01.000Z</updated>
-        <summary type="html"><![CDATA[<p>js中的原型继承，遵守5个基本原则：</p>
-<ul>
-<li>所有的数据都是对象</li>
-<li>要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它</li>
-<li>对象会记住它的原型</li>
-<li>如果对象无法响应某个请求，它会把这个请求委托给它自己的原型</li>
-</ul>
-<p>接下来我们将详细讲解这个5个基本原则.....</p>
+        <updated>2019-11-24T01:28:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>js中的原型继承，遵守5个基本原则：</p>
-<ul>
-<li>所有的数据都是对象</li>
-<li>要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它</li>
-<li>对象会记住它的原型</li>
-<li>如果对象无法响应某个请求，它会把这个请求委托给它自己的原型</li>
-</ul>
-<p>接下来我们将详细讲解这个5个基本原则.....</p>
+        <content type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FromData Blob ArrayBuffe]]></title>
+        <id>https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/</id>
+        <link href="https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/">
+        </link>
+        <updated>2019-11-24T01:28:07.000Z</updated>
+        <summary type="html"><![CDATA[<p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
 ]]></content>
     </entry>
 </feed>

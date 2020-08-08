@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Service Worker | xiaoai</title>
 <meta name="description" content="记录美好生活" />
-<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1576570163371">
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1596874213049">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://xiaoai7904.github.io/">
-  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1576570163371" alt="">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1596874213049" alt="">
   </a>
   <h1 class="site-title">
     xiaoai
@@ -83,7 +83,7 @@
                 15 min read
               </span>
               
-                <a href="https://xiaoai7904.github.io//tag/4kuYU9V7d" class="post-tag">
+                <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
                   # JavaScript
                 </a>
               
@@ -121,7 +121,7 @@
 <p>安装之后，接下来就是激活步骤，这是管理旧缓存的绝佳机会，我们将在 Service Worker 的更新部分对此详加介绍。</p>
 <p>激活之后，Service Worker 将会对其作用域内的所有页面实施控制，不过，首次注册该 Service Worker 的页面需要再次加载才会受其控制。 服务工作线程实施控制后，它将处于以下两种状态之一：服务工作线程终止以节省内存，或处理获取和消息事件，从页面发出网络请求或消息后将会出现后一种状态。</p>
 <p>以下是 Service Worker 初始安装时的简化生命周期。</p>
-<figure data-type="image" tabindex="1"><img src="https://developers.google.com/web/fundamentals/primers/service-workers/images/sw-lifecycle.png" alt=""></figure>
+<figure data-type="image" tabindex="1"><img src="https://developers.google.com/web/fundamentals/primers/service-workers/images/sw-lifecycle.png" alt="" loading="lazy"></figure>
 <h4 id="浏览器支持">浏览器支持</h4>
 <p>可用的浏览器日益增多。 Service Worker 受 Chrome、Firefox 和 Opera 支持。 Microsoft Edge 现在表示公开支持。 甚至 Safari 也暗示未来会进行相关开发。 您可以在 Jake Archibald 的 is Serviceworker ready 网站上查看所有浏览器的支持情况 。</p>
 <h4 id="您需要-https">您需要 HTTPS</h4>
@@ -147,7 +147,7 @@
 <p>每次页面加载无误时，即可调用 register()；浏览器将会判断服务工作线程是否已注册并做出相应的处理。</p>
 <p>register() 方法的精妙之处在于服务工作线程文件的位置。 您会发现在本例中服务工作线程文件位于根网域。 这意味着服务工作线程的作用域将是整个来源。 换句话说，Service Worker 将接收此网域上所有事项的 fetch 事件。 如果我们在 /example/sw.js 处注册 Service Worker 文件，则 Service Worker 将只能看到网址以 /example/ 开头（即 /example/page1/、/example/page2/）的页面的 fetch 事件。</p>
 <p>现在，您可以通过转至 chrome://inspect/#service-workers 并寻找您的网站来检查 Service Worker 是否已启用。</p>
-<figure data-type="image" tabindex="2"><img src="https://developers.google.com/web/fundamentals/primers/service-workers/images/sw-chrome-inspect.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://developers.google.com/web/fundamentals/primers/service-workers/images/sw-chrome-inspect.png" alt="" loading="lazy"></figure>
 <p>首次实施 Service Worker 时，您还可以通过 chrome://serviceworker-internals 来查看 Service Worker 详情。 如果只是想了解 Service Worker 的生命周期，这仍很有用，但是日后其很有可能被 chrome://inspect/#service-workers 完全取代。</p>
 <p>您会发现，它还可用于测试隐身窗口中的服务工作线程，您可以关闭服务工作线程并重新打开，因为之前的服务工作线程不会影响新窗口。 从无痕式窗口创建的任何注册和缓存在该窗口关闭后均将被清除。</p>
 <h4 id="安装-service-worker">安装 Service Worker</h4>
@@ -392,7 +392,7 @@ self.addEventListener('install', function(event) {
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoai7904.github.io//post/javascript-promis">
+            <a href="https://xiaoai7904.github.io/post/javascript-promis/">
               <h3 class="post-title">
                 JavaScript Promis
               </h3>
