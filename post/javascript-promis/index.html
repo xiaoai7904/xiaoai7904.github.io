@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript Promis | xiaoai</title>
 <meta name="description" content="记录美好生活" />
-<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1596946217073">
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1596958966791">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://xiaoai7904.github.io/">
-  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1596946217073" alt="">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1596958966791" alt="">
   </a>
   <h1 class="site-title">
     xiaoai
@@ -165,7 +165,7 @@
 <ul>
 <li>定义一个<code>Promise</code>构造函数,接受一个函数作为参数,并且该函数立即执行</li>
 </ul>
-<pre><code class="language-typescript">class XaPromise&lt;T&gt; {
+<pre><code class="language-javascript">class XaPromise&lt;T&gt; {
   constructor(executor: Executor&lt;T&gt;) {
     this.initExecutor(executor)
   }
@@ -185,12 +185,12 @@
   }
 }
 </code></pre>
-<pre><code class="language-typescript">new XaPromise((resolve, reject) =&gt; {})
+<pre><code class="language-javascript">new XaPromise((resolve, reject) =&gt; {})
 </code></pre>
 <ul>
 <li><code>Promise</code>内部有三种状态 <code>等待态（Pending）</code>、<code>执行态（Fulfilled）</code>、<code>拒绝态（Rejected）</code>默认为<code>Pending</code></li>
 </ul>
-<pre><code class="language-typescript">type statusType = 'pending' | 'fulfilled' | 'rejected'
+<pre><code class="language-javascript">type statusType = 'pending' | 'fulfilled' | 'rejected'
 
 class XaPromise&lt;T&gt; {
   ['[[PromiseStatus]]']: statusType = 'pending'
@@ -199,7 +199,7 @@ class XaPromise&lt;T&gt; {
 <ul>
 <li><code>Promise</code>内部必须实现<code>then</code>方法,并且<code>then</code>方法必须返回一个新的<code>Promise</code>对象</li>
 </ul>
-<pre><code class="language-typescript">type statusType = 'pending' | 'fulfilled' | 'rejected'
+<pre><code class="language-javascript">type statusType = 'pending' | 'fulfilled' | 'rejected'
 
 class XaPromise&lt;T&gt; {
   then(onResolve: any, onReject?: any): XaPromise&lt;T&gt; {
@@ -210,7 +210,7 @@ class XaPromise&lt;T&gt; {
 <ul>
 <li><code>Promise</code>对象<code>then</code>方法处理过程</li>
 </ul>
-<pre><code class="language-typescript">class XaPromise&lt;T&gt; {
+<pre><code class="language-javascript">class XaPromise&lt;T&gt; {
   then(onResolve: any, onReject?: any): XaPromise&lt;T&gt; {
     let newXaPromise: any
     // then 方法必须返回一个 promise 对象
@@ -264,7 +264,7 @@ class XaPromise&lt;T&gt; {
 </ul>
 </li>
 </ul>
-<pre><code class="language-typescript">  private handlerResolvePromise(newXaPromise: T, x: any, resolve: any, reject: any) {
+<pre><code class="language-javascript">  private handlerResolvePromise(newXaPromise: T, x: any, resolve: any, reject: any) {
      if (x instanceof XaPromise) {
           // 如果 x 处于等待态， promise 需保持为等待态直至 x 被执行或拒绝
           if (x['[[PromiseStatus]]'] === 'pending') {
@@ -312,7 +312,7 @@ class XaPromise&lt;T&gt; {
 <p>如果<code>x</code>不为对象或者函数，以<code>x</code>为参数执行<code>promise</code></p>
 </li>
 </ul>
-<pre><code class="language-typescript">  private handlerResolvePromise(newXaPromise: T, x: any, resolve: any, reject: any) {
+<pre><code class="language-javascript">  private handlerResolvePromise(newXaPromise: T, x: any, resolve: any, reject: any) {
       let flag = false 
       if (typeof x === 'function' || (x !== null &amp;&amp; typeof x === 'object')) {
           try {
