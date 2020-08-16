@@ -1,0 +1,806 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MySql常用命令和介绍 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1597567399252">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1597567399252" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              MySql常用命令和介绍
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-16
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://xiaoai7904.github.io//post-images/mysql-chang-yong-ming-ling-he-jie-shao.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <ul>
+<li>
+<h5 id="创建数据表">创建数据表</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># create tabele 表名(字段1 数据类型, 字段2 数据类型, ...);
+create tabele user(id VARCHAR(100), name VARCHAR(100), age INT);
+
+# 创建临时表 临时表只在当前连接可见，当关闭连接时会自动删除
+create TEMPORARY table userTemp(id VARCHAR(100), name VARCHAR(100), age INT) 
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5 id="删除数据表">删除数据表</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># drop tabele 表名;
+drop tabele user;
+</code></pre>
+<ul>
+<li>
+<h5 id="插入数据">插入数据</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># insert into 表名(字段1， 字段2) values(字段1值，字段2值，...)
+insert into user(id, name, age) values('1', 'xiaoai', 27)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5 id="查询数据">查询数据</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># select * from 表名
+select * from user
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5 id="where语句">where语句</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># select * from 表名 where 判断条件
+select * from user where age=27
+select * from user where age&gt;=27
+select * from user where age&lt;=27
+select * from user where age is null
+select * from user where age is not null
+select * from user where age in(27,29)
+select * from user where age not in(27,29)
+select * from user where age REGEXP '^\d+'
+</code></pre>
+<ul>
+<li>
+<h5 id="update语句">update语句</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># update 表名 set 字段1=字段值
+update user set age=28
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5 id="delete语句">delete语句</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># delete from 表名 where 条件
+delete from user where id='1'
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ul>
+<li>
+<h5 id="like语句模糊查询">like语句（模糊查询）</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># select * from 表名 like 字段='值%'
+select * from user like name='xiao%'
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5 id="union连接两个表查询结果">union(连接两个表查询结果)</h5>
+</li>
+</ul>
+<pre><code class="language-SQL"># tips: user1表暂时使用user表的数据
+# select * from 表名1 union (ALL | DISTINCT) select * from 表名2
+# ALL: 全部数据可以出现重复数据
+# DISTINCT: 全部数据并且删除重复数据
+select * from user union ALL select * from user1
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>28</td>
+</tr>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5 id="order-by语句排序">order by语句(排序)</h5>
+</li>
+</ul>
+<p>原始表数据:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>22</td>
+</tr>
+<tr>
+<td>2</td>
+<td>xiaoai1</td>
+<td>23</td>
+</tr>
+<tr>
+<td>3</td>
+<td>xiaoai2</td>
+<td>24</td>
+</tr>
+<tr>
+<td>4</td>
+<td>xiaoai3</td>
+<td>25</td>
+</tr>
+<tr>
+<td>5</td>
+<td>xiaoai4</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-SQL"># ASC 升序 默认
+# DESC 降序
+# select * from 表名1 order by 字段名 排序值[ASC|DESC]
+select * from user order by age DESC
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>xiaoai4</td>
+<td>26</td>
+</tr>
+<tr>
+<td>4</td>
+<td>xiaoai3</td>
+<td>25</td>
+</tr>
+<tr>
+<td>3</td>
+<td>xiaoai2</td>
+<td>24</td>
+</tr>
+<tr>
+<td>2</td>
+<td>xiaoai1</td>
+<td>23</td>
+</tr>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5 id="group-by分组查询">group by(分组查询)</h5>
+</li>
+</ul>
+<p>原始表数据:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>22</td>
+</tr>
+<tr>
+<td>2</td>
+<td>xiaoai1</td>
+<td>22</td>
+</tr>
+<tr>
+<td>3</td>
+<td>xiaoai2</td>
+<td>25</td>
+</tr>
+<tr>
+<td>4</td>
+<td>xiaoai3</td>
+<td>25</td>
+</tr>
+<tr>
+<td>5</td>
+<td>xiaoai4</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-SQL"># select 分组字段, count(*) from 表名 group by 分组字段
+select age, count(*) from user group by age
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>age</th>
+<th>count(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td>2</td>
+</tr>
+<tr>
+<td>25</td>
+<td>2</td>
+</tr>
+<tr>
+<td>26</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h4 id="外连接inner-join-left-join-right-join">外连接(inner join, left join, right join)</h4>
+</li>
+</ul>
+<p>原始表数据 user:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>22</td>
+</tr>
+<tr>
+<td>2</td>
+<td>xiaoai1</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<p>原始表数据 subject:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>subject</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>java</td>
+<td>xiaoai</td>
+</tr>
+<tr>
+<td>2</td>
+<td>javascript</td>
+<td>xiaoai</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeJs</td>
+<td>xiaoai2</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-SQL"># inner join 连接两个表格数据
+# select 字段名,字段名 from 表名1 as 表名1别名 inner join select 字段名, 字段名 from 表名2 as 表名2别名 on 表名1别名.字段名=表名2别名.字段名
+
+select u.name, u.age  from user as u inner join select s.subject from subject as s on a.name=s.name
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>u.name</th>
+<th>u.age</th>
+<th>s.subject</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xiaoai</td>
+<td>22</td>
+<td>java</td>
+</tr>
+<tr>
+<td>xiaoai</td>
+<td>22</td>
+<td>javascript</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-SQL"># left join 连接两个表格,左边数据表的全部数据，即便右边表无对应数据
+# select 字段名,字段名 from 表名1 as 表名1别名 left join select 字段名, 字段名 from 表名2 as 表名2别名 on 表名1别名.字段名=表名2别名.字段名
+
+select u.name, u.age  from user as u left join select s.subject from subject as s on a.name=s.name
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>u.name</th>
+<th>u.age</th>
+<th>s.subject</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xiaoai</td>
+<td>22</td>
+<td>java</td>
+</tr>
+<tr>
+<td>xiaoai</td>
+<td>22</td>
+<td>javascript</td>
+</tr>
+<tr>
+<td>xiaoai1</td>
+<td>22</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-SQL"># right join 连接两个表格,右边数据表的全部数据，即便左边表无对应数据
+# select 字段名,字段名 from 表名1 as 表名1别名 right join select 字段名, 字段名 from 表名2 as 表名2别名 on 表名1别名.字段名=表名2别名.字段名
+
+select u.name, u.age  from user as u right join select s.subject from subject as s on a.name=s.name
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>u.name</th>
+<th>u.age</th>
+<th>s.subject</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xiaoai</td>
+<td>22</td>
+<td>java</td>
+</tr>
+<tr>
+<td>xiaoai</td>
+<td>22</td>
+<td>javascript</td>
+</tr>
+<tr>
+<td>null</td>
+<td>null</td>
+<td>nodeJs</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h4 id="alter修改数据表名或者修改数据表字段">alter(修改数据表名或者修改数据表字段)</h4>
+</li>
+</ul>
+<p>原始表数据 user:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-SQL">alter table user add adss varchar(100) # 添加字段 
+alter table user modify adss char # 修改表字段
+alter table user alter adss set default 'xxxx省xxx市'
+alter table user drop adss # 删除表字段
+</code></pre>
+<ul>
+<li>
+<h4 id="limit语句">limit语句</h4>
+</li>
+</ul>
+<p>原始表数据 user:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>22</td>
+</tr>
+<tr>
+<td>2</td>
+<td>xiaoai1</td>
+<td>23</td>
+</tr>
+<tr>
+<td>3</td>
+<td>xiaoai2</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-SQL">select * from user limit 0,1
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>xiaoai</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h4 id="索引">索引</h4>
+</li>
+</ul>
+<pre><code class="language-SQL">create index id_index on user(id) # 创建索引
+alter table user add index id_index(id) # 修改表结构添加索引
+show index from user # 显示索引
+drop index id_index on user # 删除索引
+</code></pre>
+<ul>
+<li>
+<h4 id="导出sql">导出sql</h4>
+</li>
+</ul>
+<pre><code class="language-SQL">select * from user into outfile './user.txt' # 导出user表数据到user.txt
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8">创建数据表</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E8%A1%A8">删除数据表</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE">插入数据</a></li>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE">查询数据</a></li>
+<li><a href="#where%E8%AF%AD%E5%8F%A5">where语句</a></li>
+<li><a href="#update%E8%AF%AD%E5%8F%A5">update语句</a></li>
+<li><a href="#delete%E8%AF%AD%E5%8F%A5">delete语句</a></li>
+<li><a href="#like%E8%AF%AD%E5%8F%A5%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2">like语句（模糊查询）</a></li>
+<li><a href="#union%E8%BF%9E%E6%8E%A5%E4%B8%A4%E4%B8%AA%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C">union(连接两个表查询结果)</a></li>
+<li><a href="#order-by%E8%AF%AD%E5%8F%A5%E6%8E%92%E5%BA%8F">order by语句(排序)</a></li>
+<li><a href="#group-by%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2">group by(分组查询)</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%96%E8%BF%9E%E6%8E%A5inner-join-left-join-right-join">外连接(inner join, left join, right join)</a></li>
+<li><a href="#alter%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%90%8D%E6%88%96%E8%80%85%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%AD%97%E6%AE%B5">alter(修改数据表名或者修改数据表字段)</a></li>
+<li><a href="#limit%E8%AF%AD%E5%8F%A5">limit语句</a></li>
+<li><a href="#%E7%B4%A2%E5%BC%95">索引</a></li>
+<li><a href="#%E5%AF%BC%E5%87%BAsql">导出sql</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io/post/javascript-promis/">
+              <h3 class="post-title">
+                JavaScript Promis
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '542a046d9cd2c40810d6',
+    clientSecret: '3f40254747f30cec544eed0010a8671076c68908',
+    repo: 'xiaoai7904.github.io',
+    owner: 'xiaoai7904',
+    admin: ['xiaoai7904'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

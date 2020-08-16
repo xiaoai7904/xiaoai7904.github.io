@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2020-08-09T07:46:55.385Z</updated>
+    <updated>2020-08-16T08:43:23.535Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://xiaoai7904.github.io/images/avatar.png</logo>
     <icon>https://xiaoai7904.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, xiaoai</rights>
+    <entry>
+        <title type="html"><![CDATA[MySql常用命令和介绍]]></title>
+        <id>https://xiaoai7904.github.io/post/mysql-chang-yong-ming-ling-he-jie-shao/</id>
+        <link href="https://xiaoai7904.github.io/post/mysql-chang-yong-ming-ling-he-jie-shao/">
+        </link>
+        <updated>2020-08-16T07:41:28.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript Promis]]></title>
         <id>https://xiaoai7904.github.io/post/javascript-promis/</id>
@@ -107,17 +114,6 @@ resize、scroll、mousedown、mousemove...<br>
         <summary type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FromData Blob ArrayBuffe]]></title>
-        <id>https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/</id>
-        <link href="https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/">
-        </link>
-        <updated>2019-11-24T01:28:07.000Z</updated>
-        <summary type="html"><![CDATA[<p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
 ]]></content>
     </entry>
 </feed>
