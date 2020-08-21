@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2020-08-16T08:43:23.535Z</updated>
+    <updated>2020-08-21T04:43:44.103Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io/atom.xml"/>
@@ -16,6 +16,13 @@
         <link href="https://xiaoai7904.github.io/post/mysql-chang-yong-ming-ling-he-jie-shao/">
         </link>
         <updated>2020-08-16T07:41:28.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ 随笔]]></title>
+        <id>https://xiaoai7904.github.io/post/sui-bi/</id>
+        <link href="https://xiaoai7904.github.io/post/sui-bi/">
+        </link>
+        <updated>2020-08-12T03:41:51.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript Promis]]></title>
@@ -103,17 +110,6 @@ resize、scroll、mousedown、mousemove...<br>
         <summary type="html"><![CDATA[<p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Async Function]]></title>
-        <id>https://xiaoai7904.github.io/post/async-function/</id>
-        <link href="https://xiaoai7904.github.io/post/async-function/">
-        </link>
-        <updated>2019-11-24T01:28:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
 ]]></content>
     </entry>
 </feed>

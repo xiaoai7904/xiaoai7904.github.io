@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>函数节流和防抖 | xiaoai</title>
+<title> 随笔 | xiaoai</title>
 <meta name="description" content="记录美好生活" />
 <link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1597985017898">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,109 +73,61 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              函数节流和防抖
+               随笔
             </h2>
             <div class="post-info">
               <span>
-                2019-12-11
+                2020-08-12
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
-              
-                <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-                  # JavaScript
-                </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://pic1.zhimg.com/v2-80bf6407212ecd7a5ec3a38a15d75638_1200x500.jpg" alt="">
+              <img class="post-feature-image" src="https://xiaoai7904.github.io//post-images/sui-bi.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>日常开发中会遇到很多事件执行频率很大比如:<br>
-resize、scroll、mousedown、mousemove...<br>
-执行频率越多，对应函数执行次数增多，通过引入<code>节流</code>和<code>防抖</code>可以有效解决这一问题</p>
-<!--more-->
-<h4 id="防抖debounce">防抖(debounce)</h4>
-<p>触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间</p>
-<h5 id="示例代码">示例代码</h5>
-<pre><code class="language-javascript">    // 防抖函数
-    function debounce(fn, wait) {
-        let timer;
-        return function() {
-            let _this = this;
-            let args = arguments;
-            if(timer) { clearTimeout(timer) }
-            timer = setTimeout(function(){
-                fn.apply(_this, args)
-            }, wait);      
-        }
-    }
-    // 使用
-    window.onresize = debounce(function() {console.log('resize')}, 500)
-</code></pre>
-<h4 id="节流throttle">节流(throttle)</h4>
-<p>高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率</p>
-<h5 id="示例代码-2">示例代码</h5>
-<pre><code class="language-javascript">    // 方式1: 使用时间戳
-    function throttle1(fn, wait) {
-        let time = 0;
-        return function() {
-            let _this = this;
-            let args = arguments;
-            let now = Date.now()
-            if(now - time &gt; wait) {
-                fn.apply(_this, args);
-                time = now;
-            }
-        }
-    }
-    // 方式2: 使用定时器
-    function thorttle2(fn, wait) {
-        let timer;
-        return function () {
-            let _this = this;
-            let args = arguments;
-            
-            if(!timer) {
-                timer = setTimeout(function(){
-                    timer = null;
-                    fn.apply(_this, args)
-                }, wait)
-            }
-        }
-    }
-</code></pre>
-<p>上面<code>节流</code>和<code>防抖</code>实现方式比较简单，但是已经可以满足日常使用，如果想更近一步了解可以查看<a href="https://www.bootcss.com/p/underscore/">underscore</a>和<a href="https://www.lodashjs.com/docs/latest">lodash</a>文档中<code>debounce</code>和<code>thorttle</code></p>
+                <p>最近在学习新的编程语言<code>Java</code>,为什么要去学习呢？总结几点：</p>
+<ul>
+<li>
+<p>培养编程兴趣</p>
+<ul>
+<li>不要为工作而编程,要觉得编程就是一个兴趣爱好,人对自己的兴趣爱在任何时候都不会去排斥</li>
+</ul>
+</li>
+<li>
+<p>提高自己的学习技巧</p>
+<ul>
+<li>通过学习新的东西,可以从中提高自己的学习技巧和学习方式</li>
+<li>通过学习要培养自己的写作能力和表达能力</li>
+</ul>
+</li>
+<li>
+<p>提升自己的知识广度</p>
+<ul>
+<li>通过了解多个编程语言可以使自己的知识面更加广,思考问题的思路更多</li>
+</ul>
+</li>
+<li>
+<p>提升自己的毅力</p>
+<ul>
+<li>学习新事物会遇到很多困难,通过坚持完成自己定一下的目标，一步一个脚印去走</li>
+</ul>
+</li>
+<li>
+<p>压力</p>
+<ul>
+<li>要有压力才会有动力,如果不努力，没有进步,一直原地踏步，最后就会被新社会淘汰</li>
+</ul>
+</li>
+</ul>
+<p>以上是自己最近的感受😊😊😊, 随便写写</p>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E9%98%B2%E6%8A%96debounce">防抖(debounce)</a>
-<ul>
-<li><a href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81">示例代码</a></li>
-</ul>
-</li>
-<li><a href="#%E8%8A%82%E6%B5%81throttle">节流(throttle)</a>
-<ul>
-<li><a href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81-2">示例代码</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
@@ -184,9 +136,9 @@ resize、scroll、mousedown、mousemove...<br>
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoai7904.github.io/post/jsonstringify-he-jsonparse/">
+            <a href="https://xiaoai7904.github.io/post/javascript-promis/">
               <h3 class="post-title">
-                JSON.stringify和JSON.parse
+                JavaScript Promis
               </h3>
             </a>
           </div>
