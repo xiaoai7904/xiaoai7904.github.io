@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java动态代理机制 | xiaoai</title>
 <meta name="description" content="记录美好生活" />
-<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1598170371994">
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1598170869537">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://xiaoai7904.github.io/">
-  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1598170371994" alt="">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1598170869537" alt="">
   </a>
   <h1 class="site-title">
     xiaoai
@@ -80,7 +80,7 @@
                 2020-08-23
               </span>
               <span>
-                5 min read
+                6 min read
               </span>
               
             </div>
@@ -267,6 +267,56 @@ public class CarFactoryImpl implements CarFactoryService {
 </code></pre>
 <h4 id="cglib动态代理">CGLIB动态代理</h4>
 <p>是一个基于ASM的字节码生成库，它允许我们在运行时对字节码进行修改和动态生成。CGLIB通过继承方式实现代理</p>
+<p>基于cglib动态代理去实现购车代码:</p>
+<h5 id="汽车工厂类-3">汽车工厂类</h5>
+<pre><code class="language-java">// 汽车工厂实现类
+public class CarFactoryImpl {
+    // 汽车价格(单位: 万)
+    private Integer carPrice = 100;
+
+    public Integer getPrice() {
+        return carPrice;
+    }
+
+    public void setPrice(int price) {
+        carPrice += price;
+    }
+
+    public void sell(String carName) {
+        System.out.println(&quot;4s店购买了&quot; + carName + &quot;汽车,价格是&quot; + carPrice);
+    }
+} 
+</code></pre>
+<h4 id="代理处理类-2">代理处理类</h4>
+<pre><code class="language-java">public class MyMethodInterceptor implements MethodInterceptor {
+    @Override
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+    
+        System.out.println(&quot;消费者购买&quot; + args[0] + &quot;汽车,价格是汽车店基础上涨20万&quot;);
+        
+        Object object = methodProxy.invokeSuper(o, objects);
+        
+        System.out.println(&quot;消费者购买了&quot; + args[0] + &quot;汽车,价格是&quot; + 120);
+        
+        return object;
+    }
+}
+
+</code></pre>
+<h5 id="测试方法-3">测试方法</h5>
+<pre><code class="language-java">public class TestApp {
+    public static void main(String[] args) {
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(CglibService.class);
+        // 设置enhancer的回调对象
+        enhancer.setCallback(new MyMethodInterceptor());
+        // 创建代理对象
+        CglibService proxy= (CglibService)enhancer.create();
+        // 通过代理对象调用目标方法
+        proxy.sell(&quot;奥迪A7&quot;)
+    }
+}
+</code></pre>
 
               </div>
               <div class="toc-container">
@@ -293,7 +343,16 @@ public class CarFactoryImpl implements CarFactoryService {
 <li><a href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95-2">测试方法</a></li>
 </ul>
 </li>
-<li><a href="#cglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86">CGLIB动态代理</a></li>
+<li><a href="#cglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86">CGLIB动态代理</a>
+<ul>
+<li><a href="#%E6%B1%BD%E8%BD%A6%E5%B7%A5%E5%8E%82%E7%B1%BB-3">汽车工厂类</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%A3%E7%90%86%E5%A4%84%E7%90%86%E7%B1%BB-2">代理处理类</a>
+<ul>
+<li><a href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95-3">测试方法</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
