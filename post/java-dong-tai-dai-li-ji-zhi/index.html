@@ -1,0 +1,396 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Java动态代理机制 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1598170371994">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1598170371994" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Java动态代理机制
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-23
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://xiaoai7904.github.io//post-images/java-dong-tai-dai-li-ji-zhi.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="java动态代理机制">Java动态代理机制</h1>
+<p>在先说动态代理之前，先看看什么是代理</p>
+<h3 id="代理">代理</h3>
+<p>什么代理？给某一个对象提供一个代理，并由代理对象来控制对真实对象的访问，例如：</p>
+<ul>
+<li><code>对象A</code>提供了一个接口，但是这个接口只能通过<code>对象B</code>进行调用,如果其他对象需要调用必须通过<code>对象B</code>来调用<code>对象A</code>提供的接口,这样就可以称<code>对象B</code>为代理对象</li>
+<li>有一个生产汽车的工厂,如果普通人要去购买汽车,必须通过4s店去购买，这里的4s店就是代理</li>
+</ul>
+<p>简单理解了什么是代理之后，通过程序代码来模拟代理</p>
+<p>我们还是以购买汽车为例</p>
+<blockquote>
+<p>Tips：<mark>以下示例只是部分代码片段,不是完整代码</mark></p>
+</blockquote>
+<h5 id="汽车工厂类">汽车工厂类</h5>
+<pre><code class="language-java">// 汽车工厂接口
+public interface CarFactoryService {
+    public Integer getPrice();
+    public void setPrice(int price);
+    public void sell(String carName);
+}
+
+// 汽车工厂实现类
+public class CarFactoryImpl implements CarFactoryService {
+   // 汽车价格(单位: 万)
+    private Integer carPrice = 100;
+
+    @Override
+    public Integer getPrice() {
+        return carPrice;
+    }
+
+    @Override
+    public void setPrice(int price) {
+        carPrice += price;
+    }
+
+    @Override
+    public void sell(String carName) {
+        System.out.println(&quot;4s店购买了&quot; + carName + &quot;汽车,价格是&quot; + carPrice);
+    }}     
+</code></pre>
+<h5 id="4s店">4S店</h5>
+<pre><code class="language-java">public class Shop4s implements CarFactoryService {
+    private Integer carPrice = 20;
+
+    @Override
+    public void sell(String carName) {
+        CarFactoryService carFactory;
+        carFactory = new CarFactoryImpl();
+        carFactory.sell(carName);
+        setPrice(carFactory.getPrice());
+        System.out.println(&quot;消费者购买了&quot; + carName + &quot;汽车,价格是&quot; + carPrice);
+    }
+
+    @Override
+    public Integer getPrice() {
+        return carPrice;
+    }
+
+    @Override
+    public void setPrice(int price) {
+        carPrice += price;
+    }}
+</code></pre>
+<h5 id="普通消费者">普通消费者</h5>
+<pre><code class="language-java">public class NormalConsumer {
+    public void sell(String carName) {
+         CarFactoryService shop4s = new Shop4s();
+         shop4s.sell(carName);      
+    }
+}
+</code></pre>
+<h5 id="测试方法">测试方法</h5>
+<pre><code class="language-java">public class TestApp {
+    public static void main(String[] args) {
+        NormalConsumer xiaoai = new NormalConsumer();
+        xiaoai.sell(&quot;奥迪A7&quot;);
+}
+</code></pre>
+<p>上面示例代码中实现简单代理方式,其中<code>4S</code>店就是代理对象, 在<code>Java</code>中我们称上面这种代理为<strong>静态代理</strong></p>
+<h3 id="静态代理">静态代理</h3>
+<p>使用静态代理我们可以在不修改源代码的情况，对功能进行增强,但是使用静态代理也有一定缺点,例如我们如果需要对工厂进行增加新功能,就需要在源代码和代理对象代码中新增逻辑</p>
+<p>总结:</p>
+<ul>
+<li>
+<p>优点</p>
+<ul>
+<li>实现简单,易理解</li>
+<li>保护实际对象的业务逻辑对外暴露，从而提高安全性</li>
+</ul>
+</li>
+<li>
+<p>缺点</p>
+<ul>
+<li>代理对象和目标对象要实现统一的接口，新增功能会增加很多过多的代理类</li>
+<li>不易维护,如果新增功能,代理类和目标类都需要新增代码</li>
+</ul>
+</li>
+</ul>
+<p>结合上面的优缺点这时候就出现了新的解决方案<strong>动态代理</strong></p>
+<h3 id="动态代理">动态代理</h3>
+<p>动态代理相比静态代理主要特点是，静态代理是在编译完成时已经产生<code>Class</code>文件，然而动态代理是在运行时动态生成类字节码，并加载到<code>JVM</code>中</p>
+<p>Tips: <strong>动态代理不需要实现接口，但是要求目标对象必须实现接口</strong></p>
+<p>在<code>Java</code>中有目前以下动态代理方式:</p>
+<ul>
+<li>JDK动态代理        --&gt;     根据接口创建代理对象</li>
+<li>CGLIB动态代理    --&gt;     使用继承实现</li>
+</ul>
+<h4 id="jdk动态代理">JDK动态代理</h4>
+<p>JDK动代理主要使用了Java中的反射机制，JDK动态代理使用了<code>java.lang.reflect.Proxy</code>和<code>java.lang.reflect.InvocationHandler</code>两个类来实现</p>
+<p>我们还是以购买汽车为例，通过动态代理改造上面静态代理方式的代码<br>
+示例代码：</p>
+<h5 id="汽车工厂类-2">汽车工厂类</h5>
+<pre><code class="language-java">// 汽车工厂接口
+public interface CarFactoryService {
+
+    public Integer getPrice();
+    public void setPrice(int price);
+    public void sell(String carName);
+    
+}
+
+// 汽车工厂实现类
+public class CarFactoryImpl implements CarFactoryService {
+    // 汽车价格(单位: 万)
+    private Integer carPrice = 100;
+
+    @Override
+    public Integer getPrice() {
+        return carPrice;
+    }
+
+    @Override
+    public void setPrice(int price) {
+        carPrice += price;
+    }
+
+    @Override
+    public void sell(String carName) {
+        System.out.println(&quot;4s店购买了&quot; + carName + &quot;汽车,价格是&quot; + carPrice);
+    }
+}     
+</code></pre>
+<h5 id="代理处理类">代理处理类</h5>
+<pre><code class="language-java">public class MyHandler implements InvocationHandler {
+   private Object target = null;
+
+    public MyHandler1(Object target) {
+        // 传入目标对象方法
+        this.target = target;
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        // 1.可以对调用目标方法之前进行处理
+        System.out.println(&quot;消费者购买&quot; + args[0] + &quot;汽车,价格是汽车店基础上涨20万&quot;);
+        // 2. 调用目标方法
+        // target: 目标对象方法， arg: 调用目标方法参数 return 当前方法执行结果
+        Object res = method.invoke(target, args);
+
+        // 3.可以对调用完目标方法进行增强处理
+        System.out.println(&quot;消费者购买了&quot; + args[0] + &quot;汽车,价格是&quot; + 120);
+
+        return res;
+    }}
+</code></pre>
+<h5 id="测试方法-2">测试方法</h5>
+<pre><code class="language-java">public class TestApp {
+    public static void main(String[] args) {
+    CarFactoryService proxyTarget = new CarFactoryImpl();
+    CarFactoryService proxy = (CarFactoryService)Proxy.newProxyInstance(proxyTarget.getClass().getClassLoader(), proxyTarget.getClass().getInterfaces(), new MyHandler(proxyTarget));
+    
+    proxy.sell(&quot;奥迪A7&quot;)
+}
+
+</code></pre>
+<h4 id="cglib动态代理">CGLIB动态代理</h4>
+<p>是一个基于ASM的字节码生成库，它允许我们在运行时对字节码进行修改和动态生成。CGLIB通过继承方式实现代理</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%9C%BA%E5%88%B6">Java动态代理机制</a><br>
+*
+<ul>
+<li><a href="#%E4%BB%A3%E7%90%86">代理</a><br>
+*
+<ul>
+<li><a href="#%E6%B1%BD%E8%BD%A6%E5%B7%A5%E5%8E%82%E7%B1%BB">汽车工厂类</a></li>
+<li><a href="#4s%E5%BA%97">4S店</a></li>
+<li><a href="#%E6%99%AE%E9%80%9A%E6%B6%88%E8%B4%B9%E8%80%85">普通消费者</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95">测试方法</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86">静态代理</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86">动态代理</a>
+<ul>
+<li><a href="#jdk%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86">JDK动态代理</a>
+<ul>
+<li><a href="#%E6%B1%BD%E8%BD%A6%E5%B7%A5%E5%8E%82%E7%B1%BB-2">汽车工厂类</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E5%A4%84%E7%90%86%E7%B1%BB">代理处理类</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95-2">测试方法</a></li>
+</ul>
+</li>
+<li><a href="#cglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86">CGLIB动态代理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io/post/mysql-chang-yong-ming-ling-he-jie-shao/">
+              <h3 class="post-title">
+                MySql常用命令和介绍
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '542a046d9cd2c40810d6',
+    clientSecret: '3f40254747f30cec544eed0010a8671076c68908',
+    repo: 'xiaoai7904.github.io',
+    owner: 'xiaoai7904',
+    admin: ['xiaoai7904'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2020-08-21T04:43:44.103Z</updated>
+    <updated>2020-08-23T08:12:57.142Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://xiaoai7904.github.io/images/avatar.png</logo>
     <icon>https://xiaoai7904.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, xiaoai</rights>
+    <entry>
+        <title type="html"><![CDATA[Redis入门]]></title>
+        <id>https://xiaoai7904.github.io/post/redis-ru-men/</id>
+        <link href="https://xiaoai7904.github.io/post/redis-ru-men/">
+        </link>
+        <updated>2020-08-23T06:10:57.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java动态代理机制]]></title>
+        <id>https://xiaoai7904.github.io/post/java-dong-tai-dai-li-ji-zhi/</id>
+        <link href="https://xiaoai7904.github.io/post/java-dong-tai-dai-li-ji-zhi/">
+        </link>
+        <updated>2020-08-23T06:10:25.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MySql常用命令和介绍]]></title>
         <id>https://xiaoai7904.github.io/post/mysql-chang-yong-ming-ling-he-jie-shao/</id>
@@ -88,28 +102,6 @@ resize、scroll、mousedown、mousemove...<br>
         <summary type="html"><![CDATA[<p><code>BEM</code>的意思就是块（<code>block</code>）、元素（<code>element</code>）、修饰符（<code>modifier</code>）,是由<a href="https://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。这种巧妙的命名方法让你的CSS类对其他开发者来说更加透明而且更有意义。BEM命名约定更加严格，而且包含更多的信息，它们用于一个团队开发一个耗时的大项目</p>
 ]]></summary>
         <content type="html"><![CDATA[<p><code>BEM</code>的意思就是块（<code>block</code>）、元素（<code>element</code>）、修饰符（<code>modifier</code>）,是由<a href="https://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。这种巧妙的命名方法让你的CSS类对其他开发者来说更加透明而且更有意义。BEM命名约定更加严格，而且包含更多的信息，它们用于一个团队开发一个耗时的大项目</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[前端大杂烩]]></title>
-        <id>https://xiaoai7904.github.io/post/qian-duan-da-za-hui/</id>
-        <link href="https://xiaoai7904.github.io/post/qian-duan-da-za-hui/">
-        </link>
-        <updated>2019-11-24T02:27:01.000Z</updated>
-        <summary type="html"><![CDATA[<p>整理目前github上面比较优秀和热门的项目,文章，方便查看和学习</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>整理目前github上面比较优秀和热门的项目,文章，方便查看和学习</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[vue源码解析,自己动手实现miniVue]]></title>
-        <id>https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/</id>
-        <link href="https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/">
-        </link>
-        <updated>2019-11-24T02:18:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
 ]]></content>
     </entry>
 </feed>

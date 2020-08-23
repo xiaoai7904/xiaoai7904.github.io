@@ -1,0 +1,583 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Redis入门 | xiaoai</title>
+<meta name="description" content="记录美好生活" />
+<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1598170371994">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xiaoai7904.github.io/">
+  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1598170371994" alt="">
+  </a>
+  <h1 class="site-title">
+    xiaoai
+  </h1>
+  <p class="site-description">
+    记录美好生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Redis入门
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-23
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://xiaoai7904.github.io//post-images/redis-ru-men.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="redis入门">Redis入门</h1>
+<h3 id="简介">简介</h3>
+<p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。</p>
+<p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+<p>它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Hash), 列表(list), 集合(sets) 和 有序集合(sorted sets)等类型</p>
+<p><mark>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf</mark></p>
+<h3 id="redis操作库命令">Redis操作库命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>select 下标[0~15]</td>
+<td>切换对于库</td>
+</tr>
+<tr>
+<td>dbsize</td>
+<td>当前库以存储大小</td>
+</tr>
+<tr>
+<td>flushdb</td>
+<td>删除当前库中所有数据</td>
+</tr>
+<tr>
+<td>flushall</td>
+<td>删除全部库数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="redis-keys-常用命令">Redis keys 常用命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>del key</td>
+<td>key 存在时删除key</td>
+</tr>
+<tr>
+<td>dump key</td>
+<td>序列化给定key，并返回被序列化的值</td>
+</tr>
+<tr>
+<td>exists key</td>
+<td>检查key是否存在</td>
+</tr>
+<tr>
+<td>expire key 5</td>
+<td>设置key 5秒过期</td>
+</tr>
+<tr>
+<td>keys pattern</td>
+<td>查找所有符合pattern条件的key</td>
+</tr>
+<tr>
+<td>ttl key</td>
+<td>检查key过期时间剩余时间</td>
+</tr>
+</tbody>
+</table>
+<h3 id="redis-string-常用命令">Redis String 常用命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set key value</td>
+<td>设置key的值为value</td>
+</tr>
+<tr>
+<td>setrang key 偏移量 value</td>
+<td>用value值覆写给定key所储存的字符串值，从偏移量开始</td>
+</tr>
+<tr>
+<td>strlen key</td>
+<td>返回key字符串长度</td>
+</tr>
+<tr>
+<td>setex key 5 value</td>
+<td>将值value关联到key，并将key的过期时间设为5秒</td>
+</tr>
+<tr>
+<td>setex key value</td>
+<td>key的值不存在就设置value值</td>
+</tr>
+<tr>
+<td>get key</td>
+<td>获取key的值</td>
+</tr>
+<tr>
+<td>getrange key 0 1</td>
+<td>获取key的第一位值</td>
+</tr>
+<tr>
+<td>getset key value</td>
+<td>将给定key的值设为value，并返回key的旧值</td>
+</tr>
+<tr>
+<td>mset key1 value1 key2 value2</td>
+<td>同时设置一个或多个key-value对</td>
+</tr>
+<tr>
+<td>incr key</td>
+<td>将key中的数字 ++</td>
+</tr>
+<tr>
+<td>incrby key 10</td>
+<td>将key中的数字 +=10</td>
+</tr>
+<tr>
+<td>decr key</td>
+<td>将key中的数字 --</td>
+</tr>
+<tr>
+<td>decrby key 10</td>
+<td>将key中的数字 -=10</td>
+</tr>
+<tr>
+<td>append key newValue</td>
+<td>给存在的key并且值是字符串就在最后最加newValue</td>
+</tr>
+</tbody>
+</table>
+<h3 id="redis-hash-常用命令">Redis Hash 常用命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hset key field value</td>
+<td>设置哈希表key字段field的值为value</td>
+</tr>
+<tr>
+<td>hsetnx key field value</td>
+<td>哈希表key字段不存在时，设置field的值为value</td>
+</tr>
+<tr>
+<td>hmsetnx key field1 value1 field2 value2</td>
+<td>设置哈希表key字段field1的值为value1,field2 value2的值</td>
+</tr>
+<tr>
+<td>hget key field</td>
+<td>获取哈希表中key field的值</td>
+</tr>
+<tr>
+<td>hgetall key</td>
+<td>获取哈希表中key所有字段和值</td>
+</tr>
+<tr>
+<td>hkeys key</td>
+<td>获取所有哈希表中key所有字段</td>
+</tr>
+<tr>
+<td>hvals key</td>
+<td>获取所有哈希表中key所有值</td>
+</tr>
+<tr>
+<td>hexists key field</td>
+<td>查看哈希表中key field字段是否存在</td>
+</tr>
+<tr>
+<td>hdel key field1 field2</td>
+<td>删除一个或者多个哈希表字段</td>
+</tr>
+</tbody>
+</table>
+<h3 id="redis-list-常用命令">Redis List 常用命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lpush key value1 value2</td>
+<td>添加value1 value2到列表头部</td>
+</tr>
+<tr>
+<td>lpushx key value</td>
+<td>添加value添加到key的列表头部</td>
+</tr>
+<tr>
+<td>rpush key value1 value2</td>
+<td>添加value1 value2到key的列表中</td>
+</tr>
+<tr>
+<td>rpushx key value</td>
+<td>为存在的key添加value值</td>
+</tr>
+<tr>
+<td>lset key 0 value</td>
+<td>通过索引设置值(设置key的第一个字段的值为value)</td>
+</tr>
+<tr>
+<td>lindex key 0</td>
+<td>获取key中第一个元素</td>
+</tr>
+<tr>
+<td>lrange key 0 1</td>
+<td>获取key中前两个元素</td>
+</tr>
+<tr>
+<td>lpop key</td>
+<td>移除并获取key列表的第一元素</td>
+</tr>
+<tr>
+<td>rpop key</td>
+<td>移除并获取key列表的最后一个元素</td>
+</tr>
+<tr>
+<td>lrem key</td>
+<td>移除并获取key列表的第一元素</td>
+</tr>
+<tr>
+<td>llen key</td>
+<td>获取key列表长度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="redis-set-常用命令">Redis Set 常用命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sadd key value1 value2</td>
+<td>向集合内增加value1 value2</td>
+</tr>
+<tr>
+<td>scard key</td>
+<td>获取集合的成员数</td>
+</tr>
+<tr>
+<td>sdiff key key2</td>
+<td>返回第一个集合和其它集合的差异</td>
+</tr>
+<tr>
+<td>sdiffstore destination key1 key2</td>
+<td>返回key1 key2集合的差异并且存储在destination集合里面</td>
+</tr>
+<tr>
+<td>sinter key1 key2</td>
+<td>返回key1 key2集合交集</td>
+</tr>
+<tr>
+<td>sunion key1 key2</td>
+<td>返回key1 key2集合的并集</td>
+</tr>
+<tr>
+<td>sinterstore destination key1 key2</td>
+<td>返回key1 key2集合的交集并且存储在destination集合里面</td>
+</tr>
+<tr>
+<td>sunionstore destination key1 key2</td>
+<td>返回key1 key2集合的并集并且存储在destination集合里面</td>
+</tr>
+<tr>
+<td>sismember key value</td>
+<td>判断value是否在集合key的成员中</td>
+</tr>
+<tr>
+<td>smember key</td>
+<td>返回key集合中所有成员</td>
+</tr>
+<tr>
+<td>smove key1 key2 value</td>
+<td>将value元素从key1集合中移动到key2集合中</td>
+</tr>
+<tr>
+<td>spop key</td>
+<td>移除key并返回集合中的一个随机元素</td>
+</tr>
+<tr>
+<td>srandmember key [count]</td>
+<td>移除并返回key集合中一个或者多个成员</td>
+</tr>
+<tr>
+<td>srem key [count]</td>
+<td>移除key集合中一个或者多个成员</td>
+</tr>
+</tbody>
+</table>
+<h3 id="redis-sorted-set-常用命令">Redis Sorted Set 常用命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zadd key 1 value</td>
+<td>向有序集合key中添加value 排序分数是1</td>
+</tr>
+<tr>
+<td>zcard key</td>
+<td>获取有序集合的成员数</td>
+</tr>
+<tr>
+<td>zcount key min max</td>
+<td>计算有序集合中指定分区的成员数</td>
+</tr>
+<tr>
+<td>zincrby key 10 value</td>
+<td>为有序集合key中value成员排序分数增加10</td>
+</tr>
+<tr>
+<td>zlexcount key min max</td>
+<td>在有序集合key中计算区间内的成员数量</td>
+</tr>
+<tr>
+<td>zrangee key start stop withscores</td>
+<td>通过索引区间返回有序集合指定区间内的成员</td>
+</tr>
+<tr>
+<td>zrangeebylex key start stop</td>
+<td>通过字典区间返回有序集合的成员</td>
+</tr>
+<tr>
+<td>zrank key value</td>
+<td>返回有序集合中指定成员的索引</td>
+</tr>
+<tr>
+<td>zrem key value</td>
+<td>移除有序集合中的一个或多个成员</td>
+</tr>
+<tr>
+<td>zremrangebylex key min max</td>
+<td>移除有序集合中给定的字典区间的所有成员</td>
+</tr>
+<tr>
+<td>zremrangebyrank key start stop</td>
+<td>移除有序集合中给定的排名区间的所有成员</td>
+</tr>
+<tr>
+<td>zremrangebyscore key min max</td>
+<td>移除有序集合中给定的分数区间的所有成员</td>
+</tr>
+<tr>
+<td>zrevrange key start stop withscores</td>
+<td>返回有序集中指定区间内的成员，通过索引，分数从高到低</td>
+</tr>
+<tr>
+<td>zrevrangebyscore key max min withscores</td>
+<td>返回有序集中指定分数区间内的成员，分数从高到低排序</td>
+</tr>
+<tr>
+<td>zrevrank key value</td>
+<td>返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序</td>
+</tr>
+<tr>
+<td>zscore key value</td>
+<td>返回有序集中，成员的分数值</td>
+</tr>
+</tbody>
+</table>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#redis%E5%85%A5%E9%97%A8">Redis入门</a><br>
+*
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#redis%E6%93%8D%E4%BD%9C%E5%BA%93%E5%91%BD%E4%BB%A4">Redis操作库命令</a></li>
+<li><a href="#redis-keys-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">Redis keys 常用命令</a></li>
+<li><a href="#redis-string-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">Redis String 常用命令</a></li>
+<li><a href="#redis-hash-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">Redis Hash 常用命令</a></li>
+<li><a href="#redis-list-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">Redis List 常用命令</a></li>
+<li><a href="#redis-set-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">Redis Set 常用命令</a></li>
+<li><a href="#redis-sorted-set-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">Redis Sorted Set 常用命令</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoai7904.github.io/post/java-dong-tai-dai-li-ji-zhi/">
+              <h3 class="post-title">
+                Java动态代理机制
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '542a046d9cd2c40810d6',
+    clientSecret: '3f40254747f30cec544eed0010a8671076c68908',
+    repo: 'xiaoai7904.github.io',
+    owner: 'xiaoai7904',
+    admin: ['xiaoai7904'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
