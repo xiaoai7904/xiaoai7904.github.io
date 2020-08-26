@@ -2200,11 +2200,11 @@ blockquote p {
   margin: 0;
 }
 pre {
-  margin: 1.6em 0;
-  padding: 24px 18px;
-  border-radius: 4px;
-  background: #e6f7ff;
-  white-space: pre-wrap;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 6px;
 }
 code {
   margin: 0 4px;
