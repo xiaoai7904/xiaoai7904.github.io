@@ -1,240 +1,440 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
 <title>xiaoai</title>
-<meta name="description" content="记录美好生活" />
-<link rel="shortcut icon" href="https://xiaoai7904.github.io//favicon.ico?v=1598170869537">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="https://xiaoai7904.github.io//styles/main.css">
+<meta name="description" content="记录美好生活">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link type='text/css' rel='stylesheet' href='https://xiaoai7904.github.io//styles/main.css' media='screen' />
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src='https://xiaoai7904.github.io//media/scripts/jquery.js'></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+
+<body>
+
+    <div class="layout theme-dark">
+
+        <div class="layout-header">
+
+	<div class="layout-header-main">
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+
+					<div class="navbar">
+
+						<div class="logo">
+							<a href="https://xiaoai7904.github.io/">
+								<img class="logo"
+									src="https://xiaoai7904.github.io//media/images/site_avatar.png?v=1598413694462"
+									alt="">
+							</a>
+						</div>
+
+						<div class="menu d-md-inline-block d-none">
+							<ul class="layout-navigation-list">
+								
+								<li class="layout-navigation-item"><a title="首页"
+										href="/">首页</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="归档"
+										href="/archives">归档</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="标签"
+										href="/tags">标签</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="关于"
+										href="/post/about">关于</a>
+								</li>
+								
+							</ul>
+						</div>
+
+						<div class="item d-md-inline-block d-none">
+							<div class="search-icon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+						</div>
 
 
 
-  </head>
-  <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://xiaoai7904.github.io/">
-  <img class="avatar" src="https://xiaoai7904.github.io//images/avatar.png?v=1598170869537" alt="">
-  </a>
-  <h1 class="site-title">
-    xiaoai
-  </h1>
-  <p class="site-description">
-    记录美好生活
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+						<div class="d-md-inline-block d-none">
+							<div class="search-lightbox">
+								<div class="search-body">
+
+									<form id="gridea-search-form" data-update="1598413694462" action="/search/" class="search-form">
+										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
+										<button type="submit" class="submit" aria-label="Submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="nav d-md-none d-inline-block">
+							<div class="trigger">
+								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</div>
+        
+        <div class="layout-collapse d-md-none">
+	<div class="layout-collapse-main">
+		<ul class="layout-collapse-list">
+			
+			<li class="layout-collapse-item"><a title="首页" href="/">首页</a></li>
+			
+			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
+			
+			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
+			
+			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
+			
+
+		</ul>
+	</div>
+</div>
+
+        <div class="layout-banner">
+  <div class="layout-banner-main">
+    <div class="container">
+      <div class="row justify-content-lg-center">
+        <div class="col-12 col-lg-9">
+          <div class="banner">
+            <div class="banner-list row">
+              <div class="item col-12 col-sm-9">
+                
+                
+                <div class="banner-card main">
+                  <a class="card-content" href="https://xiaoai7904.github.io/post/qian-duan-da-za-hui/" style="background-image: url('https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png')">
+                    <div class="mask"></div>
+                    <div class="title">
+                      <h3 class="card-title">前端大杂烩</h3>
+                    </div>
+                  </a>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+              </div>
+              <div class="col-12 col-sm-3">
+                <div class="row">
+                  
+                  
+                  
+                  
+                  <div class="item col-4 col-sm-12">
+                    <div class="banner-card">
+                      <a class="card-content" href="https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/"
+                        style="background-image: url('https://miro.medium.com/max/1960/1*oZqGznbYXJfBlvGp5gQlYQ.jpeg')">
+                        <div class="mask"></div>
+                        <div class="title">
+                          <h3 class="card-title">vue源码解析,自己动手实现miniVue</h3>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="item col-4 col-sm-12">
+                    <div class="banner-card">
+                      <a class="card-content" href="https://xiaoai7904.github.io/post/async-function/"
+                        style="background-image: url('https://i2.wp.com/www.geekstrick.com/wp-content/uploads/2018/07/async-await-in-javascript.png?w=756&amp;ssl=1')">
+                        <div class="mask"></div>
+                        <div class="title">
+                          <h3 class="card-title">Async Function</h3>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="item col-4 col-sm-12">
+                    <div class="banner-card">
+                      <a class="card-content" href="https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/"
+                        style="background-image: url('https://xiaoai7904.github.io//post-images/fromdata-blob-arraybuffe.png')">
+                        <div class="mask"></div>
+                        <div class="title">
+                          <h3 class="card-title">FromData Blob ArrayBuffe</h3>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-    
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/qian-duan-da-za-hui/">
-        <h2 class="post-title">前端大杂烩</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/qian-duan-da-za-hui/" class="post-feature-image" style="background-image: url('https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>整理目前github上面比较优秀和热门的项目,文章，方便查看和学习</p>
+        <div class="layout-content">
+  <div class="layout-content-main">
+    <div class="container">
+      <div class="row justify-content-lg-center">
+        <div class="col-12 col-lg-9">
+          <div class="card-list">
+            
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/qian-duan-da-za-hui/">
+                        <h3>前端大杂烩</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>整理目前github上面比较优秀和热门的项目,文章，方便查看和学习</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/">
-        <h2 class="post-title">vue源码解析,自己动手实现miniVue</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          11 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/7_4dzSMd8/" class="post-tag">
-            # Vue
-          </a>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/" class="post-feature-image" style="background-image: url('https://miro.medium.com/max/1960/1*oZqGznbYXJfBlvGp5gQlYQ.jpeg')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/qian-duan-da-za-hui/" style="background-image: url('https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/">
+                        <h3>vue源码解析,自己动手实现miniVue</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>通过对<code>Vue</code>源码进行阅读,自己动手实现<code>miniVue</code>框架</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/async-function/">
-        <h2 class="post-title">Async Function</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/async-function/" class="post-feature-image" style="background-image: url('https://i2.wp.com/www.geekstrick.com/wp-content/uploads/2018/07/async-await-in-javascript.png?w=756&amp;ssl=1')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/7_4dzSMd8/" class="tag" data-title="Vue">
+                        Vue
+                      </a>
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/vue-yuan-ma-jie-xi-zi-ji-dong-shou-shi-xian-minivue/" style="background-image: url('https://miro.medium.com/max/1960/1*oZqGznbYXJfBlvGp5gQlYQ.jpeg')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/async-function/">
+                        <h3>Async Function</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/">
-        <h2 class="post-title">FromData Blob ArrayBuffe</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          4 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/" class="post-feature-image" style="background-image: url('https://xiaoai7904.github.io//post-images/fromdata-blob-arraybuffe.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/async-function/" style="background-image: url('https://i2.wp.com/www.geekstrick.com/wp-content/uploads/2018/07/async-await-in-javascript.png?w=756&amp;ssl=1')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/">
+                        <h3>FromData Blob ArrayBuffe</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/yi-dong-duan-kai-zhong-yu-dao-de-wen-ti-zheng-li/">
-        <h2 class="post-title">移动端开中遇到的问题整理</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/ULKIh4Wcv/" class="post-tag">
-            # H5
-          </a>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/yi-dong-duan-kai-zhong-yu-dao-de-wen-ti-zheng-li/" class="post-feature-image" style="background-image: url('https://assets.hardwarezone.com/img/2017/11/ipxfront.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>在日常开发中移动端遇到的问题进行一个整理，方便后面查看</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/fromdata-blob-arraybuffe/" style="background-image: url('https://xiaoai7904.github.io//post-images/fromdata-blob-arraybuffe.png')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/yi-dong-duan-kai-zhong-yu-dao-de-wen-ti-zheng-li/">
+                        <h3>移动端开中遇到的问题整理</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>在日常开发中移动端遇到的问题进行一个整理，方便后面查看</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan/">
-        <h2 class="post-title">js原型继承五条基本原</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          7 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan/" class="post-feature-image" style="background-image: url('https://xiaoai7904.github.io//post-images/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>js中的原型继承，遵守5个基本原则：</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/ULKIh4Wcv/" class="tag" data-title="H5">
+                        H5
+                      </a>
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/yi-dong-duan-kai-zhong-yu-dao-de-wen-ti-zheng-li/" style="background-image: url('https://assets.hardwarezone.com/img/2017/11/ipxfront.jpg')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan/">
+                        <h3>js原型继承五条基本原</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>js中的原型继承，遵守5个基本原则：</p>
 <ul>
 <li>所有的数据都是对象</li>
 <li>要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它</li>
@@ -243,177 +443,280 @@
 </ul>
 <p>接下来我们将详细讲解这个5个基本原则.....</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/js-she-ji-mo-shi-dan-li-mo-shi/">
-        <h2 class="post-title">js设计模式-单例模式</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/js-she-ji-mo-shi-dan-li-mo-shi/" class="post-feature-image" style="background-image: url('https://xiaoai7904.github.io//post-images/js-she-ji-mo-shi-dan-li-mo-shi.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>单例模式是一种常见的模式，有一些对象我们往往只需要一个，比如线程池、全局缓存、浏览器中的window对象等。在js开发中，单例模式的用途同样非常广泛......</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan/" style="background-image: url('https://xiaoai7904.github.io//post-images/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan.png')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/js-she-ji-mo-shi-dan-li-mo-shi/">
+                        <h3>js设计模式-单例模式</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>单例模式是一种常见的模式，有一些对象我们往往只需要一个，比如线程池、全局缓存、浏览器中的window对象等。在js开发中，单例模式的用途同样非常广泛......</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi/">
-        <h2 class="post-title">TypeScript入门教程(十四) - 装饰器</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          6 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi/" class="post-feature-image" style="background-image: url('https://xiaoai7904.github.io//post-images/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi.jpeg')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>随着<code>TypeScript</code>和<code>ES6</code>里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（<code>Decorators</code>）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 <code>Javascript</code>里的装饰器目前处在<code>建议征集的第二阶段</code>，但在<code>TypeScript</code>里已做为一项实验性特性予以支持</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/js-she-ji-mo-shi-dan-li-mo-shi/" style="background-image: url('https://xiaoai7904.github.io//post-images/js-she-ji-mo-shi-dan-li-mo-shi.jpg')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi/">
+                        <h3>TypeScript入门教程(十四) - 装饰器</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>随着<code>TypeScript</code>和<code>ES6</code>里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（<code>Decorators</code>）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 <code>Javascript</code>里的装饰器目前处在<code>建议征集的第二阶段</code>，但在<code>TypeScript</code>里已做为一项实验性特性予以支持</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-san-ming-ming-kong-jian/">
-        <h2 class="post-title">TypeScript入门教程(十三) - 命名空间</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-san-ming-ming-kong-jian/" class="post-feature-image" style="background-image: url('https://xiaoai7904.github.io//post-images/typescript-ru-men-jiao-cheng-shi-san-ming-ming-kong-jian.jpeg')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>描述了如何在TypeScript里使用命名空间（之前叫做“内部模块”）来组织你的代码。任何使用<code>module</code>关键字来声明一个内部模块的地方都应该使用<code>namespace</code>关键字来替换</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi/" style="background-image: url('https://xiaoai7904.github.io//post-images/typescript-ru-men-jiao-cheng-shi-si-zhuang-shi-qi.jpeg')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-san-ming-ming-kong-jian/">
+                        <h3>TypeScript入门教程(十三) - 命名空间</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>描述了如何在TypeScript里使用命名空间（之前叫做“内部模块”）来组织你的代码。任何使用<code>module</code>关键字来声明一个内部模块的地方都应该使用<code>namespace</code>关键字来替换</p>
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-er-mo-kuai/">
-        <h2 class="post-title">TypeScript入门教程(十二) - 模块</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-11-24
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post-tag">
-            # JavaScript
-          </a>
-        
-      </div>
-      
-        <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-er-mo-kuai/" class="post-feature-image" style="background-image: url('https://xiaoai7904.github.io//post-images/typescript-ru-men-jiao-cheng-shi-er-mo-kuai.jpeg')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>模块是在自身的作用域执行,也就是说在一个模块里面声明的变量,类,函数都是在模块中可见,模块外面是不可见的，除非使用<code>export</code>导出,其他模块使用<code>import</code>引入就可以使用其他模块导出的变量,类,函数等</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-san-ming-ming-kong-jian/" style="background-image: url('https://xiaoai7904.github.io//post-images/typescript-ru-men-jiao-cheng-shi-san-ming-ming-kong-jian.jpeg')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="card-item row">
+                
+                <div class="card-content col-8 col-lg-9">
+                  <div class="card-body">
+                    <div class="header">
+                      <a class="title" href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-er-mo-kuai/">
+                        <h3>TypeScript入门教程(十二) - 模块</h3>
+                      </a>
+                    </div>
+                    <div class="inner d-none d-sm-block">
+                      <div class="abstract">
+                        <p>模块是在自身的作用域执行,也就是说在一个模块里面声明的变量,类,函数都是在模块中可见,模块外面是不可见的，除非使用<code>export</code>导出,其他模块使用<code>import</code>引入就可以使用其他模块导出的变量,类,函数等</p>
 
-      </div>
-    </article>
-  
-</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="item">
+                      
+                      <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="tag" data-title="JavaScript">
+                        JavaScript
+                      </a>
+                      
+                    </div>
+                    <div class="item">2019-11-24</div>
+                  </div>
+                </div>
+                <div class="card-thumb col-4 col-lg-3">
+                  <div class="thumb">
+                    <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-shi-er-mo-kuai/" style="background-image: url('https://xiaoai7904.github.io//post-images/typescript-ru-men-jiao-cheng-shi-er-mo-kuai.jpeg')"></a>
+                  </div>
+                </div>
+                
+              </div>
+            </article>
+            
+            
+          </div>
 
-    
-        <div class="pagination-container">
-  
-    <a href="https://xiaoai7904.github.io/" class="prev-page">上一页</a>
-  
-  
-    <a href="https://xiaoai7904.github.io/page/3/" class="next-page">下一页</a>
-  
-</div>
+          
+          <div class="layout-paginator">
+            <div class="paginator">
+              <button href="https://xiaoai7904.github.io/page/3/" class="btn btn-paginator width-100">加载更多</button>
+            </div>
+          </div>
+          
 
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://xiaoai7904.github.io//atom.xml" target="_blank">RSS</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-
-  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-  // This should probably be throttled.
-  // Especially because it triggers during smooth scrolling.
-  // https://lodash.com/docs/4.17.10#throttle
-  // You could do like...
-  // window.addEventListener("scroll", () => {
-  //    _.throttle(doThatStuff, 100);
-  // });
-  // Only not doing it here to keep this Pen dependency-free.
-
-  window.addEventListener("scroll", event => {
-    let fromTop = window.scrollY;
-
-    mainNavLinks.forEach((link, index) => {
-      let section = document.getElementById(decodeURI(link.hash).substring(1));
-      let nextSection = null
-      if (mainNavLinks[index + 1]) {
-        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-      }
-      if (section.offsetTop <= fromTop) {
-        if (nextSection) {
-          if (nextSection.offsetTop > fromTop) {
-            link.classList.add("current");
-          } else {
-            link.classList.remove("current");    
-          }
-        } else {
-          link.classList.add("current");
-        }
-      } else {
-        link.classList.remove("current");
-      }
-    });
-  });
-
-</script>
-
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  //点击加载更多
+  jQuery(document).ready(function ($) {
+    //点击下一页的链接(即那个a标签)
+    $(' .btn-paginator').click(function () {
+      $this = $(this);
+      $this.addClass('loading').text('正在加载'); //给a标签加载一个loading的class属性，用来添加加载效果
+      var href = $this.attr('href'); //获取下一页的链接地址
+      if (href != undefined) { //如果地址存在
+        $.ajax({ //发起ajax请求
+          url: href,
+          //请求的地址就是下一页的链接
+          type: 'get',
+          //请求类型是get
+          error: function (request) {
+            //如果发生错误怎么处理
+          },
+          success: function (data) { //请求成功
+            $this.removeClass('loading').text('加载更多'); //移除loading属性
+            var $res = $(data).find('.card'); //从数据中挑出文章数据，请根据实际情况更改
+            $('.card-list').append($res.fadeIn(
+              500)); //将数据加载加进posts-loop的标签中。
+            var newhref = $(data).find('.btn-paginator').attr('href'); //找出新的下一页链接
+            if (newhref != undefined) {
+              $('.btn-paginator').attr('href', newhref);
+            } else {
+              $('.btn-paginator').remove(); //如果没有下一页了，隐藏
+            }
+          }
+        });
+      }
+      return false;
+    });
+  });
+</script>
+
+        	<div class="layout-footer">
+
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+					<div class="footer">
+						<div class="row">
+							<div class="col-12 col-md-9">
+								<div class="footer-copy">
+									
+									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+									<div class="footer-icp d-none d-sm-inline-block">
+										<span class="px-2">⋅</span>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 d-none d-md-block">
+								<div class="footer-links">
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src='https://xiaoai7904.github.io//media/scripts/main.js'></script>
+	
+    </div>
+</body>
+
 </html>
