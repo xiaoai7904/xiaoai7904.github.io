@@ -2207,14 +2207,12 @@ pre {
   border-radius: 6px;
 }
 code {
-  margin: 0 4px;
-  padding: 3px 8px 2px;
-  border: 1px solid #b8e0f3;
-  border-radius: 4px;
-  background-color: #e6f7ff;
-  vertical-align: middle;
-  font-size: 12px;
   font-family: Inconsolata, monospace, sans-serif;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 6px;
 }
 pre code {
   margin: 0;
