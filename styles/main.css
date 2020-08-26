@@ -2372,10 +2372,10 @@ mark {
   -ms-transition: all 0.3s ease-out;
   flex-direction: column;
   flex: auto;
-}
-.layout.theme-dark {
-  background: #242528;
-  color: rgba(255, 255, 255, 0.45);
+  /**&.theme-dark {
+    background: @dark-bg;
+    color: @light-white;
+  }**/
 }
 .layout-header {
   padding: 0;
