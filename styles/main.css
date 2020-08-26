@@ -2529,7 +2529,7 @@ mark {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(37, 99, 252, 0.85);
+  background-color: rgba(47, 47, 47, 0.61);
   position: absolute;
   transition: transform 0.4s cubic-bezier(0.51, 0.01, 0.18, 1.03), opacity 0.3s ease;
   opacity: 0;
@@ -2880,6 +2880,9 @@ mark {
   margin: 0.5rem 0;
   padding-bottom: 1.5rem;
   font-size: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
 }
 @media (min-width: 768px) {
   .layout-post .layout-post-header .layout-post-meta {
