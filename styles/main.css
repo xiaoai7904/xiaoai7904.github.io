@@ -2181,7 +2181,7 @@ hr {
   border: 0;
   border-top: 1px solid #f4f6f8;
 }
-.theme-dark hr {
+.layout hr {
   border-top: 1px solid #3d3c41;
 }
 h1,
@@ -2208,12 +2208,12 @@ h6 {
   margin: 1.6em 0 0.6em;
   cursor: default;
 }
-.theme-dark h1,
-.theme-dark h2,
-.theme-dark h3,
-.theme-dark h4,
-.theme-dark h5,
-.theme-dark h6 {
+.layout h1,
+.layout h2,
+.layout h3,
+.layout h4,
+.layout h5,
+.layout h6 {
   color: rgba(255, 255, 255, 0.85);
 }
 p {
@@ -2243,7 +2243,7 @@ blockquote {
   padding-left: 0.5rem;
   border-left: 4px solid #EBEDF0;
 }
-.theme-dark blockquote {
+.layout blockquote {
   margin: 1.5rem 0;
   padding-left: 0.5rem;
   border-left: 4px solid #3d3c41;
@@ -2274,10 +2274,10 @@ pre code {
   border: none;
   font-size: 13px;
 }
-.theme-dark pre {
+.layout pre {
   background: #292a2d;
 }
-.theme-dark code {
+.layout code {
   border: 1px solid #3d3c41;
   background-color: #292a2d;
 }
