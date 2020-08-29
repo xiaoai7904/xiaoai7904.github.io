@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2020-08-28T07:37:31.126Z</updated>
+    <updated>2020-08-29T09:44:51.287Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io/atom.xml"/>
@@ -37,13 +37,6 @@
         <link href="https://xiaoai7904.github.io/post/mysql-chang-yong-ming-ling-he-jie-shao/">
         </link>
         <updated>2020-08-16T07:41:28.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ 随笔]]></title>
-        <id>https://xiaoai7904.github.io/post/sui-bi/</id>
-        <link href="https://xiaoai7904.github.io/post/sui-bi/">
-        </link>
-        <updated>2020-08-12T03:41:51.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript Promis]]></title>
@@ -98,6 +91,17 @@ resize、scroll、mousedown、mousemove...<br>
         <summary type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS BEM书写规]]></title>
+        <id>https://xiaoai7904.github.io/post/css-bem-shu-xie-gui/</id>
+        <link href="https://xiaoai7904.github.io/post/css-bem-shu-xie-gui/">
+        </link>
+        <updated>2019-11-24T02:27:51.000Z</updated>
+        <summary type="html"><![CDATA[<p><code>BEM</code>的意思就是块（<code>block</code>）、元素（<code>element</code>）、修饰符（<code>modifier</code>）,是由<a href="https://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。这种巧妙的命名方法让你的CSS类对其他开发者来说更加透明而且更有意义。BEM命名约定更加严格，而且包含更多的信息，它们用于一个团队开发一个耗时的大项目</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><code>BEM</code>的意思就是块（<code>block</code>）、元素（<code>element</code>）、修饰符（<code>modifier</code>）,是由<a href="https://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。这种巧妙的命名方法让你的CSS类对其他开发者来说更加透明而且更有意义。BEM命名约定更加严格，而且包含更多的信息，它们用于一个团队开发一个耗时的大项目</p>
 ]]></content>
     </entry>
 </feed>
