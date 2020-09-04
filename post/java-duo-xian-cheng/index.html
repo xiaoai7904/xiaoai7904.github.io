@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-<title>TypeScript入门教程(一) - 基础类型 - xiaoai</title>
+<title>Java多线程 - xiaoai</title>
 <meta name="description" content="记录美好生活" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
@@ -124,141 +124,174 @@
                     <div class="col-12 col-lg-10">
                       <div class="layout-post-main m-right m-md-right">
                         <div class="layout-post-header">
-                          <h1 class="layout-post-title">TypeScript入门教程(一) - 基础类型</h1>
+                          <h1 class="layout-post-title">Java多线程</h1>
                           <div class="layout-post-meta">
                             <div class="item">
-                               <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post--keyword"
-                                data-title="JavaScript" data-type="post_tag" data-term-id="39">JavaScript</a>
+                               <a href="https://xiaoai7904.github.io/tag/3zAdNp_E2/" class="post--keyword"
+                                data-title="Java" data-type="post_tag" data-term-id="39">Java</a>
                               
                             </div>
                             <div class="item">
-                              <span>2019-11-24</span>
+                              <span>2020-09-04</span>
                             </div>
                           </div>
                         </div>
                         <div class="layout-post-content">
                           <div class="layout-post-item">
                             
-                            <p class="with-img"><img src="https://xiaoai7904.github.io//post-images/typescript-ru-men-jiao-cheng-yi-ji-chu-lei-xing.jpeg"
-                                class="attachment-full size-full wp-post-image" alt="TypeScript入门教程(一) - 基础类型" /></p>
+                            <p class="with-img"><img src="https://www.runoob.com/wp-content/uploads/2014/01/java-thread.jpg"
+                                class="attachment-full size-full wp-post-image" alt="Java多线程" /></p>
                             
-                            <!-- more -->
-<p><code>Typescript</code>中的基础类型和<code>JavaScript</code>中定义的五种基本类型(<code>Number</code>,<code>String</code>,<code>Boolean</code>,<code>Undefined</code>,<code>Null</code>)几乎相同,还新增了枚举类型,接下来我们详细介绍<code>TypeScript</code>中的基础类型</p>
-<!--more-->
-<h3 id="布尔值boolean">布尔值(Boolean)</h3>
-<ul>
-<li>布尔值类型就是简单的<code>true</code> or <code>false</code></li>
-</ul>
-<pre><code class="language-typescript">let isShow: boolean = true 
-// :后面是指定变量isShow的类型，如果修改了isShow的变量类型为非boolean值就会报错
-</code></pre>
-<h3 id="数字number">数字(Number)</h3>
-<ul>
-<li><code>Typescript</code>中的数字类型和<code>Javascript</code>中的数字类型一样都是浮点数</li>
-</ul>
-<pre><code class="language-typescript">let age: number = 26
-let money: number = 6000.04
-let hex: number = 0xf00d
-let binary: number = 0b1010
-let octal: number = 0o744
-</code></pre>
-<h3 id="字符串string">字符串(String)</h3>
-<ul>
-<li><code>Typescript</code>中的字符串和<code>JavaScript</code>字符串写法一样都是通过双引号(<code>&quot;&quot;</code>)或者单引号(<code>''</code>)表示字符串</li>
-</ul>
-<pre><code class="language-typescript">let str1: string = 'hi'
-let str2: string = &quot;hi&quot;
-</code></pre>
-<h3 id="null和undefined">Null和Undefined</h3>
-<ul>
-<li><code>Typescript</code>中<code>null</code>和<code>undefined</code>两个各自有自己的类型分别是<code>null</code>和<code>undefined</code></li>
-</ul>
-<pre><code class="language-typescript">let u: undefined = undefined
-let n: null = null
-// undefined和null是所有类型的子集，就是你可以把所有类型赋值成undefined和null
-</code></pre>
-<h3 id="数组array">数组(Array)</h3>
-<ul>
-<li><code>Typescript</code>里面的数组和JavaScript中一样都可以操作数组元素,在<code>Typescript</code>中有两种定义数组的方式</li>
-</ul>
-<pre><code class="language-typescript">// 方法一:
-let list1: string[] = ['name1', 'name2', 'name3']
-let list2: number[] = [1,2,3]
-// 方法二:
-let list3: Array&lt;string&gt; = ['name1', 'name2', 'name3']
-let list4: Array&lt;number&gt; = [1,2,3]
-</code></pre>
-<h3 id="元组tuple">元组(Tuple)</h3>
-<ul>
-<li>元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。 比如，你可以定义一对值分别为 string和number类型的元组</li>
-</ul>
-<pre><code class="language-typescript">let t: [string, number]
-t = ['mickey', 26] // ok
-t = [26, 'mickey'] // error
-</code></pre>
-<h3 id="枚举enum">枚举(Enum)</h3>
-<ul>
-<li><code>enum</code>类型是在<code>JavaScript</code>类型中新增的类型, 像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字</li>
-</ul>
-<pre><code class="language-typescript">enum Style {width, height, color}
-let warp: Style = Style.width
-</code></pre>
-<p>默认情况下，枚举里面的值是从<code>0</code>开始为元素编号，也可以手动的指定成员的数值</p>
-<pre><code class="language-typescript">enum Style {width = 1, height = 2, color = 4}
-let wrap: Style = Style.width
-// 也可以通过枚举的值得到它的名字
-let wrap: Style = Style[2] // height
-</code></pre>
-<h3 id="any">Any</h3>
-<ul>
-<li>我们不希望类型检查器对这些值进行检查而是直接让它们通过编译阶段的检查就可以使用<code>any</code>类型来标记这些变量</li>
-</ul>
-<pre><code class="language-typescript">let a: any = 'mickey'
-a = 26
-a = function(){}
-
-let list1: Array&lt;any&gt; = [1,'name1', true]
-</code></pre>
-<p><em><strong>通过any定义的变量在后面可以随意赋值成其他类型的变量,这个就和js使用一样，js是弱类型语言定义变量可以不指定类型而且可以随意修改变量类型</strong></em></p>
-<h3 id="void">Void</h3>
-<ul>
-<li>某种程度上来说，void类型像是与any类型相反，它表示没有任何类型。 当一个函数没有返回值时，你通常会见到其返回值类型是 void</li>
-</ul>
-<pre><code class="language-typescript">function fn(): void { console.log('test...') }
-
-// 声明变量为void 你只能为它赋值为 undefined和null
-let a: void = undefined
-let b: void = null
-</code></pre>
-<h3 id="never">Never</h3>
-<ul>
-<li>never类型表示的是那些永不存在的值的类型。 例如， never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型； 变量也可能是 never类型，当它们被永不为真的类型保护所约束时</li>
-<li>never类型是任何类型的子类型，也可以赋值给任何类型；然而，没有类型是never的子类型或可以赋值给never类型（除了never本身之外）。 即使 any也不可以赋值给never</li>
-</ul>
-<pre><code class="language-typescript">// 返回never的函数必须存在无法达到的终点
-function fn1(): never {
-    throw new Error('error')
-}
-// 推断的返回值类型为never
-function fn2(): never {
-    return error('error')
-}
-// 返回never的函数必须存在无法达到的终点
-function fn3(): never {
-    while(true) {}
-}
-</code></pre>
-<p>上面我们介绍了<code>TypeScript</code>的基础类型，第二节我们将介绍变量声明</p>
+                            <h2 id="java多线程">Java多线程</h2>
+<h3 id="什么是多线程">什么是多线程</h3>
+<p>就是多个任务同时执行,比如 我可以边吃饭边看电视并且还可以玩手机,就是在同一时间可以同时处理多个事情,这就是多线程</p>
+<p>讲多线程前必须先了解<code>线程</code>和<code>进程</code>这两者之间的关系</p>
+<h3 id="进程">进程</h3>
+<p>在计算机中，我们把一个任务称为一个进程，比如浏览器，微信 qq 这个都是一个进程</p>
 <blockquote>
-<p>文章参考<a href="https://www.tslang.cn/docs/handbook/basic-types.html">TypeScript中文网</a></p>
+<p>**维基百科：**进程（英语：process），是指计算机中已运行的程序，用户下达运行程序的命令后，就会产生进程。同一程序可产生多个进程（一对多关系），以允许同时有多位用户运行同一程序，却不会相冲突。<br>
+进程需要一些资源才能完成工作，如CPU使用时间、存储器、文件以及I/O设备，且为依序逐一进行，也就是每个CPU核心任何时间内仅能运行一项进程</p>
 </blockquote>
+<h3 id="线程">线程</h3>
+<p>线程是一个比进程更小的执行单位。一个进程在其执行的过程中可以产生多个线程</p>
+<blockquote>
+<p><strong>维基百科：</strong> 线程（英语：thread）是操作系统能够进行运算调度的最小单位</p>
+</blockquote>
+<h3 id="java中如何创建多线程">Java中如何创建多线程</h3>
+<p>在java中有以下方式创建多线程</p>
+<ul>
+<li>继承<code>Thread</code>类重写<code>run</code>方法 （不建议使用,避免OOP单继承局限性）</li>
+</ul>
+<pre><code class="language-java">// myThread.java
+public class MyThread extends Thread{
+    @Override
+    public void run() {
+        super.run();
+        System.out.println(&quot;子线程处理线程数据&quot;);
+    }
+}
+    
+// 测试方法类 TestApp.java
+public class TestApp{
+    public static void main(String[] args){
+        MyThread myThread = new MyThread();
+        // 启动线程
+        myThread.start();
+        System.out.println(&quot;主线程处理数据&quot;);
+    }
+}
+</code></pre>
+<ul>
+<li>实现<code>Runnable</code>接口（推荐方式，方便同一个对象别多个线程使用）</li>
+</ul>
+<pre><code class="language-java">// RunnableImpl.java
+public class RunnableImpl implements Runnable {
+
+    @Override
+    public void run() {
+        System.out.println(&quot;子线程处理数据&quot;);
+    }
+}
+
+// 测试方法类 TestApp.java
+public class TestApp{
+    public static void main(String[] args){
+        RunnableImpl runnableImpl = new RunnableImpl();
+        // 启动线程
+        new Thread(runnableImpl).start();
+        System.out.println(&quot;主线程处理数据&quot;);
+    }
+} 
+</code></pre>
+<ul>
+<li>实现<code>Callable</code>接口（支持返回值）</li>
+</ul>
+<pre><code class="language-java">// CallableImpl.java
+public class CallableImpl implements Callable&lt;String&gt; {
+
+    @Override
+    public String call() {
+        System.out.println(&quot;子线程处理数据&quot;);
+        return &quot;&quot;;
+    }
+}
+
+// 测试方法类 TestApp.java
+public class TestApp{
+    public static void main(String[] args){
+        // 创建执行服务
+        ExecutorService executorsSer = Executors.newFixedThreadPool(1);
+        // 提交执行
+        Future&lt;String&gt; res  = executorsSer.submit(new CallableImpl());
+        // 获取结果
+        res.get();
+        // 关闭服务
+        executorsSer.shutdown();
+        System.out.println(&quot;主线程处理数据&quot;);
+    }
+} 
+
+</code></pre>
+<h3 id="线程生命周期">线程生命周期</h3>
+<figure data-type="image" tabindex="1"><img src="https://www.runoob.com/wp-content/uploads/2014/01/java-thread.jpg" alt="" loading="lazy"></figure>
+<h4 id="新建状态new">新建状态（New）</h4>
+<p>当使用<code>new</code>关键字创建一个线程后，仅仅由Java虚拟机为其分配内存，并初始化其成员变量的值，程序不会执行线程的线程执行体</p>
+<pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        // 创建线程
+        Thread t = new Thread(() -&gt; {
+            System.out.println(&quot;子线程处理数据&quot;);
+        });
+    }
+}
+</code></pre>
+<h4 id="就绪状态runnable">就绪状态（Runnable）</h4>
+<pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        // 创建线程
+        Thread t = new Thread(() -&gt; {
+            System.out.println(&quot;子线程处理数据&quot;);
+        });
+        // 运行
+        t.start();
+    }
+}
+</code></pre>
+<h4 id="运行状态running">运行状态（Running）</h4>
+<pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        // 创建线程
+        Thread t = new Thread(() -&gt; {
+            System.out.println(&quot;子线程处理数据&quot;);
+        });
+        // 运行
+        t.start();
+    }
+}
+</code></pre>
+<h4 id="阻塞状态blocked">阻塞状态（Blocked）</h4>
+<pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        // 创建线程
+        Thread t = new Thread(() -&gt; {
+            // 睡眠
+            Thread.sleep(50);
+            System.out.println(&quot;子线程处理数据&quot;);
+        });
+        // 运行
+        t.start();
+    }
+}
+</code></pre>
+<h4 id="死亡状态terminated">死亡状态（Terminated）</h4>
+<p>线程执行完成就进行<code>死亡状态（Terminated）</code></p>
 
                           </div>
                         </div>
                         <div class="layout-post-social">
                           <div class="item reader">
-                            <div id="/post/typescript-ru-men-jiao-cheng-yi-ji-chu-lei-xing/" class="leancloud-visitors view"
-                              data-flag-title="TypeScript入门教程(一) - 基础类型">
+                            <div id="/post/java-duo-xian-cheng/" class="leancloud-visitors view"
+                              data-flag-title="Java多线程">
                               <span class="post-meta-item-text">阅读 </span>
                               <span class="leancloud-visitors-count"></span>
                             </div>
@@ -273,62 +306,29 @@ function fn3(): never {
                               <div class="card-content col-8 col-md-9">
                                 <div class="card-body">
                                   <div class="header">
-                                    <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-er-bian-liang-sheng-ming/" class="title">
-                                      <h4>TypeScript入门教程(二) - 变量声明</h4>
+                                    <a href="https://xiaoai7904.github.io/post/linux-chang-yong-ming-ling/" class="title">
+                                      <h4>Linux常用命令</h4>
                                     </a>
                                   </div>
                                   <div class="inner d-none d-sm-block">
                                     <div class="abstract">
-                                      <p>在es5中js声明变量是通过<code>var</code>关键字进行变量声明，在es6中我们可以通过<code>let</code>,<code>const</code>两个关键字来进行声明，typescript中支持<code>let</code>,<code>const</code>进行声明变量</p>
-
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card-footer">
-                                  <div class="item"><span>上一篇</span></div>
-                                  <div class="item">2019-11-24</div>
-                                </div>
-                              </div>
-                              <div class="card-thumb col-4 col-md-3">
-                                <div class="thumb">
-                                  <a href="https://xiaoai7904.github.io/post/typescript-ru-men-jiao-cheng-er-bian-liang-sheng-ming/"
-                                    style="background-image: url('https://xiaoai7904.github.io//post-images/typescript-ru-men-jiao-cheng-er-bian-liang-sheng-ming.jpeg');"></a>
-                                </div>
-                              </div>
-                              
-                            </div>
-
-                            <div class="post-card row">
-                              
-                              <div class="card-content col-8 col-md-9">
-                                <div class="card-body">
-                                  <div class="header">
-                                    <a href="https://xiaoai7904.github.io/post/hello-gridea/" class="title">
-                                      <h4>Hello Gridea</h4>
-                                    </a>
-                                  </div>
-                                  <div class="inner d-none d-sm-block">
-                                    <div class="abstract">
-                                      <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
+                                      
                                     </div>
                                   </div>
                                 </div>
                                 <div class="card-footer">
                                   <div class="item"><span>下一篇</span></div>
-                                  <div class="item">2018-12-11</div>
+                                  <div class="item">2020-08-28</div>
                                 </div>
                               </div>
                               <div class="card-thumb col-4 col-md-3">
                                 <div class="thumb">
-                                  <a href="https://xiaoai7904.github.io/post/hello-gridea/"
-                                    style="background-image: url('https://xiaoai7904.github.io//post-images/hello-gridea.png');"></a>
+                                  <a href="https://xiaoai7904.github.io/post/linux-chang-yong-ming-ling/"
+                                    style="background-image: url('https://xiaoai7904.github.io//post-images/linux-chang-yong-ming-ling.jpg');"></a>
                                 </div>
                               </div>
                               
                             </div>
-
                             
                           </div>
                         </div>
@@ -372,18 +372,21 @@ function fn3(): never {
                           <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
+<li><a href="#java%E5%A4%9A%E7%BA%BF%E7%A8%8B">Java多线程</a>
 <ul>
-<li><a href="#%E5%B8%83%E5%B0%94%E5%80%BCboolean">布尔值(Boolean)</a></li>
-<li><a href="#%E6%95%B0%E5%AD%97number">数字(Number)</a></li>
-<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2string">字符串(String)</a></li>
-<li><a href="#null%E5%92%8Cundefined">Null和Undefined</a></li>
-<li><a href="#%E6%95%B0%E7%BB%84array">数组(Array)</a></li>
-<li><a href="#%E5%85%83%E7%BB%84tuple">元组(Tuple)</a></li>
-<li><a href="#%E6%9E%9A%E4%B8%BEenum">枚举(Enum)</a></li>
-<li><a href="#any">Any</a></li>
-<li><a href="#void">Void</a></li>
-<li><a href="#never">Never</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B">什么是多线程</a></li>
+<li><a href="#%E8%BF%9B%E7%A8%8B">进程</a></li>
+<li><a href="#%E7%BA%BF%E7%A8%8B">线程</a></li>
+<li><a href="#java%E4%B8%AD%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%A4%9A%E7%BA%BF%E7%A8%8B">Java中如何创建多线程</a></li>
+<li><a href="#%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">线程生命周期</a>
+<ul>
+<li><a href="#%E6%96%B0%E5%BB%BA%E7%8A%B6%E6%80%81new">新建状态（New）</a></li>
+<li><a href="#%E5%B0%B1%E7%BB%AA%E7%8A%B6%E6%80%81runnable">就绪状态（Runnable）</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81running">运行状态（Running）</a></li>
+<li><a href="#%E9%98%BB%E5%A1%9E%E7%8A%B6%E6%80%81blocked">阻塞状态（Blocked）</a></li>
+<li><a href="#%E6%AD%BB%E4%BA%A1%E7%8A%B6%E6%80%81terminated">死亡状态（Terminated）</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
