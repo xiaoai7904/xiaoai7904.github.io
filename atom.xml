@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoai7904.github.io/</id>
     <title>xiaoai</title>
-    <updated>2020-10-27T08:03:33.272Z</updated>
+    <updated>2020-10-27T12:24:25.327Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoai7904.github.io/"/>
     <link rel="self" href="https://xiaoai7904.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://xiaoai7904.github.io/images/avatar.png</logo>
     <icon>https://xiaoai7904.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, xiaoai</rights>
+    <entry>
+        <title type="html"><![CDATA[ 位运算]]></title>
+        <id>https://xiaoai7904.github.io/post/wei-yun-suan/</id>
+        <link href="https://xiaoai7904.github.io/post/wei-yun-suan/">
+        </link>
+        <updated>2020-10-27T10:59:03.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Java多线程]]></title>
         <id>https://xiaoai7904.github.io/post/java-duo-xian-cheng/</id>
@@ -87,17 +94,6 @@ resize、scroll、mousedown、mousemove...<br>
         <summary type="html"><![CDATA[<p>在日常开发中，我们会使用到<code>JSON.stringify</code>和<code>JSON.parse</code>对json数据进行转换,也可以通过这两个方法进行数据深度拷贝</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>在日常开发中，我们会使用到<code>JSON.stringify</code>和<code>JSON.parse</code>对json数据进行转换,也可以通过这两个方法进行数据深度拷贝</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Service Worker]]></title>
-        <id>https://xiaoai7904.github.io/post/service-worker/</id>
-        <link href="https://xiaoai7904.github.io/post/service-worker/">
-        </link>
-        <updated>2019-11-24T23:29:07.000Z</updated>
-        <summary type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>丰富的离线体验、定期的后台同步以及推送通知等通常需要将面向本机应用的功能将引入到网页应用中。 Service Worker 提供所有这些功能所依赖的技术基础。</p>
 ]]></content>
     </entry>
 </feed>

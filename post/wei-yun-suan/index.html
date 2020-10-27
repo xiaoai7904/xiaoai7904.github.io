@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-<title>FromData Blob ArrayBuffe - xiaoai</title>
+<title> 位运算 - xiaoai</title>
 <meta name="description" content="记录美好生活" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
@@ -124,112 +124,171 @@
                     <div class="col-12 col-lg-10">
                       <div class="layout-post-main m-right m-md-right">
                         <div class="layout-post-header">
-                          <h1 class="layout-post-title">FromData Blob ArrayBuffe</h1>
+                          <h1 class="layout-post-title"> 位运算</h1>
                           <div class="layout-post-meta">
                             <div class="item">
-                               <a href="https://xiaoai7904.github.io/tag/4kuYU9V7d/" class="post--keyword"
-                                data-title="JavaScript" data-type="post_tag" data-term-id="39">JavaScript</a>
                               
                             </div>
                             <div class="item">
-                              <span>2019-11-24</span>
+                              <span>2020-10-27</span>
                             </div>
                           </div>
                         </div>
                         <div class="layout-post-content">
                           <div class="layout-post-item">
                             
-                            <p class="with-img"><img src="https://xiaoai7904.github.io//post-images/fromdata-blob-arraybuffe.png"
-                                class="attachment-full size-full wp-post-image" alt="FromData Blob ArrayBuffe" /></p>
+                            <p class="with-img"><img src="https://xiaoai7904.github.io//post-images/wei-yun-suan.png"
+                                class="attachment-full size-full wp-post-image" alt=" 位运算" /></p>
                             
-                            <p>利用<code>FormData</code>对象,我们可以通过<code>JavaScript</code>用一些键值对来模拟一系列表单控件,我们还可以使用<code>XMLHttpRequest</code>的<code>send()</code>方法来异步的提交这个&quot;表单&quot;,<code>Blob</code>对象表示一个不可变、原始数据的类文件对象,<code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区</p>
-<!--more-->
-<h3 id="formdata">FormData</h3>
+                            <p>在接触位运算之前，需要先了解<code>十进制转二进制</code>和<code>二进制转十进制</code>的转换规则，因为位运算是将其操作数当作32位的比特序列（由0和1组成）进行运算</p>
+<h3 id="二进制转十进制">二进制转十进制</h3>
+<p>小数点前或者整数要从右到左用二进制的每个数去乘以2的相应次方并递增,小数点后则是从左往右乘以二的相应负次方并递减</p>
+<p><strong>示例:</strong></p>
+<pre><code>二进制数1101.01转化成十进制
+
+计算公式: 1101.01（2）= 1 * 2&lt;sup&gt;2&lt;/sup&gt; + 0 * 2&lt;sup&gt;2&lt;/sup&gt; + 1 * 2&lt;sup&gt;2&lt;/sup&gt; + 1 * 2&lt;sup&gt;2&lt;/sup&gt; + 0 * 2 &lt;sup&gt;-1&lt;/sup&gt; + 1 * 2 &lt;sup&gt;-2&lt;/sup&gt; = 1 + 0 + 4 + 8 + 0 + 0.25 = 13.25（10）
+</code></pre>
+<h3 id="十进制转二进制">十进制转二进制</h3>
+<p>采用除2取余，逆序排列法，用2整除十进制整数，可以得到一个商和余数；再用2去除商，又会得到一个商和余数，如此进行，直到商为小于1时为止，然后把先得到的余数作为二进制数的低位有效位，后得到的余数作为二进制数的高位有效位，依次排列起来</p>
+<figure data-type="image" tabindex="1"><img src="media/16037959046729.jpg" alt="" loading="lazy"></figure>
+<h3 id="javascript中转换方法">javascript中转换方法</h3>
+<p>在<code>js</code>中有内置方法可以直接进行转换，方法如下:</p>
+<pre><code class="language-javascript">// 二进制字符串
+let a = '10010';
+// 转十进制
+parseInt(a, 2); // 18
+
+// 十进制数
+let b = 18;
+// 转二进制
+b.toString(2); // '10010'
+</code></pre>
+<p>在了解了上面的方法，接下来将介绍在<code>js</code>中按位操作符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>按位与( &amp; )</td>
+<td><div style="width:100px;text-align:center;">a &amp; b</div></td>
+<td>对于每一个比特位，只有两个操作数相应的比特位都是1时，结果才为1，否则为0</td>
+</tr>
+<tr>
+<td>按位或( | )</td>
+<td><div style="width:100px;text-align:center;">a | b </div></td>
+<td>对于每一个比特位，当两个操作数相应的比特位至少有一个1时，结果为1，否则为0</td>
+</tr>
+<tr>
+<td>按位异或( ^ )</td>
+<td><div style="width:100px;text-align:center;">a ^ b </div></td>
+<td>对于每一个比特位，当两个操作数相应的比特位有且只有一个1时，结果为1，否则为0</td>
+</tr>
+<tr>
+<td>按位非( ~ )</td>
+<td><div style="width:100px;text-align:center;">~a </div></td>
+<td>反转操作数的比特位，即0变成1，1变成0</td>
+</tr>
+<tr>
+<td>左移( &lt;&lt; )</td>
+<td><div style="width:100px;text-align:center;">a &lt;&lt; b </div></td>
+<td>将 a 的二进制形式向左移 b (&lt; 32) 比特位，右边用0填充</td>
+</tr>
+<tr>
+<td>有符号右移( &gt;&gt; )</td>
+<td><div style="width:100px;text-align:center;">a &gt;&gt; b </div></td>
+<td>将 a 的二进制表示向右移 b (&lt; 32) 位，丢弃被移出的位</td>
+</tr>
+<tr>
+<td>无符号右移(&gt;&gt;&gt;)</td>
+<td><div style="width:100px;text-align:center;">a &gt;&gt;&gt; b </div></td>
+<td>将 a 的二进制表示向右移 b (&lt; 32) 位，丢弃被移出的位，并使用 0 在左侧填充</td>
+</tr>
+</tbody>
+</table>
+<h3 id="按位与">按位与( &amp; )</h3>
+<pre><code>0 &amp; 0 = 0
+1 &amp; 1 = 1
+0 &amp; 1 = 0
+
+ 9 = 00000000000000000000000000001001
+ 14 = 00000000000000000000000000001110
+
+14 &amp; 9 = 00000000000000000000000000001000 = 8
+</code></pre>
+<p><strong>将任一数值<code>x</code>与<code>0</code>执行按位与操作，其结果都为<code>0</code>。将任一数值<code>x</code>与<code>-1</code>执行按位与操作，其结果都为<code>x</code></strong></p>
+<h3 id="按位或">按位或( | )</h3>
+<pre><code>0 | 0 = 0
+1 | 1 = 1
+0 | 1 = 1
+
+ 9  = 00000000000000000000000000001001
+14  = 00000000000000000000000000001110
+
+14 | 9 = 00000000000000000000000000001111  = 15
+</code></pre>
+<p><strong>将任一数值<code>x</code> 与<code>0</code>进行按位或操作，其结果都是<code>x</code>。将任一数值<code>x</code>与 <code>-1</code> 进行按位或操作，其结果都为<code>-1</code></strong></p>
+<h3 id="按位异或">按位异或( ^ )</h3>
+<pre><code>0 ^ 0 = 0
+1 ^ 1 = 0
+0 ^ 1 = 1
+
+ 9  = 00000000000000000000000000001001 
+14  = 00000000000000000000000000001110 
+
+14 ^ 9 = 00000000000000000000000000000111 = 7
+</code></pre>
+<p><strong>将任一数值<code>x</code> 与 <code>0</code> 进行异或操作，其结果为<code>x</code>。将任一数值<code>x</code>与 <code>-1</code> 进行异或操作，其结果为 <code>~x</code></strong></p>
+<h3 id="按位非-~">按位非( ~ )</h3>
+<pre><code>~1 = 0
+~0 = 1
+
+ 9  = 00000000000000000000000000001001
+ 
+~9  = 11111111111111111111111111110110  = -10
+</code></pre>
+<p><strong>对任一数值 x 进行按位非操作的结果为 -(x + 1)。例如，~5 结果为 -6</strong></p>
+<h3 id="左移">左移( &lt;&lt; )</h3>
+<pre><code>9 = 00000000000000000000000000001001
+
+9 &lt;&lt; 2 = 00000000000000000000000000100100 = 36
+
+9 &lt;&lt; 2 等价 9 * 2 * 2 = 36
+9 &lt;&lt; 3 等价 9 * 2 * 2 * 2 = 72
+</code></pre>
+<h3 id="有符号右移">有符号右移( &gt;&gt; )</h3>
+<p>该操作符会将第一个操作数向右移动指定的位数。向右被移出的位被丢弃，拷贝最左侧的位以填充左侧。由于新的最左侧的位总是和以前相同，符号位没有被改变。所以被称作“符号传播”。</p>
+<pre><code> 9 = 00000000000000000000000000001001
+ 
+9 &gt;&gt; 2 = 00000000000000000000000000000010 = 2 
+
+9 &gt;&gt; 2 等价 9 / 2 / 2 = 2
+9 &gt;&gt; 3 等价 9 / 2 / 2 / 2 = 1
+9 &gt;&gt; 4 等价 9 / 2 / 2 / 2 / 2 = 0
+</code></pre>
+<h3 id="无符号右移">无符号右移(&gt;&gt;&gt;)</h3>
+<p>该操作符会将第一个操作数向右移动指定的位数。向右被移出的位被丢弃，左侧用0填充。因为符号位变成了 0，所以结果总是非负的</p>
+<pre><code>9 = 00000000000000000000000000001001                       
+9 &gt;&gt;&gt; 2 = 00000000000000000000000000000010 = 2
+
+-9 = 11111111111111111111111111110111                    
+-9 &gt;&gt;&gt; 2 = 00111111111111111111111111111101 = 1073741821
+</code></pre>
 <blockquote>
-<p>XMLHttpRequest Level 2添加了一个新的接口FormData.利用FormData对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send()方法来异步的提交这个&quot;表单&quot;.比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件</p>
-</blockquote>
-<p>上文是<a href="https://developer.mozilla.org">MDN</a>官方解释,在实际开发中我们可以利用它来进行做上传文件操作,下面代码简单介绍了<code>FormData</code>如何使用</p>
-<pre><code class="language-javascript">let xhr= new XMLHttpRequest();
-let fromdata = new FormData()
-formdata.append(&quot;token&quot;, 'ddddd-ddd-dd');
-xhr.open(&quot;POST&quot;, &quot;xxx.php&quot;);
-xhr.send();
-</code></pre>
-<h4 id="api">api</h4>
-<p><strong>append() 给当前FormData对象添加一个键/值对</strong><br>
-<code>void append(DOMString name, Blob value, optional DOMString filename)</code></p>
-<ul>
-<li>name: 字段名称</li>
-<li>value: 字段值.可以是,或者一个字符串,如果全都不是,则该值会被自动转换成字符串</li>
-<li>filename[可选] 指定文件的文件名,当value参数被指定为一个Blob对象或者一个File对象时,该文件名会被发送到服务器上,对于Blob对象来说,这个值默认为&quot;blob&quot;)</li>
-</ul>
-<h3 id="blob">Blob</h3>
-<p><code>Blob</code>即二进制大数据对象,提供相应的接口,其他操作二进制的对象都是建立在<code>Blob</code>基础之上,并继承了该对象的属性和方法</p>
-<ul>
-<li>使用 Blob 创建一个指向类型化数组的URL</li>
-</ul>
-<pre><code class="language-javascript">var typedArray = GetTheTypedArraySomehow();
-var blob = new Blob([typedArray], {type: &quot;application/octet-binary&quot;});// 传入一个合适的MIME类型
-var url = URL.createObjectURL(blob);
-// 会产生一个类似blob:d3958f5c-0777-0845-9dcf-2cb28783acaf 这样的URL字符串
-// 你可以像使用一个普通URL那样使用它，比如用在img.src上
-</code></pre>
-<h4 id="api-2">api</h4>
-<ul>
-<li><code>Blob.size</code>[只读]  <code>Blob</code>对象中所包含数据的大小（字节）</li>
-<li><code>Blob.type</code>[只读]  一个字符串，表明该Blob对象所包含数据的MIME类型。如果类型未知，则该值为空字符串</li>
-<li><code>Blob.slice(start,end)</code> 返回一个新的 Blob对象，包含了源 Blob对象中指定范围内的数据</li>
-</ul>
-<h3 id="arraybuffer">ArrayBuffer</h3>
-<p><code>ArrayBuffer</code>对象用来表示通用的、固定长度的原始二进制数据缓冲区。<code>ArrayBuffer</code>不能直接操作，而是要通过类型数组对象或 DataView 对象来操作，它们会将缓冲区中的数据表示为特定的格式，并通过这些格式来读写缓冲区的内容</p>
-<pre><code class="language-javascript">// 创建一个8字节的ArrayBuffer  
-var b = new ArrayBuffer(8);  
-  
-// 创建一个指向b的视图v1，采用Int32类型，开始于默认的字节索引0，直到缓冲区的末尾  
-var v1 = new Int32Array(b);  
-  
-// 创建一个指向b的视图v2，采用Uint8类型，开始于字节索引2，直到缓冲区的末尾  
-var v2 = new Uint8Array(b, 2);  
-  
-// 创建一个指向b的视图v3，采用Int16类型，开始于字节索引2，长度为2  
-var v3 = new Int16Array(b, 2, 2);  
-</code></pre>
-<h4 id="api-3">api</h4>
-<ul>
-<li>
-<p><code>new ArrayBuffer(length)</code><br>
-<code>length</code>要创建的 ArrayBuffer 的大小，单位为字节,返回一个指定大小的 ArrayBuffer 对象，其内容被初始化为 0</p>
-</li>
-<li>
-<p><code>get ArrayBuffer[@@species]</code><br>
-返回 ArrayBuffer 的构造函数</p>
-</li>
-<li>
-<p><code>ArrayBuffer.isView(arg)</code><br>
-如果参数是 ArrayBuffer 的视图实例则返回 true，例如 类型数组对象 或 DataView 对象；否则返回 false</p>
-</li>
-<li>
-<p><code>ArrayBuffer.transfer(oldBuffer [, newByteLength])</code><br>
-返回一个新的 ArrayBuffer 对象，其内容取自 oldBuffer 中的数据，并且根据 newByteLength 的大小对数据进行截取或补 0</p>
-</li>
-<li>
-<p><code>ArrayBuffer.slice()</code><br>
-返回一个新的 ArrayBuffer ，它的内容是这个 ArrayBuffer 的字节副本，从begin（包括），到end（不包括）。如果begin或end是负数，则指的是从数组末尾开始的索引，而不是从头开始</p>
-</li>
-</ul>
-<blockquote>
-<p>文章参考<br>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer-MDN</a><br>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob">Blob-MDN</a><br>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData">FormData-MDN</a></p>
+<p>参考文档<br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators">Expressions and operators</a></p>
 </blockquote>
 
                           </div>
                         </div>
                         <div class="layout-post-social">
                           <div class="item reader">
-                            <div id="/post/fromdata-blob-arraybuffe/" class="leancloud-visitors view"
-                              data-flag-title="FromData Blob ArrayBuffe">
+                            <div id="/post/wei-yun-suan/" class="leancloud-visitors view"
+                              data-flag-title=" 位运算">
                               <span class="post-meta-item-text">阅读 </span>
                               <span class="leancloud-visitors-count"></span>
                             </div>
@@ -244,68 +303,29 @@ var v3 = new Int16Array(b, 2, 2);
                               <div class="card-content col-8 col-md-9">
                                 <div class="card-body">
                                   <div class="header">
-                                    <a href="https://xiaoai7904.github.io/post/async-function/" class="title">
-                                      <h4>Async Function</h4>
+                                    <a href="https://xiaoai7904.github.io/post/java-duo-xian-cheng/" class="title">
+                                      <h4>Java多线程</h4>
                                     </a>
                                   </div>
                                   <div class="inner d-none d-sm-block">
                                     <div class="abstract">
-                                      <p>Chrome 55 中默认情况下启用异步函数，坦率地讲，它们的作用相当不可思议。 可以利用它们像编写同步代码那样编写基于 Promise 的代码，而且还不会阻塞主线程。 它们可以让异步代码“智商”下降、可读性提高。</p>
-
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card-footer">
-                                  <div class="item"><span>上一篇</span></div>
-                                  <div class="item">2019-11-24</div>
-                                </div>
-                              </div>
-                              <div class="card-thumb col-4 col-md-3">
-                                <div class="thumb">
-                                  <a href="https://xiaoai7904.github.io/post/async-function/"
-                                    style="background-image: url('https://i2.wp.com/www.geekstrick.com/wp-content/uploads/2018/07/async-await-in-javascript.png?w=756&amp;ssl=1');"></a>
-                                </div>
-                              </div>
-                              
-                            </div>
-
-                            <div class="post-card row">
-                              
-                              <div class="card-content col-8 col-md-9">
-                                <div class="card-body">
-                                  <div class="header">
-                                    <a href="https://xiaoai7904.github.io/post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan/" class="title">
-                                      <h4>js原型继承五条基本原</h4>
-                                    </a>
-                                  </div>
-                                  <div class="inner d-none d-sm-block">
-                                    <div class="abstract">
-                                      <p>js中的原型继承，遵守5个基本原则：</p>
-<ul>
-<li>所有的数据都是对象</li>
-<li>要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它</li>
-<li>对象会记住它的原型</li>
-<li>如果对象无法响应某个请求，它会把这个请求委托给它自己的原型</li>
-</ul>
-<p>接下来我们将详细讲解这个5个基本原则.....</p>
-
+                                      
                                     </div>
                                   </div>
                                 </div>
                                 <div class="card-footer">
                                   <div class="item"><span>下一篇</span></div>
-                                  <div class="item">2019-11-24</div>
+                                  <div class="item">2020-09-04</div>
                                 </div>
                               </div>
                               <div class="card-thumb col-4 col-md-3">
                                 <div class="thumb">
-                                  <a href="https://xiaoai7904.github.io/post/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan/"
-                                    style="background-image: url('https://xiaoai7904.github.io//post-images/js-yuan-xing-ji-cheng-wu-tiao-ji-ben-yuan.png');"></a>
+                                  <a href="https://xiaoai7904.github.io/post/java-duo-xian-cheng/"
+                                    style="background-image: url('https://www.runoob.com/wp-content/uploads/2014/01/java-thread.jpg');"></a>
                                 </div>
                               </div>
                               
                             </div>
-
                             
                           </div>
                         </div>
@@ -351,21 +371,16 @@ var v3 = new Int16Array(b, 2, 2);
 <ul>
 <li>
 <ul>
-<li><a href="#formdata">FormData</a>
-<ul>
-<li><a href="#api">api</a></li>
-</ul>
-</li>
-<li><a href="#blob">Blob</a>
-<ul>
-<li><a href="#api-2">api</a></li>
-</ul>
-</li>
-<li><a href="#arraybuffer">ArrayBuffer</a>
-<ul>
-<li><a href="#api-3">api</a></li>
-</ul>
-</li>
+<li><a href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E8%BF%9B%E5%88%B6">二进制转十进制</a></li>
+<li><a href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6">十进制转二进制</a></li>
+<li><a href="#javascript%E4%B8%AD%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95">javascript中转换方法</a></li>
+<li><a href="#%E6%8C%89%E4%BD%8D%E4%B8%8E">按位与( &amp; )</a></li>
+<li><a href="#%E6%8C%89%E4%BD%8D%E6%88%96">按位或( | )</a></li>
+<li><a href="#%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96">按位异或( ^ )</a></li>
+<li><a href="#%E6%8C%89%E4%BD%8D%E9%9D%9E-~">按位非( ~ )</a></li>
+<li><a href="#%E5%B7%A6%E7%A7%BB">左移( &lt;&lt; )</a></li>
+<li><a href="#%E6%9C%89%E7%AC%A6%E5%8F%B7%E5%8F%B3%E7%A7%BB">有符号右移( &gt;&gt; )</a></li>
+<li><a href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E5%8F%B3%E7%A7%BB">无符号右移(&gt;&gt;&gt;)</a></li>
 </ul>
 </li>
 </ul>
